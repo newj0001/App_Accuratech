@@ -66,7 +66,7 @@ namespace CallWebApiConsole
             }
             else
             {
-                Console.WriteLine(result.StatusCode);//
+                Console.WriteLine(result.StatusCode);///
             }
         }
     }
