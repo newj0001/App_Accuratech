@@ -18,8 +18,8 @@ namespace Library
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    var jsonstring = await response.Content.ReadAsAsync<string>();
-                    MenuModel menu = JsonConvert.DeserializeObject<MenuModel>(jsonstring);
+                    MenuModel menu = await response.Content.ReadAsAsync<MenuModel>();
+
                     return menu;
                 }
                 else
