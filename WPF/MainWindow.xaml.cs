@@ -35,11 +35,18 @@ namespace WPF
             DataContext = new MenuViewModel();
         }
 
-        private async void LoadMenu_Click(object sender, RoutedEventArgs e)
-        {
-            var info = await MenuProcessor.LoadMenu();
-            TitleTxt.Text = $"{info.Title}";
-            DescriptionTxt.Text = $"{info.Description}";
-        }
+        //private async void Window_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    var menus = await MenuProcessor.LoadMenus();
+
+        //    foreach (var menuItem in menus)
+        //    {
+        //        var textBlock = new TextBlock
+        //        {
+        //            Text = menuItem.Description
+        //        };
+        //        Menus.Items.Add(textBlock);
+        //    }
+        //}
     }
 }

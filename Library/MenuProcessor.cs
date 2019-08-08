@@ -10,7 +10,7 @@ namespace Library
 {
     public class MenuProcessor
     {
-        public static async Task<MenuModel> LoadMenu()
+        public static async Task<List<MenuTable>> LoadMenus()
         {
             string url = "https://localhost:44333/api/menu";
 
@@ -18,9 +18,7 @@ namespace Library
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    MenuModel menu = await response.Content.ReadAsAsync<MenuModel>();
-
-                    return menu;
+                    return await response.Content.ReadAsAsync<List<MenuTable>>();
                 }
                 else
                 {
@@ -41,7 +39,7 @@ namespace Library
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<MenuModel[]>();
+                    var readTask = result.Content.ReadAsAsync<MenuTable[]>();
                     readTask.Wait();
 
                     var menus = readTask.Result;
@@ -53,23 +51,5 @@ namespace Library
                 }
             }
         }
-        //public static async Task<MenuModel> LoadMenuInformation()
-        //{
-        //    string url = "https://api.sunrise-sunset.org/json?lat=41.494804&lng=-75.536852&date=today";
-
-        //    using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
-        //    {
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            MenuModel menu = await response.Content.ReadAsAsync<MenuModel>();
-
-        //            return menu;
-        //        }
-        //        else
-        //        {
-        //            throw new Exception(response.ReasonPhrase);
-        //        }
-        //    }
-        //}
     }
 }

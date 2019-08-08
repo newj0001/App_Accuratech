@@ -4,14 +4,101 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
+        xmlns:eo="http://schemas.essentialobjects.com/wpf/"
+        xmlns:viewModel="clr-namespace:WPF.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel>
-            <Button Click="LoadMenu_Click" x:Name="LoadMenu" Margin="20" Height="25" Width="120" Content="Load"/>
-            <TextBlock x:Name="TitleTxt" Margin="20" />
-            <TextBlock x:Name="DescriptionTxt" Margin="20" />
-        </StackPanel>
+        Title="Configuration" Height="600" Width="1080"
+        x:Name="Window"
+        ResizeMode="NoResize" d:DataContext="{d:DesignInstance viewModel:MenuViewModel}"
+        >
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="360"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="GridMenu"
+              Width="250"
+              HorizontalAlignment="Left"
+              Margin="0 0 0 0"
+              Background="White"
+              Grid.Column="0"
+              Grid.Row="0"
+              Grid.RowSpan="2">
+            
+            <StackPanel>
+                <Expander x:Name="Configuration" Margin="10 0 0 0">
+                    <Expander.Header>
+                        <StackPanel>
+                            <TextBlock Text="Configuration" Margin="10" FontSize="18" Foreground="Black"/>
+                        </StackPanel>
+                    </Expander.Header>
+                </Expander>
+                <ListBox  x:Name="Menus">
+                    <ListBoxItem Height="45" Padding="0">
+                        <StackPanel Orientation="Horizontal" Margin="50 0 0 0">
+                            <TextBlock Text="General" Margin="5 8 0 0" FontSize="14"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+
+                <Expander x:Name="MainMenu" Margin="10 0 0 0">
+                    <Expander.Header>
+                        <StackPanel>
+                            <TextBlock Text="Main Menu" Margin="10" FontSize="18" Foreground="Black"/>
+                        </StackPanel>
+                    </Expander.Header>
+                    <ListBox>
+                        <ListBoxItem Height="45" Padding="0">
+                            <StackPanel Orientation="Horizontal" Margin="50 0 0 0">
+                                <TextBlock Text="Add menu" Margin="5 8 0 0" FontSize="14"/>
+                            </StackPanel>
+                        </ListBoxItem>
+
+
+                        <ListView ItemsSource="{Binding Menus}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Expander>
+                                        <Expander.Header>
+                                            <StackPanel>
+                                                <TextBlock 
+                                                    HorizontalAlignment="Center" 
+                                                    Margin="0" 
+                                                    FontSize="14" 
+                                                    Foreground="Black" 
+                                                    Text="{Binding Path=Title}"
+                                                    />
+                                                <ListView>
+                                                    <ListViewItem Height="45" Padding="0">
+                                                        <StackPanel Orientation="Horizontal" Margin="50 0 0 0">
+                                                            <TextBlock
+                                                                HorizontalAlignment="Center"
+                                                                Margin="0"
+                                                                FontSize="14"
+                                                                Foreground="Black"
+                                                                Text="{Binding Path=Field}"
+                                                                />
+                                                        </StackPanel>
+                                                    </ListViewItem>
+                                                </ListView>
+                                            </StackPanel>
+                                        </Expander.Header>
+                                    </Expander>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ListBox>
+                </Expander>
+            </StackPanel>
+
+        </Grid>
+
 
     </Grid>
 </Window>

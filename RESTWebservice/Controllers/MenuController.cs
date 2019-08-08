@@ -10,33 +10,36 @@ namespace RESTWebservice.Controllers
 {
     public class MenuController : ApiController
     {
-        List<MenuModel> menuList = new List<MenuModel>();
+        List<MenuTable> menuList = new List<MenuTable>();
 
         public MenuController()
         {
-            menuList.Add(new MenuModel { Id = 1, Title = "Receive", Description = "This is a note" });
-            menuList.Add(new MenuModel { Id = 2, Title = "Shipping", Description = "This is a note" });
+            //menuList.Add(new MenuModel { Id = 1, Title = "Receive", Field = "Order.no" });
+            //menuList.Add(new MenuModel { Id = 2, Title = "Shipping", Field = "This is a note" });
         }
 
         // GET: api/Menu
         [HttpGet]
-        public List<MenuModel> GetAllMenus()
+        public IEnumerable<MenuTable> GetAllMenus()
         {
-            return menuList;
+            using (MenuDetailsEntities entities = new MenuDetailsEntities())
+            {
+                return entities.MenuTable.ToList();
+            }
         }
 
         // GET: api/Menu/5
         [HttpGet]
-        public MenuModel GetMenu(int id)
+        public MenuTable GetMenu(int id)
         {
-            return menuList.Where(x => x.Id == id).FirstOrDefault();
+            return menuList.Where(x => x.ID == id).FirstOrDefault();
         }
 
         // POST: api/Menu
         [HttpPost]
-        public void SaveMenu(MenuModel menu)
+        public void SaveMenu(MenuTable val)
         {
-            menuList.Add(menu);
+            menuList.Add(val);
         }
 
         //// PUT: api/Menu/5
