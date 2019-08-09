@@ -1,4 +1,4 @@
-﻿using Library;
+﻿//using Library;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -31,7 +31,7 @@ namespace WPF
         public MainWindow()
         {
             InitializeComponent();
-            ApiHelper.InitializeClient();
+            //ApiHelper.InitializeClient();
             DataContext = new MenuViewModel();
         }
 

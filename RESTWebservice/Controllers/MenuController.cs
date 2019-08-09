@@ -20,16 +20,16 @@ namespace RESTWebservice.Controllers
 
         // GET: api/Menu
         [HttpGet]
-        public IEnumerable<MenuItemEntity> GetAllMenus()
-        {
-            using (MenuDetailsEntities entities = new MenuDetailsEntities())
-            {
-                return entities.MenuTable.ToList();
-            }
-        }
+        //public IEnumerable<MenuItemEntity> GetAllMenus()
+        //{
+        //    using (MenuDetailsEntities entities = new MenuDetailsEntities())
+        //    {
+        //        return entities.MenuTable.ToList();
+        //    }
+        //}
 
         // GET: api/Menu/5
-        [HttpGet]
+        //[HttpGet]
         public MenuItemEntity GetMenu(int id)
         {
             return menuList.Where(x => x.ID == id).FirstOrDefault();

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Common_Backend.Context
 {
-    public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<MenuItemContext>
+    public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<DatabaseContext>
     {
-        protected override void Seed(MenuItemContext context)
+        protected override void Seed(DatabaseContext context)
         {
             base.Seed(context);
 
