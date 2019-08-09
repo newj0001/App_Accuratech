@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using App_Accurratech.ViewModel;
+using Library;
 
 namespace App_Accurratech
 {
@@ -18,6 +20,18 @@ namespace App_Accurratech
         public MainPage()
         {
             InitializeComponent();
+            ApiHelper.InitializeClient();
+            BindingContext = new MobileMenuViewModel();
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            (sender as ListView).SelectedItem = null;
+
+            if (e.SelectedItem != null)
+            {
+                MobileMenuViewModel menuData = e.SelectedItem as MobileMenuViewModel;
+            }
         }
     }
 }

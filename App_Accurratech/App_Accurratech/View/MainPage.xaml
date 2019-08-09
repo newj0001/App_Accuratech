@@ -8,24 +8,13 @@
              xmlns:VM="clr-namespace:App_Accurratech.ViewModel;assembly=App_Accurratech">
 
     <StackLayout>
-        <ListView
-            x:Name="MenuListView"
-            ItemsSource="{Binding MenuList}"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True">
+        <ListView ItemsSource="{Binding Menus}" ItemSelected="ListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10"
-                                     Orientation="Horizontal">
-                            <Label Text="{Binding Title}" />
-                            <Label Text="{Binding Description}" />
-                        </StackLayout>
-                    </ViewCell>
+                    <TextCell Text="{Binding Title}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="GET DATA" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
     </StackLayout>
 
 </ContentPage>

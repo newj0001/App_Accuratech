@@ -12,29 +12,29 @@ namespace WPF.ViewModel
 {
     public class MenuViewModel : INotifyPropertyChanged
     {
-        private ICollection<MenuTable> menus;
+        //private ICollection<MenuTable> menus;
 
-        public ICollection<MenuTable> Menus {
-            get => menus;
-            set {
-                menus = value;
-                RaisePropertyChanged();
-            }
-        }
+        //public ICollection<MenuTable> Menus {
+        //    get => menus;
+        //    set {
+        //        menus = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
 
 
-        public MenuViewModel()
-        {
-            LoadMenu();
-        }
+        //public MenuViewModel()
+        //{
+        //    LoadMenu();
+        //}
 
-        public async void LoadMenu()
-        {
+        //public async void LoadMenu()
+        //{
             
-            Menus = await MenuProcessor.LoadMenus();
+        //    Menus = await MenuProcessor.LoadMenus();
             
             
-        }
+        //}
 
     //public int Id
     //    {

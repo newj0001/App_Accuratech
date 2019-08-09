@@ -1,4 +1,4 @@
-﻿using Library;
+﻿using Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace RESTWebservice.Controllers
 {
     public class MenuController : ApiController
     {
-        List<MenuTable> menuList = new List<MenuTable>();
+        List<MenuItemEntity> menuList = new List<MenuItemEntity>();
 
         public MenuController()
         {
@@ -20,7 +20,7 @@ namespace RESTWebservice.Controllers
 
         // GET: api/Menu
         [HttpGet]
-        public IEnumerable<MenuTable> GetAllMenus()
+        public IEnumerable<MenuItemEntity> GetAllMenus()
         {
             using (MenuDetailsEntities entities = new MenuDetailsEntities())
             {
@@ -30,14 +30,14 @@ namespace RESTWebservice.Controllers
 
         // GET: api/Menu/5
         [HttpGet]
-        public MenuTable GetMenu(int id)
+        public MenuItemEntity GetMenu(int id)
         {
             return menuList.Where(x => x.ID == id).FirstOrDefault();
         }
 
         // POST: api/Menu
         [HttpPost]
-        public void SaveMenu(MenuTable val)
+        public void SaveMenu(MenuItemEntity val)
         {
             menuList.Add(val);
         }
