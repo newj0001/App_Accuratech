@@ -51,6 +51,11 @@
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Context\DatabaseInitializer.cs" />
     <Compile Include="Context\MenuItemContext.cs" />
+    <Compile Include="Migrations\201908121156187_InitialCreate.cs" />
+    <Compile Include="Migrations\201908121156187_InitialCreate.Designer.cs">
+      <DependentUpon>201908121156187_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +67,11 @@
       <Project>{0FC001E1-44B0-4897-A3B1-A22A31683D32}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908121156187_InitialCreate.resx">
+      <DependentUpon>201908121156187_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class City
+    public class Product
     {
-        [Key]
-        public int CityId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        //Adding Foreign Key Constraints for State  
-        public int StateId { get; set; }
-        public State State { get; set; }
+        public string Category { get; set; }
+        public decimal Price { get; set; }
     }
 }

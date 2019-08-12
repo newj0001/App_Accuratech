@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Library
+namespace Common
 {
     public class MenuProcessor
     {

@@ -7,14 +7,6 @@
              x:Class="App_Accurratech.MainPage"
              xmlns:VM="clr-namespace:App_Accurratech.ViewModel;assembly=App_Accurratech">
 
-    <StackLayout>
-        <ListView ItemsSource="{Binding Menus}" ItemSelected="ListView_ItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Title}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+
 
 </ContentPage>

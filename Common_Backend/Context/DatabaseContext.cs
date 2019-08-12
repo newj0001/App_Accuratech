@@ -10,10 +10,8 @@ namespace Common_Backend.Context
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext() : base("DefaultConnection") { }
+        public DatabaseContext() : base("Server=NTHVISION\\MSSQLSERVER1;Database=MenuDetails;Trusted_Connection=True;") { }
 
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<State> States { get; set; }
-        public DbSet<City> Cities { get; set; }
+        public DbSet<MenuItemEntity> Menus { get; set; }
     }
 }

@@ -12,6 +12,13 @@ namespace Common_Backend
     {
         public MenuItemContext(): base("DefaultConnection") { }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<MenuItemEntity>().HasKey(mic => mic.ID);
+        }
+
         public DbSet<MenuItemEntity> Menus { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,11 @@ namespace REST
         static void Main(string[] args)
         {
             var config = new HttpSelfHostConfiguration("https://localhost:44333/");
-
-            config.Routes.MapHttpRoute("API Default", "api/{controller}/{id}", new { id = RouteParameter.Optional});
+            
+            config.Routes.MapHttpRoute(
+                "API Default",
+                "api/{controller}/{id}",
+                new { id = RouteParameter.Optional, });
 
             using(HttpSelfHostServer server = new HttpSelfHostServer(config))
             {
@@ -22,6 +26,8 @@ namespace REST
                 Console.WriteLine("Press Enter to quit.");
                 Console.ReadLine();
             }
+
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }
