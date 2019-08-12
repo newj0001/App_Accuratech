@@ -30,10 +30,10 @@
             </Grid>
         </materialDesign:ColorZone>
         <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="{StaticResource PrimaryHueMidBrush}">
-            <Grid.RowDefinitions>
+            <!--<Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="326*"/>
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>-->
             <!--EVENTUELT LOGO HER-->
             <!--<Grid Grid.Row="0" Background="GhostWhite">
                 <Image Grid.Column="0"/>

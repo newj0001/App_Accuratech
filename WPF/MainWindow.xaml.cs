@@ -32,42 +32,18 @@ namespace WPF
         public MainWindow()
         {
             InitializeComponent();
-            var menuRegister = new List<SubItemViewModel>();
-            menuRegister.Add(new SubItemViewModel("Customer", new UserControlCustomers()));
-            menuRegister.Add(new SubItemViewModel("Providers", new UserControlProviders()));
-            menuRegister.Add(new SubItemViewModel("Employees"));
-            menuRegister.Add(new SubItemViewModel("Products"));
-            var item6 = new ItemMenuViewModel("Register", menuRegister, PackIconKind.Register);
 
-            var menuSchedule = new List<SubItemViewModel>();
-            menuSchedule.Add(new SubItemViewModel("Services"));
-            menuSchedule.Add(new SubItemViewModel("Meetings"));
-            var item1 = new ItemMenuViewModel("Appointments", menuSchedule, PackIconKind.Schedule);
+            var menuConfiguration = new List<SubItemViewModel>();
+            menuConfiguration.Add(new SubItemViewModel("General", new UserControlGeneral()));
+            var item0 = new ItemMenuViewModel("Configuration", menuConfiguration, PackIconKind.Register);
 
-            var menuReports = new List<SubItemViewModel>();
-            menuReports.Add(new SubItemViewModel("Customers"));
-            menuReports.Add(new SubItemViewModel("Providers"));
-            menuReports.Add(new SubItemViewModel("Products"));
-            menuReports.Add(new SubItemViewModel("Stock"));
-            menuReports.Add(new SubItemViewModel("Sales"));
-            var item2 = new ItemMenuViewModel("Reports", menuReports, PackIconKind.FileReport);
+            var menuMain = new List<SubItemViewModel>();
+            menuMain.Add(new SubItemViewModel("Add menu"));
+            menuMain.Add(new SubItemViewModel("Order no."));
+            var item1 = new ItemMenuViewModel("Receive", menuMain, PackIconKind.FileReport);
 
-            var menuExpenses = new List<SubItemViewModel>();
-            menuExpenses.Add(new SubItemViewModel("Fixed"));
-            menuExpenses.Add(new SubItemViewModel("Variable"));
-            var item3 = new ItemMenuViewModel("Expenses", menuExpenses, PackIconKind.ShoppingBasket);
-
-            var menuFinancial = new List<SubItemViewModel>();
-            menuFinancial.Add(new SubItemViewModel("Cash flow"));
-            var item4 = new ItemMenuViewModel("Financial", menuFinancial, PackIconKind.ScaleBalance);
-
-            Menu.Children.Add(new UserControlMenuItem(item6, this));
-            Menu.Children.Add(new UserControlMenuItem(item2, this));
-            Menu.Children.Add(new UserControlMenuItem(item3, this));
-            Menu.Children.Add(new UserControlMenuItem(item4, this));
-
-            //ApiHelper.InitializeClient();
-            //DataContext = new MenuViewModel();
+            Menu.Children.Add(new UserControlMenuItem(item0, this));
+            Menu.Children.Add(new UserControlMenuItem(item1, this));
         }
 
         internal void SwitchScreen(object sender)

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WPF
 {
     /// <summary>
-    /// Interaction logic for UserControlDashboard.xaml
+    /// Interaction logic for UserControlGeneral.xaml
     /// </summary>
-    public partial class UserControlCustomers : UserControl
+    public partial class UserControlGeneral : UserControl
     {
-        public UserControlCustomers()
+        public UserControlGeneral()
         {
             InitializeComponent();
         }

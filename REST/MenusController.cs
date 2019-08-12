@@ -12,11 +12,6 @@ namespace REST
 {
     public class MenusController : ApiController
     {
-        MenuItemEntity[] menus = new MenuItemEntity[]
-        {
-            new MenuItemEntity { ID = 1, Title = "Title", Description = "Decription"}
-        };
-
         public IEnumerable<MenuItemEntity> GetAllMenus()
         {
             using (var dbContext = new DatabaseContext())
@@ -27,14 +22,14 @@ namespace REST
             }
         }
 
-        public MenuItemEntity GetMenuById(int id)
-        {
-            var menu = menus.FirstOrDefault((m) => m.ID == id);
-            if (menu == null)
-            {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            }
-            return menu;
-        }
+        //public MenuItemEntity GetMenuById(int id)
+        //{
+        //    var menu = menus.FirstOrDefault((m) => m.ID == id);
+        //    if (menu == null)
+        //    {
+        //        throw new HttpResponseException(HttpStatusCode.NotFound);
+        //    }
+        //    return menu;
+        //}
     }
 }

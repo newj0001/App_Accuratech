@@ -10,7 +10,6 @@ namespace Common_Backend.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Common_Backend.Context.DatabaseContext";
         }
 
         protected override void Seed(Common_Backend.Context.DatabaseContext context)

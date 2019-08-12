@@ -50,10 +50,9 @@
   <ItemGroup>
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Context\DatabaseInitializer.cs" />
-    <Compile Include="Context\MenuItemContext.cs" />
-    <Compile Include="Migrations\201908121156187_InitialCreate.cs" />
-    <Compile Include="Migrations\201908121156187_InitialCreate.Designer.cs">
-      <DependentUpon>201908121156187_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201908121347182_DatabaseContext_Initial.cs" />
+    <Compile Include="Migrations\201908121347182_DatabaseContext_Initial.Designer.cs">
+      <DependentUpon>201908121347182_DatabaseContext_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,8 +68,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908121156187_InitialCreate.resx">
-      <DependentUpon>201908121156187_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908121347182_DatabaseContext_Initial.resx">
+      <DependentUpon>201908121347182_DatabaseContext_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
