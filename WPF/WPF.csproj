@@ -74,9 +74,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\ItemMenuViewModel.cs" />
-    <Compile Include="ViewModel\MenuViewModel.cs" />
-    <Compile Include="ViewModel\SubItemViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -118,6 +115,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ViewModel\" />
     <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>

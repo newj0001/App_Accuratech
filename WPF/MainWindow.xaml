@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:WPF"
         xmlns:eo="http://schemas.essentialobjects.com/wpf/"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:viewModel="clr-namespace:WPF.ViewModel"
+        xmlns:viewModel="clr-namespace:Common.ViewModel;assembly=Common"
         mc:Ignorable="d" Height="600" Width="1080"
         x:Name="Window"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" d:DataContext="{d:DesignInstance viewModel:ItemMenuViewModel}"
+        ResizeMode="NoResize" 
+        d:DataContext="{d:DesignInstance viewModel:ItemMenuViewModel}"
         Loaded="Window_Loaded"
         >
     <Grid Background="LightGray">
@@ -20,6 +21,7 @@
                 <TextBlock Text="Newjan" VerticalAlignment="Center" FontSize="18"/>
                 <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges">
                     <StackPanel Width="150">
+                        <Button Content="Configuration"/>
                         <Button Content="Account"/>
                         <Button Content="Settings"/>
                         <Button Content="Help"/>
@@ -35,15 +37,15 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <ItemsControl Grid.Row="0" ItemsSource="{Binding MenuItemsCollection}">
+            <ItemsControl Grid.Row="0" Grid.RowSpan="2" ItemsSource="{Binding MenuItemsCollection}" >
                 <ItemsControl.ItemTemplate>
                     <DataTemplate >
                         <StackPanel>
-                            <Expander x:Name="ExpanderMenu" Header="{Binding Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
+                            <Expander x:Name="ExpanderMenu" Header="{Binding Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="#FF1368BD">
                                 <ListView x:Name="ListViewMenu" ItemsSource="{Binding SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Path=Name}" Padding="20 5"/>
+                                            <TextBlock Text="{Binding Path=Name}" Padding="20 5" Foreground="#FF1368BD"/>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
@@ -52,34 +54,6 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <StackPanel Grid.Row="1">
-                <ListBoxItem x:Name="ListViewItemMenu" Content="{Binding Path=MenuItemsCollection}" Padding="37 14" FontSize="15" Foreground="White"/>
-                <Expander x:Name="ExpanderMenu" Header="{Binding Path=MenuItem.Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
-                    <ListView x:Name="ListViewMenu" ItemsSource="{Binding Path=MenuItem}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=Name}" Padding="20 5"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Expander>
-                <ListView Foreground="#FF1368BD">
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="Configuration" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>
-                <ListView Foreground="#FF1368BD">
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="Main Menu" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>
-            </StackPanel>
         </Grid>
     </Grid>
 </Window>

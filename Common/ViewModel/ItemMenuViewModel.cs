@@ -1,18 +1,12 @@
-﻿using Common;
-using MaterialDesignThemes.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
-namespace WPF.ViewModel
+namespace Common.ViewModel
 {
     public class ItemMenuViewModel : INotifyPropertyChanged
     {
@@ -26,10 +20,6 @@ namespace WPF.ViewModel
                 _menuItemsCollection = value;
                 NotifyPropertyChanged();
             }
-        }
-
-        public ItemMenuViewModel()
-        {
         }
 
         public async Task Reset()

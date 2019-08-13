@@ -4,9 +4,29 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="App_Accurratech.MainPage"
-             xmlns:VM="clr-namespace:App_Accurratech.ViewModel;assembly=App_Accurratech">
+             x:Class="App_Accurratech.MainPage">
 
 
+    <ContentPage.BindingContext>
+        <ViewModel:ItemMenuViewModel/>
+    </ContentPage.BindingContext>
 
+    <ListView ItemsSource="{Binding MenuItemsCollection}"
+              CachingStrategy="RecycleElement"
+              RowHeight="60">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Margin="8">
+
+                        <Label Text="{Binding Make}"
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding YearOfModel}" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+    </ListView>
 </ContentPage>
