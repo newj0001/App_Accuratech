@@ -9,7 +9,7 @@ using System.Web.Http.SelfHost;
 
 namespace REST
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -20,7 +20,7 @@ namespace REST
                 "api/{controller}/{id}",
                 new { id = RouteParameter.Optional, });
 
-            using(HttpSelfHostServer server = new HttpSelfHostServer(config))
+            using (HttpSelfHostServer server = new HttpSelfHostServer(config))
             {
                 server.OpenAsync().Wait();
                 Console.WriteLine("Press Enter to quit.");

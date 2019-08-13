@@ -1,7 +1,9 @@
-﻿using Common;
+﻿
+using Common;
 using Common_Backend.Context;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -16,20 +18,10 @@ namespace REST
         {
             using (var dbContext = new DatabaseContext())
             {
-                var test = dbContext.Menus.ToList();
+                var test = dbContext.Menus.Include<MenuItemEntity>(nameof(MenuItemEntity.SubItems)).ToList();
 
                 return test;
             }
         }
-
-        //public MenuItemEntity GetMenuById(int id)
-        //{
-        //    var menu = menus.FirstOrDefault((m) => m.ID == id);
-        //    if (menu == null)
-        //    {
-        //        throw new HttpResponseException(HttpStatusCode.NotFound);
-        //    }
-        //    return menu;
-        //}
     }
 }

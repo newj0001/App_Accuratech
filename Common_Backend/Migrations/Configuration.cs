@@ -9,7 +9,7 @@ namespace Common_Backend.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Common_Backend.Context.DatabaseContext context)

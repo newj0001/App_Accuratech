@@ -16,8 +16,11 @@ namespace Common_Backend.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<MenuItemEntity>().HasKey(mic => mic.ID);
-            modelBuilder.Entity<SubItemEntity>().HasKey(mic => mic.ID);
+            modelBuilder.Entity<MenuItemEntity>().HasKey(mic => mic.Id);
+            modelBuilder.Entity<SubItemEntity>().HasKey(mic => mic.Id);
+            modelBuilder.Entity<MenuItemEntity>().HasMany(m => m.SubItems).WithRequired().HasForeignKey(s => s.MenuItemId);
+     
+
         }
 
         public DbSet<MenuItemEntity> Menus { get; set; }

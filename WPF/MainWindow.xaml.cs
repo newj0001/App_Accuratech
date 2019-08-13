@@ -1,4 +1,5 @@
 ﻿//using Library;
+using Common;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -21,40 +22,25 @@ using WPF.ViewModel;
 
 namespace WPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    /// 
-
-
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-
-            var menuConfiguration = new List<SubItemViewModel>();
-            menuConfiguration.Add(new SubItemViewModel("General", new UserControlGeneral()));
-            var item0 = new ItemMenuViewModel("Configuration", menuConfiguration, PackIconKind.Register);
-
-            var menuMain = new List<SubItemViewModel>();
-            menuMain.Add(new SubItemViewModel("Add menu"));
-            menuMain.Add(new SubItemViewModel("Order no."));
-            var item1 = new ItemMenuViewModel("Receive", menuMain, PackIconKind.FileReport);
-
-            Menu.Children.Add(new UserControlMenuItem(item0, this));
-            Menu.Children.Add(new UserControlMenuItem(item1, this));
+            ApiHelper.InitializeClient();
+            DataContext = new ItemMenuViewModel();
         }
 
-        internal void SwitchScreen(object sender)
-        {
-            var screen = ((UserControl)sender);
+        ItemMenuViewModel ItemMenuViewModel => DataContext as ItemMenuViewModel;
 
-            if (screen!=null)
-            {
-                StackPanelMain.Children.Clear();
-                StackPanelMain.Children.Add(screen);
-            }
+        private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await ItemMenuViewModel?.Reset();
         }
     }
 }

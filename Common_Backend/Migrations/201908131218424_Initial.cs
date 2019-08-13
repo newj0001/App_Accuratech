@@ -3,7 +3,7 @@ namespace Common_Backend.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DatabaseContext_Initial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -11,29 +11,29 @@ namespace Common_Backend.Migrations
                 "dbo.MenuItemEntities",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         Header = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.SubItemEntities",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        MenuItemEntity_ID = c.Int(),
+                        MenuItemId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.MenuItemEntities", t => t.MenuItemEntity_ID)
-                .Index(t => t.MenuItemEntity_ID);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.MenuItemEntities", t => t.MenuItemId, cascadeDelete: true)
+                .Index(t => t.MenuItemId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.SubItemEntities", "MenuItemEntity_ID", "dbo.MenuItemEntities");
-            DropIndex("dbo.SubItemEntities", new[] { "MenuItemEntity_ID" });
+            DropForeignKey("dbo.SubItemEntities", "MenuItemId", "dbo.MenuItemEntities");
+            DropIndex("dbo.SubItemEntities", new[] { "MenuItemId" });
             DropTable("dbo.SubItemEntities");
             DropTable("dbo.MenuItemEntities");
         }

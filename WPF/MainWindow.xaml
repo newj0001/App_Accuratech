@@ -7,41 +7,79 @@
         xmlns:eo="http://schemas.essentialobjects.com/wpf/"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:viewModel="clr-namespace:WPF.ViewModel"
-        mc:Ignorable="d"
-        Title="Configuration" Height="450" Width="800"
+        mc:Ignorable="d" Height="600" Width="1080"
         x:Name="Window"
         WindowStartupLocation="CenterScreen"
-        WindowState="Maximized"
-        ResizeMode="NoResize" d:DataContext="{d:DesignInstance viewModel:MenuViewModel}"
+        ResizeMode="NoResize" d:DataContext="{d:DesignInstance viewModel:ItemMenuViewModel}"
+        Loaded="Window_Loaded"
         >
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <materialDesign:ColorZone Mode="PrimaryMid" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
-            <Grid>
-                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="10"/>
-            </Grid>
-        </materialDesign:ColorZone>
-        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="{StaticResource PrimaryHueMidBrush}">
-            <!--<Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="326*"/>
-            </Grid.RowDefinitions>-->
-            <!--EVENTUELT LOGO HER-->
-            <!--<Grid Grid.Row="0" Background="GhostWhite">
-                <Image Grid.Column="0"/>
-            </Grid>-->
-            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
-                <StackPanel x:Name="Menu" Margin="10"/>
-            </ScrollViewer>
+    <Grid Background="LightGray">
+        <Grid Height="60" VerticalAlignment="Top" Background="#FF265486">
+            <TextBlock Text="Configuration" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Newjan" VerticalAlignment="Center" FontSize="18"/>
+                <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges">
+                    <StackPanel Width="150">
+                        <Button Content="Account"/>
+                        <Button Content="Settings"/>
+                        <Button Content="Help"/>
+                        <Separator/>
+                        <Button x:Name="ButtonPopUpLogout" Content="Logout" Click="ButtonPopUpLogout_Click"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </StackPanel>
+            
         </Grid>
-        <StackPanel x:Name="StackPanelMain" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"/>
+        <Grid Width="200" HorizontalAlignment="Left" Background="#FF1B3861">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <ItemsControl Grid.Row="0" ItemsSource="{Binding MenuItemsCollection}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate >
+                        <StackPanel>
+                            <Expander x:Name="ExpanderMenu" Header="{Binding Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
+                                <ListView x:Name="ListViewMenu" ItemsSource="{Binding SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Name}" Padding="20 5"/>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Expander>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <StackPanel Grid.Row="1">
+                <ListBoxItem x:Name="ListViewItemMenu" Content="{Binding Path=MenuItemsCollection}" Padding="37 14" FontSize="15" Foreground="White"/>
+                <Expander x:Name="ExpanderMenu" Header="{Binding Path=MenuItem.Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
+                    <ListView x:Name="ListViewMenu" ItemsSource="{Binding Path=MenuItem}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}" Padding="20 5"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Expander>
+                <ListView Foreground="#FF1368BD">
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center"/>
+                            <TextBlock Text="Configuration" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+                <ListView Foreground="#FF1368BD">
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center"/>
+                            <TextBlock Text="Main Menu" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

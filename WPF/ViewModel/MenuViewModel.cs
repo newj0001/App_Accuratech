@@ -14,6 +14,7 @@ namespace WPF.ViewModel
 {
     public class MenuViewModel : INotifyPropertyChanged
     {
+
         //private ICollection<MenuItemEntity> menus;
 
         //public ICollection<MenuItemEntity> Menus
@@ -31,9 +32,9 @@ namespace WPF.ViewModel
         //    LoadMenu();
         //}
 
-        //public async void LoadMenu()
+        //public async void loadmenu()
         //{
-        //    Menus = await MenuProcessor.LoadMenus();
+        //    menus = await menuprocessor.loadmenus();
         //}
 
         public event PropertyChangedEventHandler PropertyChanged;
