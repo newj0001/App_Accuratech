@@ -10,9 +10,11 @@ namespace Common
 {
     public class MenuItemProcessor
     {
+        public static string url = "http://172.30.1.110:44333/api/menus";
         public static async Task<List<MenuItemEntity>> LoadMenus()
         {
-            string url = "https://localhost:44333/api/menus";
+            //string url = "http://172.30.1.110:44333/api/menus";
+            //string url = "http://localhost:44333/api/menus";
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
@@ -26,5 +28,23 @@ namespace Common
                 }
             }
         }
+        public static async Task<List<SubItemEntity>> LoadSubMenus()
+        {
+            //string url = "http://172.30.1.110:44333/api/menus";
+            //string url = "http://localhost:44333/api/menus";
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<List<SubItemEntity>>();
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
     }
 }

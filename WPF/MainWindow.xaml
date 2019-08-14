@@ -12,7 +12,6 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" 
         d:DataContext="{d:DesignInstance viewModel:ItemMenuViewModel}"
-        Loaded="Window_Loaded"
         >
     <Grid Background="LightGray">
         <Grid Height="60" VerticalAlignment="Top" Background="#FF265486">

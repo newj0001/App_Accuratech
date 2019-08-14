@@ -1,0 +1,34 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodel="clr-namespace:Common.ViewModel;assembly=Common"
+             mc:Ignorable="d"
+             x:Class="App.NewItemPage">
+    
+    <d:ContentPage.BindingContext>
+        <viewmodel:ItemMenuViewModel/>
+    </d:ContentPage.BindingContext>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel"/>
+        <ToolbarItem Text="Save"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <ListView 
+            ItemsSource="{Binding SubMenuItemsCollection}"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="True"
+            CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Path=Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+
+</ContentPage>

@@ -15,14 +15,26 @@ namespace ClientApp
         public static HttpClient client = new HttpClient();
         static void Main(string[] args)
         {
-            client.BaseAddress = new Uri("https://localhost:44333/");
+            client.BaseAddress = new Uri("http://localhost:44333/");
 
-            //ListAllProducts();
+            ListAllSubMenus();
             ListAllMenus();
 
 
             Console.WriteLine("Press Enter to quit.");
             Console.ReadLine();
+        }
+
+        static void ListAllSubMenus()
+        {
+            HttpResponseMessage resp = client.GetAsync("api/menus").Result;
+            resp.EnsureSuccessStatusCode();
+
+            var submenus = resp.Content.ReadAsAsync<IEnumerable<SubItemEntity>>().Result;
+            foreach (var s in submenus)
+            {
+                Console.WriteLine("{0}", s.Name );
+            }
         }
 
         static void ListAllMenus()
@@ -33,7 +45,7 @@ namespace ClientApp
             var menus = resp.Content.ReadAsAsync<IEnumerable<MenuItemEntity>>().Result;
             foreach (var m in menus)
             {
-                Console.WriteLine("{0} {1} {2}", m.Id, m.Header, m.SubItems);
+                Console.WriteLine("{0} {1}", m.Header, m.SubItems.Count());
             }
         }
 

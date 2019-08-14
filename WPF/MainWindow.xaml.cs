@@ -28,7 +28,13 @@ namespace WPF
         {
             InitializeComponent();
             ApiHelper.InitializeClient();
+            DataContextChanged += Reset;
             DataContext = new ItemMenuViewModel();
+        }
+
+        private async void Reset(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            await ItemMenuViewModel?.Reset();
         }
 
         ItemMenuViewModel ItemMenuViewModel => DataContext as ItemMenuViewModel;
@@ -36,11 +42,6 @@ namespace WPF
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            await ItemMenuViewModel?.Reset();
         }
     }
 }

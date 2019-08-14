@@ -13,7 +13,7 @@ namespace REST
     {
         static void Main(string[] args)
         {
-            var config = new HttpSelfHostConfiguration("https://localhost:44333/");
+            var config = new HttpSelfHostConfiguration("http://localhost:44333/");
             
             config.Routes.MapHttpRoute(
                 "API Default",
