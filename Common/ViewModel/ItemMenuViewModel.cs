@@ -15,7 +15,7 @@ namespace Common.ViewModel
 
         public ICollection<MenuItemEntity> MenuItemsCollection
         {
-            get { return _menuItemsCollection; }
+            get => _menuItemsCollection;
             set
             {
                 _menuItemsCollection = value;
@@ -23,26 +23,13 @@ namespace Common.ViewModel
             }
         }
 
-        private ICollection<SubItemEntity> _subMenuItemsCollection;
-
-        public ICollection<SubItemEntity> SubMenuItemsCollection
-        {
-            get { return _subMenuItemsCollection; }
-            set
-            {
-                _subMenuItemsCollection = value;
-                NotifyPropertyChanged();
-            }
-        }
-
         public async Task Reset()
         {
             MenuItemsCollection = await MenuItemProcessor.LoadMenus();
-            SubMenuItemsCollection = await SubItemProcessor.LoadSubMenus();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

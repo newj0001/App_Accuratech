@@ -19,6 +19,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Common.ViewModel;
+using WPF.View;
+using WPF.ViewModel;
 
 namespace WPF
 {
@@ -34,7 +36,7 @@ namespace WPF
 
         private async void Reset(object sender, DependencyPropertyChangedEventArgs e)
         {
-            await ItemMenuViewModel?.Reset();
+            if (ItemMenuViewModel != null) await ItemMenuViewModel?.Reset();
         }
 
         ItemMenuViewModel ItemMenuViewModel => DataContext as ItemMenuViewModel;
@@ -42,6 +44,22 @@ namespace WPF
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void BtnAddMenu_Click(object sender, RoutedEventArgs e)
+        {
+            var addNewMenuViewModel = new AddNewMenuViewModel();
+            addNewMenuViewModel.NewMenuItemCreated += async (_, __) => await ItemMenuViewModel?.Reset();
+            var addNewMenuView = new AddNewMenuView { DataContext = addNewMenuViewModel };
+            Main.Content = addNewMenuView;
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            var addNewSubMenuViewModel = new AddNewSubItemViewModel();
+            addNewSubMenuViewModel.NewSubItemCreated += async (_, __) => await ItemMenuViewModel?.Reset();
+            var addNewSubMenuView = new AddNewSubItemView { DataContext = addNewSubMenuViewModel };
+            Main.Content = addNewSubMenuView;
         }
     }
 }

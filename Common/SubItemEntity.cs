@@ -41,6 +41,8 @@ namespace Common
             }
         }
 
+        public string Value { get; set; }
+
         public int? MenuItemId { get; set; }
 
         //public MenuItemEntity MenuItem { get; set; }

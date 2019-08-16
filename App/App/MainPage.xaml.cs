@@ -30,21 +30,8 @@ namespace App
         {
             var selectedItem = e.Item as MenuItemEntity;
 
-            switch (selectedItem.Id)
-            {
-                case 1:
-                    await Navigation.PushAsync(new NewItemPage());
-                    break;
-                case 2:
-                    await Navigation.PushAsync(new NewItemPage());
-                    break;
-                case 3:
-                    await Navigation.PushAsync(new NewItemPage());
-                    break;
-                case 4:
-                    await Navigation.PushAsync(new NewItemPage());
-                    break;
-            }
+            await Navigation.PushAsync(new NewItemPage(selectedItem));
+
             ((ListView)sender).SelectedItem = null;
         }
     }

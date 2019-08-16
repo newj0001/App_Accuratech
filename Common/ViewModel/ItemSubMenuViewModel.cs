@@ -10,21 +10,20 @@ namespace Common.ViewModel
 {
     public class ItemSubMenuViewModel : INotifyPropertyChanged
     {
-        private ICollection<SubItemEntity> _subMenuItemsCollection;
-
-        public ICollection<SubItemEntity> SubMenuItemsCollection
+        private MenuItemEntity _menuItemEntity;
+        public MenuItemEntity MenuItemEntity
         {
-            get { return _subMenuItemsCollection; }
+            get => _menuItemEntity;
             set
             {
-                _subMenuItemsCollection = value;
+                _menuItemEntity = value;
                 NotifyPropertyChanged();
             }
         }
 
-        public async Task Reset()
+        public void Reset(MenuItemEntity menuItemEntity)
         {
-            SubMenuItemsCollection = await SubItemProcessor.LoadSubMenus();
+            MenuItemEntity = menuItemEntity;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

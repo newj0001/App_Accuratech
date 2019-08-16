@@ -14,14 +14,14 @@ namespace App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewItemPage : ContentPage
     {
-        public NewItemPage()
+        public NewItemPage(MenuItemEntity menuItemEntity)
         {
             InitializeComponent();
             ApiHelper.InitializeClient();
-            BindingContextChanged += async (_, __) => await ItemMenuViewModel?.Reset();
-            BindingContext = new ItemMenuViewModel();
+            BindingContextChanged += (_, __) => ItemSubMenuViewModel()?.Reset(menuItemEntity);
+            BindingContext = new ItemSubMenuViewModel();
         }
 
-        ItemMenuViewModel ItemMenuViewModel => BindingContext as ItemMenuViewModel;
+        ItemSubMenuViewModel ItemSubMenuViewModel() => BindingContext as ItemSubMenuViewModel;
     }
 }

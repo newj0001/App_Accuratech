@@ -13,8 +13,18 @@
         ResizeMode="NoResize" 
         d:DataContext="{d:DesignInstance viewModel:ItemMenuViewModel}"
         >
+    
     <Grid Background="LightGray">
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF265486">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Height="60" VerticalAlignment="Top" Background="#FF265486" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock Text="Configuration" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Newjan" VerticalAlignment="Center" FontSize="18"/>
@@ -29,30 +39,48 @@
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
-            
         </Grid>
-        <Grid Width="200" HorizontalAlignment="Left" Background="#FF1B3861">
+
+        <Grid Width="200" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left" Background="#FF1B3861">
             <Grid.RowDefinitions>
-                <RowDefinition />
+                <RowDefinition Height="auto"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <ItemsControl Grid.Row="0" Grid.RowSpan="2" ItemsSource="{Binding MenuItemsCollection}" >
+            <Button x:Name="btnAddMenu" Content="Add Menu" Grid.Row="0" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Light" Click="BtnAddMenu_Click"/>
+            <ItemsControl Grid.Row="1" ItemsSource="{Binding MenuItemsCollection}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate >
                         <StackPanel>
                             <Expander x:Name="ExpanderMenu" Header="{Binding Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="#FF1368BD">
-                                <ListView x:Name="ListViewMenu" ItemsSource="{Binding SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Path=Name}" Padding="20 5" Foreground="#FF1368BD"/>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                <StackPanel>
+
+                                    <Button
+                                            FontWeight="Light" 
+                                            Background="{x:Null}" 
+                                            BorderBrush="{x:Null}"
+                                            Click="ButtonBase_OnClick">
+                                        <StackPanel Orientation="Horizontal">
+                                            <!--<materialDesign:PackIcon Kind="Add" Height="25" Width="25" Foreground="Green" Margin="10 0 0 0"/>-->
+                                            <TextBlock Text="Add field" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </Button>
+                                    <ListView x:Name="ListViewMenu" ItemsSource="{Binding SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Path=Name}" Padding="20 5" Foreground="#FF1368BD"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackPanel>
                             </Expander>
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+        </Grid>
+
+        <Grid x:Name="StackPanelMain" Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

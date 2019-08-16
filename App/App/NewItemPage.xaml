@@ -17,14 +17,15 @@
 
     <StackLayout>
         <ListView 
-            ItemsSource="{Binding SubMenuItemsCollection}"
+            SelectionMode="None"
+            ItemsSource="{Binding MenuItemEntity.SubItems}"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
             IsPullToRefreshEnabled="True"
             CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Path=Name}"/>
+                    <EntryCell Label="{Binding Name}" Text="{Binding Value}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

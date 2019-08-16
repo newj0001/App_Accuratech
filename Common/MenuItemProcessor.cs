@@ -28,23 +28,19 @@ namespace Common
                 }
             }
         }
-        public static async Task<List<SubItemEntity>> LoadSubMenus()
-        {
-            //string url = "http://172.30.1.110:44333/api/menus";
-            //string url = "http://localhost:44333/api/menus";
 
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
-            {
-                if (response.IsSuccessStatusCode)
-                {
-                    return await response.Content.ReadAsAsync<List<SubItemEntity>>();
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
-            }
+        public static async Task<Uri> CreateMenu(MenuItemEntity menuItem)
+        {
+            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(url, menuItem);
+            response.EnsureSuccessStatusCode();
+            return response.Headers.Location;
         }
 
+        public static async Task<Uri> CreateSubMenu(SubItemEntity subItem)
+        {
+            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(url, subItem);
+            response.EnsureSuccessStatusCode();
+            return response.Headers.Location;
+        }
     }
 }
