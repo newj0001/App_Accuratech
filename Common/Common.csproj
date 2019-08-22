@@ -61,7 +61,7 @@
     <Compile Include="ApiHelper.cs" />
     <Compile Include="MenuItemEntity.cs" />
     <Compile Include="Processor.cs" />
-    <Compile Include="ViewModel\ItemMenuViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubItemEntity.cs" />
     <Compile Include="ViewModel\ItemSubMenuViewModel.cs" />

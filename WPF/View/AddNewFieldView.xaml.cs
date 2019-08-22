@@ -17,20 +17,19 @@ using WPF.ViewModel;
 namespace WPF.View
 {
     /// <summary>
-    /// Interaction logic for AddNewMenuView.xaml
+    /// Interaction logic for AddNewSubItemView.xaml
     /// </summary>
-    public partial class AddNewMenuView : Page
+    public partial class AddNewSubItemView : Page
     {
-        public AddNewMenuView()
+        public AddNewSubItemView()
         {
             InitializeComponent();
         }
 
-        public AddNewMenuViewModel AddNewMenuViewModel => DataContext as AddNewMenuViewModel;
-
-        private async void BtnSave_OnClick(object sender, RoutedEventArgs e)
+        public AddNewFieldViewModel AddNewSubItemViewModel => DataContext as AddNewFieldViewModel;
+        private async void BtnSaveSubItem_OnClick(object sender, RoutedEventArgs e)
         {
-            await AddNewMenuViewModel.Add();
+             await AddNewSubItemViewModel.AddSubItem();
         }
     }
 }

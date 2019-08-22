@@ -7,12 +7,12 @@
              x:Class="App.NewItemPage">
     
     <d:ContentPage.BindingContext>
-        <viewmodel:ItemMenuViewModel/>
+        <viewmodel:MainWindowViewModel/>
     </d:ContentPage.BindingContext>
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"/>
-        <ToolbarItem Text="Save"/>
+        <ToolbarItem Text="Save" Clicked="SaveRegistration_OnClicked"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout>

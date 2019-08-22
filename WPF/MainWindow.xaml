@@ -11,7 +11,7 @@
         x:Name="Window"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" 
-        d:DataContext="{d:DesignInstance viewModel:ItemMenuViewModel}"
+        d:DataContext="{d:DesignInstance viewModel:MainWindowViewModel}"
         >
     
     <Grid Background="LightGray">
@@ -92,7 +92,6 @@
                                                     </Button>
                                                     <Button 
                                                         x:Name="BtnDeleteSubItem"
-                                                        Click="BtnDeleteSubItem_Click"
                                                         HorizontalAlignment="Center" 
                                                         VerticalAlignment="Center"
                                                         BorderBrush="{x:Null}"

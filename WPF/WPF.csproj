@@ -77,15 +77,13 @@
     <Compile Include="GeneralFieldSettingsView.xaml.cs">
       <DependentUpon>GeneralFieldSettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\AddNewMenuViewModel.cs" />
-    <Compile Include="ViewModel\AddNewSubItemViewModel.cs" />
-    <Compile Include="ViewModel\DeleteSubItemViewModel.cs" />
-    <Compile Include="ViewModel\GeneralFieldSettingsViewModel.cs" />
-    <Compile Include="View\AddNewMenuView.xaml.cs">
-      <DependentUpon>AddNewMenuView.xaml</DependentUpon>
+    <Compile Include="ViewModel\AddNewMenuHeaderViewModel.cs" />
+    <Compile Include="ViewModel\AddNewFieldViewModel.cs" />
+    <Compile Include="View\AddNewMenuHeaderView.xaml.cs">
+      <DependentUpon>AddNewMenuHeaderView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddNewSubItemView.xaml.cs">
-      <DependentUpon>AddNewSubItemView.xaml</DependentUpon>
+    <Compile Include="View\AddNewFieldView.xaml.cs">
+      <DependentUpon>AddNewFieldView.xaml</DependentUpon>
     </Compile>
     <Page Include="GeneralFieldSettingsView.xaml">
       <SubType>Designer</SubType>
@@ -103,11 +101,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AddNewMenuView.xaml">
+    <Page Include="View\AddNewMenuHeaderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddNewSubItemView.xaml">
+    <Page Include="View\AddNewFieldView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

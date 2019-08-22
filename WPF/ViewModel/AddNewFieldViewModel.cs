@@ -10,11 +10,11 @@ using Common.ViewModel;
 
 namespace WPF.ViewModel
 {
-    public class AddNewSubItemViewModel
+    public class AddNewFieldViewModel
     {
         private readonly MenuItemEntity _parentMenuItem;
 
-        public AddNewSubItemViewModel(MenuItemEntity menuItem)
+        public AddNewFieldViewModel(MenuItemEntity menuItem)
         {
             _parentMenuItem = menuItem;
         }

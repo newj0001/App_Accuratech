@@ -37,17 +37,6 @@ namespace Common
             }
         }
 
-        private int _parentId;
-        public int ParentId
-        {
-            get => _parentId;
-            set
-            {
-                _parentId = value;
-                NotifyPropertyChanged();
-            }
-        }
-
         private ICollection<SubItemEntity> _subItems;
 
 

@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Common.ViewModel
 {
-    public class ItemMenuViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
         private ICollection<MenuItemEntity> _menuItemsCollection;
 
@@ -23,22 +23,9 @@ namespace Common.ViewModel
             }
         }
 
-        //private ICollection<SubItemEntity> _subItemsCollection;
-
-        //public ICollection<SubItemEntity> SubItemsCollection
-        //{
-        //    get => _subItemsCollection;
-        //    set
-        //    {
-        //        _subItemsCollection = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
-
-        public async Task Reset()
+       public async Task Reset()
         {
             MenuItemsCollection = await Processor.LoadMenus();
-            //SubItemsCollection = await Processor.LoadSubItems();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

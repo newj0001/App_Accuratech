@@ -23,5 +23,10 @@ namespace App
         }
 
         ItemSubMenuViewModel ItemSubMenuViewModel() => BindingContext as ItemSubMenuViewModel;
+
+        private void SaveRegistration_OnClicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

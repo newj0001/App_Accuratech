@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WPF.ViewModel
 {
-    public class AddNewMenuViewModel
+    public class AddNewMenuHeaderViewModel
     {
         public string MenuItemTitle { get; set; }
 

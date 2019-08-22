@@ -21,10 +21,10 @@ namespace App
             InitializeComponent();
             ApiHelper.InitializeClient();
             BindingContextChanged += async (_, __) => await ItemMenuViewModel?.Reset();
-            BindingContext = new ItemMenuViewModel();
+            BindingContext = new MainWindowViewModel();
         }
 
-        ItemMenuViewModel ItemMenuViewModel => BindingContext as ItemMenuViewModel;
+        MainWindowViewModel ItemMenuViewModel => BindingContext as MainWindowViewModel;
 
         async private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {

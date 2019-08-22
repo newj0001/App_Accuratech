@@ -31,7 +31,7 @@ namespace WPF
              InitializeComponent();
             ApiHelper.InitializeClient();
             DataContextChanged += Reset;
-            DataContext = new ItemMenuViewModel();
+            DataContext = new MainWindowViewModel();
         }
 
         private async void Reset(object sender, DependencyPropertyChangedEventArgs e)
@@ -39,7 +39,7 @@ namespace WPF
             if (ItemMenuViewModel != null) await ItemMenuViewModel?.Reset();
         }
 
-        ItemMenuViewModel ItemMenuViewModel => DataContext as ItemMenuViewModel;
+        MainWindowViewModel ItemMenuViewModel => DataContext as MainWindowViewModel;
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
@@ -48,7 +48,7 @@ namespace WPF
 
         private void BtnAddMenu_Click(object sender, RoutedEventArgs e)
         {
-            var addNewMenuViewModel = new AddNewMenuViewModel();
+            var addNewMenuViewModel = new AddNewMenuHeaderViewModel();
             addNewMenuViewModel.NewMenuItemCreated += async (_, __) => await ItemMenuViewModel?.Reset();
             var addNewMenuView = new AddNewMenuView { DataContext = addNewMenuViewModel };
             Main.Content = addNewMenuView;
@@ -58,17 +58,17 @@ namespace WPF
         {
             var button = (Button) sender;
             var menuItem = (MenuItemEntity) button.DataContext;
-            var addNewSubMenuViewModel = new AddNewSubItemViewModel(menuItem);
+            var addNewSubMenuViewModel = new AddNewFieldViewModel(menuItem);
             addNewSubMenuViewModel.NewSubItemCreated += async (_, __) => await ItemMenuViewModel?.Reset();
             var addNewSubMenuView = new AddNewSubItemView { DataContext = addNewSubMenuViewModel };
             Main.Content = addNewSubMenuView;
         }
 
-        private void BtnDeleteSubItem_Click(object sender, RoutedEventArgs e)
-        {
-            var button = (Button) sender;
-            var subItem = (SubItemEntity) button.DataContext;
-            //var addNewSubMenuViewModel = new AddNewSubItemViewModel(subItem);
-        }
+        //private void BtnDeleteSubItem_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var button = (Button) sender;
+        //    var subItem = (SubItemEntity) button.DataContext;
+        //    //var addNewSubMenuViewModel = new AddNewSubItemViewModel(subItem);
+        //}
     }
 }
