@@ -28,7 +28,7 @@ namespace WPF
     {
         public MainWindow()
         {
-            InitializeComponent();
+             InitializeComponent();
             ApiHelper.InitializeClient();
             DataContextChanged += Reset;
             DataContext = new ItemMenuViewModel();
@@ -54,12 +54,21 @@ namespace WPF
             Main.Content = addNewMenuView;
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void AddNewField(object sender, RoutedEventArgs e)
         {
-            var addNewSubMenuViewModel = new AddNewSubItemViewModel();
+            var button = (Button) sender;
+            var menuItem = (MenuItemEntity) button.DataContext;
+            var addNewSubMenuViewModel = new AddNewSubItemViewModel(menuItem);
             addNewSubMenuViewModel.NewSubItemCreated += async (_, __) => await ItemMenuViewModel?.Reset();
             var addNewSubMenuView = new AddNewSubItemView { DataContext = addNewSubMenuViewModel };
             Main.Content = addNewSubMenuView;
+        }
+
+        private void BtnDeleteSubItem_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (Button) sender;
+            var subItem = (SubItemEntity) button.DataContext;
+            //var addNewSubMenuViewModel = new AddNewSubItemViewModel(subItem);
         }
     }
 }

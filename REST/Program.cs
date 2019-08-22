@@ -20,6 +20,7 @@ namespace REST
                 "api/{controller}/{id}",
                 new { id = RouteParameter.Optional, });
 
+
             using (HttpSelfHostServer server = new HttpSelfHostServer(config))
             {
                 server.OpenAsync().Wait();

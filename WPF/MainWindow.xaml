@@ -46,28 +46,60 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Button x:Name="btnAddMenu" Content="Add Menu" Grid.Row="0" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Light" Click="BtnAddMenu_Click"/>
-            <ItemsControl Grid.Row="1" ItemsSource="{Binding MenuItemsCollection}">
-                <ItemsControl.ItemTemplate>
+
+
+                <materialDesign:PackIcon Kind="AddCircle" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="White" Width="25" Height="25"/>
+                <Button x:Name="btnAddMenu"
+                        Content="Add Menu"
+                        Grid.Row="0" 
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}" 
+                        FontWeight="Light" Click="BtnAddMenu_Click"
+                        Padding="0 0 50 0">
+                </Button>
+
+
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding MenuItemsCollection}">
+                    <ItemsControl.ItemTemplate>
                     <DataTemplate >
                         <StackPanel>
                             <Expander x:Name="ExpanderMenu" Header="{Binding Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="#FF1368BD">
                                 <StackPanel>
-
                                     <Button
+                                            HorizontalAlignment="Left"
                                             FontWeight="Light" 
                                             Background="{x:Null}" 
                                             BorderBrush="{x:Null}"
-                                            Click="ButtonBase_OnClick">
+                                            Click="AddNewField">
                                         <StackPanel Orientation="Horizontal">
-                                            <!--<materialDesign:PackIcon Kind="Add" Height="25" Width="25" Foreground="Green" Margin="10 0 0 0"/>-->
-                                            <TextBlock Text="Add field" VerticalAlignment="Center" />
+                                            <materialDesign:PackIcon Kind="AddCircle" Height="20" Width="20" VerticalAlignment="Center" Foreground="White" Margin="10 0 0 0"/>
+                                            <TextBlock Text="Add field" VerticalAlignment="Center" Margin="5 0 0 0"/>
                                         </StackPanel>
                                     </Button>
+
+                                    
                                     <ListView x:Name="ListViewMenu" ItemsSource="{Binding SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Path=Name}" Padding="20 5" Foreground="#FF1368BD"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button
+                                                        VerticalAlignment="Center"
+                                                        HorizontalAlignment="Left"
+                                                        FontWeight="Light"
+                                                        Background="{x:Null}"
+                                                        BorderBrush="{x:Null}">
+                                                        <TextBlock Text="{Binding Path=Name}" Padding="20 5" Foreground="#FF1368BD"/>
+                                                    </Button>
+                                                    <Button 
+                                                        x:Name="BtnDeleteSubItem"
+                                                        Click="BtnDeleteSubItem_Click"
+                                                        HorizontalAlignment="Center" 
+                                                        VerticalAlignment="Center"
+                                                        BorderBrush="{x:Null}"
+                                                        Background="{x:Null}">
+                                                        <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Center" Kind="Delete"/>
+                                                    </Button>
+                                                    </StackPanel>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>

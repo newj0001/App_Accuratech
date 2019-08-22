@@ -59,9 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiHelper.cs" />
-    <Compile Include="Command.cs" />
     <Compile Include="MenuItemEntity.cs" />
-    <Compile Include="MenuItemProcessor.cs" />
+    <Compile Include="Processor.cs" />
     <Compile Include="ViewModel\ItemMenuViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubItemEntity.cs" />

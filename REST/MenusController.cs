@@ -15,6 +15,8 @@ namespace REST
 {
     public class MenusController : ApiController
     {
+        DatabaseContext db = new DatabaseContext();
+
         public IEnumerable<MenuItemEntity> GetAllMenus()
         {
             using (var dbContext = new DatabaseContext())
@@ -24,11 +26,12 @@ namespace REST
             }
         }
 
-        public HttpResponseMessage Post([FromBody] MenuItemEntity menuItem)
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage CreateMenuItem([FromBody] MenuItemEntity menuItem)
         {
             try
             {
-                using (DatabaseContext dbContext = new DatabaseContext())
+                using (var dbContext = new DatabaseContext())
                 {
                     dbContext.Menus.Add(menuItem);
                     dbContext.SaveChanges();
@@ -45,6 +48,7 @@ namespace REST
             }
         }
 
+      
         public HttpResponseMessage Delete(int id)
         {
             try

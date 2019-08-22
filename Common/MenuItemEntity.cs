@@ -18,10 +18,7 @@ namespace Common
 
         public int Id
         {
-            get
-            {
-                return _id;
-            }
+            get => _id;
             set
             {
                 _id = value;
@@ -33,24 +30,30 @@ namespace Common
 
         public string Header
         {
-            get
-            {
-                return _header;
-            }
+            get => _header;
             set {
                 _header = value;
                 NotifyPropertyChanged();
             }
         }
 
+        private int _parentId;
+        public int ParentId
+        {
+            get => _parentId;
+            set
+            {
+                _parentId = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         private ICollection<SubItemEntity> _subItems;
+
 
         public ICollection<SubItemEntity> SubItems
         {
-            get
-            {
-                return _subItems;
-            }
+            get => _subItems;
             set
             {
                 _subItems = value;

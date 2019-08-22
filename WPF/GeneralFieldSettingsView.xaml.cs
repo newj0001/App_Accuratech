@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPF.ViewModel;
 
-namespace WPF.View
+namespace WPF
 {
     /// <summary>
-    /// Interaction logic for AddNewSubItemView.xaml
+    /// Interaction logic for GeneralFieldSettingsView.xaml
     /// </summary>
-    public partial class AddNewSubItemView : Page
+    public partial class GeneralFieldSettingsView : Page
     {
-        public AddNewSubItemView()
+        public GeneralFieldSettingsView()
         {
             InitializeComponent();
-        }
-
-        public AddNewSubItemViewModel AddNewSubItemViewModel => DataContext as AddNewSubItemViewModel;
-        private async void BtnSaveSubItem_OnClick(object sender, RoutedEventArgs e)
-        {
-             await AddNewSubItemViewModel.AddSubItem();
         }
     }
 }

@@ -11,29 +11,13 @@ namespace Common
 {
     public class SubItemEntity : INotifyPropertyChanged
     {
-        private int _id;
-
-        public int Id
-        {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                _id = value;
-                
-            }
-        }
+        public int Id { get; set; }
 
         private string _name;
 
         public string Name
         {
-            get
-            {
-                return _name;
-            }
+            get => _name;
             set
             {
                 _name = value;
@@ -44,8 +28,6 @@ namespace Common
         public string Value { get; set; }
 
         public int? MenuItemId { get; set; }
-
-        //public MenuItemEntity MenuItem { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

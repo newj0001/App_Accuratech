@@ -23,9 +23,22 @@ namespace Common.ViewModel
             }
         }
 
+        //private ICollection<SubItemEntity> _subItemsCollection;
+
+        //public ICollection<SubItemEntity> SubItemsCollection
+        //{
+        //    get => _subItemsCollection;
+        //    set
+        //    {
+        //        _subItemsCollection = value;
+        //        NotifyPropertyChanged();
+        //    }
+        //}
+
         public async Task Reset()
         {
-            MenuItemsCollection = await MenuItemProcessor.LoadMenus();
+            MenuItemsCollection = await Processor.LoadMenus();
+            //SubItemsCollection = await Processor.LoadSubItems();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
