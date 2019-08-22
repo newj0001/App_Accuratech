@@ -18,15 +18,10 @@ namespace App
         {
             InitializeComponent();
             ApiHelper.InitializeClient();
-            BindingContextChanged += (_, __) => ItemSubMenuViewModel()?.Reset(menuItemEntity);
-            BindingContext = new ItemSubMenuViewModel();
+            BindingContextChanged += (_, __) => MainWindowViewModel()?.Reset(menuItemEntity);
+            BindingContext = new MainWindowViewModel();
         }
 
-        ItemSubMenuViewModel ItemSubMenuViewModel() => BindingContext as ItemSubMenuViewModel;
-
-        private void SaveRegistration_OnClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        MainWindowViewModel MainWindowViewModel() => BindingContext as MainWindowViewModel;
     }
 }

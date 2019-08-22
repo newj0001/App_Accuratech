@@ -26,7 +26,7 @@ namespace App
 
         MainWindowViewModel ItemMenuViewModel => BindingContext as MainWindowViewModel;
 
-        async private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as MenuItemEntity;
 

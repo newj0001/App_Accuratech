@@ -12,6 +12,8 @@ namespace Common.ViewModel
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         private ICollection<MenuItemEntity> _menuItemsCollection;
+        private ICollection<SubItemEntity> _subItemsCollection;
+        private MenuItemEntity _menuItemEntity;
 
         public ICollection<MenuItemEntity> MenuItemsCollection
         {
@@ -23,9 +25,35 @@ namespace Common.ViewModel
             }
         }
 
-       public async Task Reset()
+        public ICollection<SubItemEntity> SubItemsCollection
+        {
+            get => _subItemsCollection;
+            set
+            {
+                _subItemsCollection = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public MenuItemEntity MenuItemEntity
+        {
+            get => _menuItemEntity;
+            set
+            {
+                _menuItemEntity = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public async Task Reset()
         {
             MenuItemsCollection = await Processor.LoadMenus();
+            SubItemsCollection = await Processor.LoadSubItems();
+        }
+
+        public void Reset(MenuItemEntity menuItemEntity)
+        {
+            MenuItemEntity = menuItemEntity;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -35,3 +63,36 @@ namespace Common.ViewModel
         }
     }
 }
+
+//private ICollection<SubItemEntity> _subItemsCollection;
+
+//public ICollection<SubItemEntity> SubItemsCollection
+//{
+//    get { return _subItemsCollection; }
+//    set
+//    {
+//        _subItemsCollection = value;
+//        NotifyPropertyChanged();
+//    }
+//}
+
+//public async Task Reset()
+//{
+//    SubItemsCollection = await Processor.LoadSubItems();
+//}
+
+//private MenuItemEntity _menuItemEntity;
+//public MenuItemEntity MenuItemEntity
+//{
+//    get => _menuItemEntity;
+//    set
+//    {
+//        _menuItemEntity = value;
+//        NotifyPropertyChanged();
+//    }
+//}
+
+//public void Reset(MenuItemEntity menuItemEntity)
+//{
+//    MenuItemEntity = menuItemEntity;
+//}

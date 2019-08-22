@@ -12,7 +12,7 @@
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"/>
-        <ToolbarItem Text="Save" Clicked="SaveRegistration_OnClicked"/>
+        <ToolbarItem Text="Save"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout>

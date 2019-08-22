@@ -11,8 +11,7 @@
         x:Name="Window"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" 
-        d:DataContext="{d:DesignInstance viewModel:MainWindowViewModel}"
-        >
+        d:DataContext="{d:DesignInstance viewModel:MainWindowViewModel}">
     
     <Grid Background="LightGray">
         <Grid.ColumnDefinitions>
