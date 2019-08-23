@@ -58,17 +58,10 @@ namespace WPF
         {
             var button = (Button) sender;
             var menuItem = (MenuItemEntity) button.DataContext;
-            var addNewSubMenuViewModel = new AddNewFieldViewModel(menuItem);
+            var addNewSubMenuViewModel = new FieldConfigurationViewModel(menuItem);
             addNewSubMenuViewModel.NewSubItemCreated += async (_, __) => await ItemMenuViewModel?.Reset();
             var addNewSubMenuView = new AddNewSubItemView { DataContext = addNewSubMenuViewModel };
             Main.Content = addNewSubMenuView;
         }
-
-        //private void BtnDeleteSubItem_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var button = (Button) sender;
-        //    var subItem = (SubItemEntity) button.DataContext;
-        //    //var addNewSubMenuViewModel = new AddNewSubItemViewModel(subItem);
-        //}
     }
 }

@@ -50,6 +50,8 @@ namespace Common
             }
         }
 
+        public ICollection<Registration> Registrations { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

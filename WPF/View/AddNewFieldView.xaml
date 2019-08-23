@@ -6,7 +6,7 @@
       xmlns:viewModel="clr-namespace:WPF.ViewModel"
       xmlns:local="clr-namespace:WPF.View"
       mc:Ignorable="d" 
-      d:DataContext="{d:DesignInstance viewModel:AddNewFieldViewModel}"
+      d:DataContext="{d:DesignInstance viewModel:FieldConfigurationViewModel}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddNewSubItemView">
 

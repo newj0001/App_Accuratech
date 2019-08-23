@@ -10,11 +10,11 @@ using Common.ViewModel;
 
 namespace WPF.ViewModel
 {
-    public class AddNewFieldViewModel
+    public class FieldConfigurationViewModel
     {
         private readonly MenuItemEntity _parentMenuItem;
 
-        public AddNewFieldViewModel(MenuItemEntity menuItem)
+        public FieldConfigurationViewModel(MenuItemEntity menuItem)
         {
             _parentMenuItem = menuItem;
         }
@@ -29,14 +29,15 @@ namespace WPF.ViewModel
             NewSubItemCreated?.Invoke(this, EventArgs.Empty);
         }
 
-        //public async Task DeleteSubItem()
-        //{
-        //    var subItem = new SubItemEntity();
-        //    await Processor.DeleteSubItem(subItem);
-        //    SubItemRemoved?.Invoke(this, EventArgs.Empty);
-            
-        //}
+        public async Task DeleteSubItem()
+        {
+            var subItem = new SubItemEntity() {Name = SubItemTitle, MenuItemId = _parentMenuItem.Id};
+            await Processor.DeleteSubItem(subItem);
+            SubItemRemoved?.Invoke(this, EventArgs.Empty);
+
+        }
+
         public event EventHandler NewSubItemCreated;
-        //public event EventHandler SubItemRemoved;
+        public event EventHandler SubItemRemoved;
     }
 }

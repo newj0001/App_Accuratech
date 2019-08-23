@@ -74,21 +74,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="GeneralFieldSettingsView.xaml.cs">
-      <DependentUpon>GeneralFieldSettingsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\AddNewMenuHeaderViewModel.cs" />
-    <Compile Include="ViewModel\AddNewFieldViewModel.cs" />
+    <Compile Include="ViewModel\FieldConfigurationViewModel.cs" />
     <Compile Include="View\AddNewMenuHeaderView.xaml.cs">
       <DependentUpon>AddNewMenuHeaderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AddNewFieldView.xaml.cs">
       <DependentUpon>AddNewFieldView.xaml</DependentUpon>
     </Compile>
-    <Page Include="GeneralFieldSettingsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

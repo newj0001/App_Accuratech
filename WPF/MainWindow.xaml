@@ -91,7 +91,7 @@
                                                     </Button>
                                                     <Button 
                                                         x:Name="BtnDeleteSubItem"
-                                                        HorizontalAlignment="Center" 
+                                                        HorizontalAlignment="Right" 
                                                         VerticalAlignment="Center"
                                                         BorderBrush="{x:Null}"
                                                         Background="{x:Null}">

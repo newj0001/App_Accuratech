@@ -26,10 +26,10 @@ namespace WPF.View
             InitializeComponent();
         }
 
-        public AddNewFieldViewModel AddNewSubItemViewModel => DataContext as AddNewFieldViewModel;
+        public FieldConfigurationViewModel SubItemConfigurationViewModel => DataContext as FieldConfigurationViewModel;
         private async void BtnSaveSubItem_OnClick(object sender, RoutedEventArgs e)
         {
-             await AddNewSubItemViewModel.AddSubItem();
+             await SubItemConfigurationViewModel.AddSubItem();
         }
     }
 }

@@ -25,10 +25,7 @@ namespace Common
             }
         }
 
-        public string Value { get; set; }
-
         public int? MenuItemId { get; set; }
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {

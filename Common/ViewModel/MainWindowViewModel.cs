@@ -63,36 +63,3 @@ namespace Common.ViewModel
         }
     }
 }
-
-//private ICollection<SubItemEntity> _subItemsCollection;
-
-//public ICollection<SubItemEntity> SubItemsCollection
-//{
-//    get { return _subItemsCollection; }
-//    set
-//    {
-//        _subItemsCollection = value;
-//        NotifyPropertyChanged();
-//    }
-//}
-
-//public async Task Reset()
-//{
-//    SubItemsCollection = await Processor.LoadSubItems();
-//}
-
-//private MenuItemEntity _menuItemEntity;
-//public MenuItemEntity MenuItemEntity
-//{
-//    get => _menuItemEntity;
-//    set
-//    {
-//        _menuItemEntity = value;
-//        NotifyPropertyChanged();
-//    }
-//}
-
-//public void Reset(MenuItemEntity menuItemEntity)
-//{
-//    MenuItemEntity = menuItemEntity;
-//}
