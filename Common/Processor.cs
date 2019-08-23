@@ -11,14 +11,13 @@ namespace Common
 {
     public class Processor
     {
-        public static string url = "http://172.30.1.103:44333/api/menus";
-        public static string url1 = "http://172.30.1.103:44333/api/subitem";
+        public static string urlMenuItem = "http://172.30.1.103:44333/api/menuitem";
+        public static string urlFieldItem = "http://172.30.1.103:44333/api/fielditem";
+        public static string urlRegistration = "http://172.30.1.103:44333/api/registration";
         public static async Task<List<MenuItemEntity>> LoadMenus()
         {
-            //string url = "http://172.30.1.110:44333/api/menus";
-            //string url = "http://localhost:44333/api/menus";
 
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(urlMenuItem))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -33,7 +32,7 @@ namespace Common
 
         public static async Task<List<SubItemEntity>> LoadSubItems()
         {
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(urlMenuItem))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -46,24 +45,40 @@ namespace Common
             }
         }
 
-        public static async Task<Uri> CreateMenu(MenuItemEntity menuItem)
+        public static async Task<List<Registration>> LoadRegistrations()
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(url, menuItem);
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(urlRegistration))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<List<Registration>>();
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
+        public static async Task<Uri> CreateMenuItem(MenuItemEntity menuItem)
+        {
+            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlMenuItem, menuItem);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
 
-        public static async Task<Uri> CreateSubMenu(SubItemEntity subItem)
+        public static async Task<Uri> CreateFieldItem(SubItemEntity subItem)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(url1, subItem);
+            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlFieldItem, subItem);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
 
-        public static async Task<HttpStatusCode> DeleteSubItem(SubItemEntity subItemEntity)
+        public static async Task<Uri> CreateRegistration(Registration registration)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync(url + "/{id}");
-            return response.StatusCode;
+            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlMenuItem, registration);
+            response.EnsureSuccessStatusCode();
+            return response.Headers.Location;
         }
     }
 }

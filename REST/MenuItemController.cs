@@ -13,15 +13,13 @@ using System.Web.Http;
 
 namespace REST
 {
-    public class MenusController : ApiController
+    public class MenuItemController : ApiController
     {
-        DatabaseContext db = new DatabaseContext();
-
         public IEnumerable<MenuItemEntity> GetAllMenus()
         {
             using (var dbContext = new DatabaseContext())
             {
-                var listEntities = dbContext.Menus.Include<MenuItemEntity>(nameof(MenuItemEntity.SubItems)).ToList();
+                var listEntities = dbContext.Menus.Include(m => m.SubItems).Include(m => m.Registrations).Include(m => m.Registrations.Select(r => r.RegistrationValues)).ToList();
                 return listEntities;
             }
         }
@@ -53,7 +51,7 @@ namespace REST
         {
             try
             {
-                using (DatabaseContext dbContext = new DatabaseContext())
+                using (var dbContext = new DatabaseContext())
                 {
                     var entity = dbContext.Menus.FirstOrDefault(e => e.Id == id);
                     if (entity == null)

@@ -14,6 +14,8 @@ namespace Common.ViewModel
         private ICollection<MenuItemEntity> _menuItemsCollection;
         private ICollection<SubItemEntity> _subItemsCollection;
         private MenuItemEntity _menuItemEntity;
+        private RegistrationValue _registrationValue;
+        private ICollection<Registration> _registrations;
 
         public ICollection<MenuItemEntity> MenuItemsCollection
         {
@@ -45,10 +47,31 @@ namespace Common.ViewModel
             }
         }
 
+        public ICollection<Registration> Registrations
+        {
+            get => _registrations;
+            set
+            {
+                _registrations = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public RegistrationValue RegistrationValue
+        {
+            get => _registrationValue;
+            set
+            {
+                _registrationValue = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public async Task Reset()
         {
             MenuItemsCollection = await Processor.LoadMenus();
             SubItemsCollection = await Processor.LoadSubItems();
+            Registrations = await Processor.LoadRegistrations();
         }
 
         public void Reset(MenuItemEntity menuItemEntity)

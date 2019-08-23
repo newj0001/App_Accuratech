@@ -25,19 +25,10 @@ namespace WPF.ViewModel
         public async Task AddSubItem()
         {
             var subItem = new SubItemEntity() { Name = SubItemTitle, MenuItemId = _parentMenuItem.Id};
-            await Processor.CreateSubMenu(subItem);
+            await Processor.CreateFieldItem(subItem);
             NewSubItemCreated?.Invoke(this, EventArgs.Empty);
         }
 
-        public async Task DeleteSubItem()
-        {
-            var subItem = new SubItemEntity() {Name = SubItemTitle, MenuItemId = _parentMenuItem.Id};
-            await Processor.DeleteSubItem(subItem);
-            SubItemRemoved?.Invoke(this, EventArgs.Empty);
-
-        }
-
         public event EventHandler NewSubItemCreated;
-        public event EventHandler SubItemRemoved;
     }
 }

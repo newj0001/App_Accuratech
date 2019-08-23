@@ -14,7 +14,7 @@ namespace WPF.ViewModel
         public async Task Add()
         {
             var menuItem = new MenuItemEntity {Header = MenuItemTitle};
-            await Processor.CreateMenu(menuItem);
+            await Processor.CreateMenuItem(menuItem);
             NewMenuItemCreated?.Invoke(this, EventArgs.Empty);
         }
 

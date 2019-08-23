@@ -4,12 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodel="clr-namespace:Common.ViewModel;assembly=Common"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:App"
              mc:Ignorable="d"
              x:Class="App.MainPage">
     <d:ContentPage.BindingContext>
         <viewmodel:MainWindowViewModel/>
     </d:ContentPage.BindingContext>
+
     <StackLayout>
         <ListView 
             ItemsSource="{Binding MenuItemsCollection}"
@@ -21,7 +23,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10" BackgroundColor="#FF1368BD">
+                        <StackLayout Padding="10">
                             <Label Text="{Binding Header}"
                                    LineBreakMode="NoWrap"
                                    Style="{DynamicResource ListItemTextStyle}"

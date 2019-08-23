@@ -14,7 +14,7 @@ using Common_Backend.Context;
 
 namespace REST
 {
-    public class SubItemController : ApiController
+    public class FieldItemController : ApiController
     {
         private readonly DatabaseContext _dbContext = new DatabaseContext();
         public IEnumerable<SubItemEntity> Get(string name = "All")
