@@ -3,12 +3,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodel="clr-namespace:Common.ViewModel;assembly=Common"
+             xmlns:app="clr-namespace:App;assembly=App"
              mc:Ignorable="d"
              x:Class="App.NewItemPage">
     
-    <d:ContentPage.BindingContext>
-        <viewmodel:MainWindowViewModel/>
-    </d:ContentPage.BindingContext>
+    <!--<d:ContentPage.BindingContext>
+
+    </d:ContentPage.BindingContext>-->
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"/>
@@ -25,10 +26,12 @@
             CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <EntryCell Label="{Binding Name}" Text="{Binding Value}" />
+                    <!--<EntryCell Label="{Binding Name}" Text="{Binding}" />-->
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Button Width="120" FontSize="14" Text="Save" Clicked="BtnSaveRegistration_Click"></Button>
     </StackLayout>
 
 

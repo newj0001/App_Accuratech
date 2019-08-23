@@ -22,7 +22,7 @@ namespace WPF.ViewModel
         public string SubItemTitle { get; set; }
 
 
-        public async Task AddSubItem()
+        public async Task AddField()
         {
             var subItem = new SubItemEntity() { Name = SubItemTitle, MenuItemId = _parentMenuItem.Id};
             await Processor.CreateFieldItem(subItem);

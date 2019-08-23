@@ -12,7 +12,7 @@
         <viewmodel:MainWindowViewModel/>
     </d:ContentPage.BindingContext>
 
-    <StackLayout>
+    <StackLayout Orientation="Vertical">
         <ListView 
             ItemsSource="{Binding MenuItemsCollection}"
             VerticalOptions="FillAndExpand"

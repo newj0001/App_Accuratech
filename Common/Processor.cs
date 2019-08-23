@@ -76,7 +76,15 @@ namespace Common
 
         public static async Task<Uri> CreateRegistration(Registration registration)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlMenuItem, registration);
+            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistration, registration);
+            response.EnsureSuccessStatusCode();
+            return response.Headers.Location;
+        }
+
+        public static async Task<Uri> CreateRegistrationValue(RegistrationValue registrationValue)
+        {
+            HttpResponseMessage response =
+                await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistration, registrationValue);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }

@@ -36,10 +36,10 @@ namespace WPF
 
         private async void Reset(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (ItemMenuViewModel != null) await ItemMenuViewModel?.Reset();
+            if (MainWindowViewModel != null) await MainWindowViewModel?.Reset();
         }
 
-        MainWindowViewModel ItemMenuViewModel => DataContext as MainWindowViewModel;
+        MainWindowViewModel MainWindowViewModel => DataContext as MainWindowViewModel;
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
@@ -48,9 +48,9 @@ namespace WPF
 
         private void BtnAddMenu_Click(object sender, RoutedEventArgs e)
         {
-            var addNewMenuViewModel = new AddNewMenuHeaderViewModel();
-            addNewMenuViewModel.NewMenuItemCreated += async (_, __) => await ItemMenuViewModel?.Reset();
-            var addNewMenuView = new AddNewMenuView { DataContext = addNewMenuViewModel };
+            var addNewMenuViewModel = new MenuConfigurationViewModel();
+            addNewMenuViewModel.NewMenuItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
+            var addNewMenuView = new MenuConfigurationView { DataContext = addNewMenuViewModel };
             Main.Content = addNewMenuView;
         }
 
@@ -58,10 +58,10 @@ namespace WPF
         {
             var button = (Button) sender;
             var menuItem = (MenuItemEntity) button.DataContext;
-            var addNewSubMenuViewModel = new FieldConfigurationViewModel(menuItem);
-            addNewSubMenuViewModel.NewSubItemCreated += async (_, __) => await ItemMenuViewModel?.Reset();
-            var addNewSubMenuView = new AddNewSubItemView { DataContext = addNewSubMenuViewModel };
-            Main.Content = addNewSubMenuView;
+            var fieldConfigurationViewModel = new FieldConfigurationViewModel(menuItem);
+            fieldConfigurationViewModel.NewSubItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
+            var fieldConfigurationView = new FieldConfigurationView { DataContext = fieldConfigurationViewModel };
+            Main.Content = fieldConfigurationView;
         }
     }
 }
