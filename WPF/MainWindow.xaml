@@ -59,14 +59,22 @@
                 </Button>
 
 
-                <ItemsControl Grid.Row="1" ItemsSource="{Binding MenuItemsCollection}">
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding MenuItemsCollection}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" VerticalContentAlignment="Top">
                     <ItemsControl.ItemTemplate>
                     <DataTemplate >
                         <StackPanel>
                             <Expander x:Name="ExpanderMenu" IsExpanded="True" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
                                 <Expander.Header>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Light" Text="{Binding Header}"/>
+                                        <Button x:Name="btnMenuItem"
+                                                Background="{x:Null}"
+                                                BorderBrush="{x:Null}"
+                                                Foreground="White"
+                                                FontWeight="Light"
+                                                Click="BtnMenuItem_OnClick">
+                                            <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Light" Text="{Binding Header}"/>
+                                        </Button>
+
                                         <Button
                                             x:Name="BtnDeleteMenuItem"
                                             Command="{Binding ElementName=Window, Path=DataContext.DeleteMenuItemCommand, Mode=OneWay}" 
@@ -91,11 +99,12 @@
                                     </Button>
 
                                     
-                                    <ListView x:Name="ListViewMenu" ItemsSource="{Binding SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                    <ListView x:Name="ListViewMenu" ItemsSource="{Binding SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
                                                     <Button
+                                                        Click="BtnFieldItem_OnClick"
                                                         VerticalAlignment="Center"
                                                         HorizontalAlignment="Left"
                                                         FontWeight="Light"

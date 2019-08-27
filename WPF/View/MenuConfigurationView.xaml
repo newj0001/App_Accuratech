@@ -49,14 +49,7 @@
                     <dragablz:InterTabController/>
                 </dragablz:TabablzControl.InterTabController>
                 <TabItem Header="General Menu Settings">
-                    <StackPanel Orientation="Horizontal" Margin="25 0 0 0" >
-                        <TextBlock Text="Add new menu item" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
-                        <TextBox x:Name="txtNewMenuItem" SelectionBrush="Black" Text="{Binding MenuItemTitle}" Width="200" Height="30" Margin="10 0 0 0"/>
-                        <StackPanel Orientation="Horizontal">
-                            <Button x:Name="btnCancelMenuItem" Content="Cancel" FontSize="14" Foreground="White" Background="DarkSlateGray" FontWeight="Light" BorderBrush="{x:Null}" Click="BtnCancelMenuItem_OnClick"/>
-                            <Button x:Name="btnSaveMenuItem" Content="Save" FontSize="14" Foreground="White" Background="DarkSlateGray" FontWeight="Light" BorderBrush="{x:Null}" Click="BtnSaveMenuItem_OnClick"/>
-                        </StackPanel>
-                    </StackPanel>
+                    <local:GeneralMenuSettings></local:GeneralMenuSettings>
                 </TabItem>
             </dragablz:TabablzControl>
         </Grid>

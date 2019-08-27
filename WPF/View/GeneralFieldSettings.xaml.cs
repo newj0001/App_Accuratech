@@ -12,15 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Common;
-using WPF.ViewModel;
 
 namespace WPF.View
 {
-
-    public partial class MenuConfigurationView : Page
+    /// <summary>
+    /// Interaction logic for GeneralFieldSettings.xaml
+    /// </summary>
+    public partial class GeneralFieldSettings : UserControl
     {
-        public MenuConfigurationView()
+        public GeneralFieldSettings()
         {
             InitializeComponent();
         }

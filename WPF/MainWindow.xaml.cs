@@ -52,6 +52,21 @@ namespace WPF
             var addNewMenuView = new MenuConfigurationView { DataContext = menuConfigurationViewModel };
             Main.Content = addNewMenuView;
         }
+        private void BtnMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            var menuConfigurationViewModel = new MenuConfigurationViewModel();
+            var menuConfigurationView = new MenuConfigurationView{ DataContext = menuConfigurationViewModel};
+            Main.Content = menuConfigurationView;
+        }
+
+        private void BtnFieldItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            var button = (Button) sender;
+            var menuItem = (MenuItemEntity) button.DataContext;
+            var fieldConfigurationViewModel = new FieldConfigurationViewModel(menuItem);
+            var fieldConfigurationView = new MenuConfigurationView {DataContext = fieldConfigurationViewModel};
+            Main.Content = fieldConfigurationView;
+        }
 
         private void AddNewField(object sender, RoutedEventArgs e)
         {
@@ -86,5 +101,8 @@ namespace WPF
 //            await Processor.DeleteSubItem();
 //            await MainWindowViewModel.Reset();
         }
+
+
+
     }
 }
