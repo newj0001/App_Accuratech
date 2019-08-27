@@ -9,10 +9,15 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class Processor
+    public interface IProcessor
     {
-        public static string urlMenuItem = "http://172.30.1.103:44333/api/menuitem";
-        public static string urlFieldItem = "http://172.30.1.103:44333/api/fielditem";
+        Task<HttpStatusCode> DeleteMenuItemAsync(int id);
+    }
+
+    public class Processor : IProcessor
+    {
+        public static string urlMenuItem = "http://172.30.1.103:44333/api/menuitem/";
+        public static string urlFieldItem = "http://172.30.1.103:44333/api/fielditem/";
         public static string urlRegistration = "http://172.30.1.103:44333/api/registration";
         public static async Task<List<MenuItemEntity>> LoadMenus()
         {
@@ -81,12 +86,29 @@ namespace Common
             return response.Headers.Location;
         }
 
+        public static async Task<HttpStatusCode> DeleteMenuItem(int id)
+        {
+            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync(urlMenuItem + id);
+            return response.StatusCode;
+        }
+
+        public static async Task<HttpStatusCode> DeleteSubItem(int id)
+        {
+            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync(urlFieldItem + id);
+            return response.StatusCode;
+        }
+
         public static async Task<Uri> CreateRegistrationValue(RegistrationValue registrationValue)
         {
             HttpResponseMessage response =
                 await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistration, registrationValue);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
+        }
+
+        Task<HttpStatusCode> IProcessor.DeleteMenuItemAsync(int id)
+        {
+            return DeleteMenuItem(id);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Common.Commands;
 
 namespace Common.ViewModel
 {
@@ -14,7 +15,13 @@ namespace Common.ViewModel
         private ICollection<MenuItemEntity> _menuItemsCollection;
         private ICollection<SubItemEntity> _subItemsCollection;
         private MenuItemEntity _menuItemEntity;
-        
+
+        public MainWindowViewModel()
+        {
+            DeleteMenuItemCommand.MenuItemDeleted += (sender, args) => args.AsyncEventHandlers.Add(Reset());
+        }
+        public MenuItemDeleterCommand DeleteMenuItemCommand { get; }= new MenuItemDeleterCommand(new Processor());
+
         public ICollection<MenuItemEntity> MenuItemsCollection
         {
             get => _menuItemsCollection;

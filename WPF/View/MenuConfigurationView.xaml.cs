@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Common;
 using WPF.ViewModel;
 
 namespace WPF.View
@@ -26,9 +27,14 @@ namespace WPF.View
 
         public MenuConfigurationViewModel MenuViewModel => DataContext as MenuConfigurationViewModel;
 
-        private async void BtnSave_OnClick(object sender, RoutedEventArgs e)
+        private async void BtnSaveMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             await MenuViewModel.Add();
+        }
+
+        private void BtnCancelMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

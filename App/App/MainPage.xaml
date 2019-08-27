@@ -8,9 +8,9 @@
              xmlns:local="clr-namespace:App"
              mc:Ignorable="d"
              x:Class="App.MainPage">
-    <d:ContentPage.BindingContext>
+    <ContentPage.BindingContext>
         <viewmodel:MainWindowViewModel/>
-    </d:ContentPage.BindingContext>
+    </ContentPage.BindingContext>
 
     <StackLayout Orientation="Vertical">
         <ListView 

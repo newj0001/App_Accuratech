@@ -5,13 +5,64 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewModel="clr-namespace:WPF.ViewModel"
       xmlns:local="clr-namespace:WPF.View"
+      xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance viewModel:FieldConfigurationViewModel}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FieldConfigurationView">
 
     <Grid Background="#FFFFFF">
-        <Grid.ColumnDefinitions>
+        <Grid Margin="0 0 0 0">
+            <dragablz:TabablzControl>
+                <dragablz:TabablzControl.InterTabController>
+                    <dragablz:InterTabController/>
+                </dragablz:TabablzControl.InterTabController>
+                <TabItem Header="General Menu Settings">
+                    <TextBlock Text="Hello World!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </TabItem>
+                <TabItem Header="Field behaviour">
+                    <StackPanel>
+                        <StackPanel>
+                            <CheckBox>
+                                <TextBlock>
+                                    Show field for operator
+                                </TextBlock>
+                            </CheckBox>
+                            <CheckBox>
+                                <TextBlock>
+                                    No keyboard input
+                                </TextBlock>
+                            </CheckBox>
+                            <StackPanel>
+                                <CheckBox>
+                                    <TextBlock>
+                                        Allow field to be empty
+                                    </TextBlock>
+                                </CheckBox>
+                                <CheckBox>
+                                    <TextBlock>
+                                        No scanner input
+                                    </TextBlock>
+                                </CheckBox>
+                                <CheckBox>
+                                    <TextBlock>
+                                        Keep Value for next record
+                                    </TextBlock>
+                                </CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Field value rules">
+                    <TextBlock Text="Hello World!2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </TabItem>
+                <TabItem Header="Advanced Field value rules">
+                    <TextBlock Text="Hello World!2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </TabItem>
+            </dragablz:TabablzControl>
+        </Grid>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -32,6 +83,6 @@
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Button x:Name="btnSaveSubItem" Content="save" Width="120" FontSize="14" Foreground="#FFFFFF" Background="#FF265486" BorderBrush="{x:Null}" Click="BtnSaveSubItem_OnClick" FontWeight="Light"></Button>
             </StackPanel>
-        </Grid>
+        </Grid>-->
     </Grid>
 </Page>

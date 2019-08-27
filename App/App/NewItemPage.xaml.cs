@@ -18,17 +18,12 @@ namespace App
         {
             InitializeComponent();
             ApiHelper.InitializeClient();
-            //BindingContextChanged += (_, __) => MainWindowViewModel()?.Reset(menuItemEntity);
-            //BindingContext = new MainWindowViewModel();
+            BindingContextChanged += (_, __) => MainWindowViewModel()?.Reset(menuItemEntity);
+            BindingContext = new MainWindowViewModel();
         }
 
-        //MainWindowViewModel MainWindowViewModel() => BindingContext as MainWindowViewModel;
-        public NewItemViewModel NewItemViewModel => BindingContext as NewItemViewModel;
+        MainWindowViewModel MainWindowViewModel() => BindingContext as MainWindowViewModel;
 
-        private async void BtnSaveRegistration_Click(object sender, EventArgs e)
-        {
-            await NewItemViewModel.AddRegistration();
-            await NewItemViewModel.AddRegistrationValue();
-        }
+
     }
 }

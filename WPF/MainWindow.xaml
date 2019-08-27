@@ -23,8 +23,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF265486" Grid.Column="0" Grid.ColumnSpan="2">
-            <TextBlock Text="Configuration" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+        <Grid Height="60" VerticalAlignment="Top" Background="DarkGray" Grid.Column="0" Grid.ColumnSpan="2">
+            <!--<TextBlock Text="Configuration" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>-->
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Newjan" VerticalAlignment="Center" FontSize="18"/>
                 <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges">
@@ -40,7 +40,7 @@
             </StackPanel>
         </Grid>
 
-        <Grid Width="200" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left" Background="#FF1B3861">
+        <Grid Width="200" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left" Background="DimGray">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition />
@@ -53,6 +53,7 @@
                         Grid.Row="0" 
                         Background="{x:Null}"
                         BorderBrush="{x:Null}" 
+                        Foreground="White"
                         FontWeight="Light" Click="BtnAddMenu_Click"
                         Padding="0 0 50 0">
                 </Button>
@@ -62,7 +63,20 @@
                     <ItemsControl.ItemTemplate>
                     <DataTemplate >
                         <StackPanel>
-                            <Expander x:Name="ExpanderMenu" Header="{Binding Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="#FF1368BD">
+                            <Expander x:Name="ExpanderMenu" IsExpanded="True" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
+                                <Expander.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Light" Text="{Binding Header}"/>
+                                        <Button
+                                            x:Name="BtnDeleteMenuItem"
+                                            Command="{Binding ElementName=Window, Path=DataContext.DeleteMenuItemCommand, Mode=OneWay}" 
+                                            CommandParameter="{Binding}"
+                                            Background="{x:Null}"
+                                            BorderBrush="{x:Null}">
+                                            <materialDesign:PackIcon HorizontalAlignment="Right" Foreground="white" Kind="Delete"/>
+                                        </Button>
+                                    </StackPanel>
+                                </Expander.Header>
                                 <StackPanel>
                                     <Button
                                             HorizontalAlignment="Left"
@@ -87,9 +101,10 @@
                                                         FontWeight="Light"
                                                         Background="{x:Null}"
                                                         BorderBrush="{x:Null}">
-                                                        <TextBlock Text="{Binding Path=Name}" Padding="20 5" Foreground="#FF1368BD"/>
+                                                        <TextBlock Text="{Binding Path=Name}" Padding="20 5" Foreground="White" FontSize="14"/>
                                                     </Button>
                                                     <Button 
+                                                        Click="BtnDeleteSubItem_OnClick"
                                                         x:Name="BtnDeleteSubItem"
                                                         HorizontalAlignment="Right" 
                                                         VerticalAlignment="Center"

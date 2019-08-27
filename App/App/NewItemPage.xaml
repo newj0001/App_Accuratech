@@ -6,11 +6,8 @@
              xmlns:app="clr-namespace:App;assembly=App"
              mc:Ignorable="d"
              x:Class="App.NewItemPage">
-    
-    <!--<d:ContentPage.BindingContext>
 
-    </d:ContentPage.BindingContext>-->
-    
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"/>
         <ToolbarItem Text="Save"/>
@@ -19,19 +16,19 @@
     <StackLayout>
         <ListView 
             SelectionMode="None"
-            ItemsSource="{Binding MenuItemEntity.SubItems}"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
             IsPullToRefreshEnabled="True"
             CachingStrategy="RecycleElement">
+            <ListView.ItemsSource>
+                <Binding Path="MenuItemEntity.SubItems" />
+            </ListView.ItemsSource>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <!--<EntryCell Label="{Binding Name}" Text="{Binding}" />-->
+                    <EntryCell Label="" Text="" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-        <Button Width="120" FontSize="14" Text="Save" Clicked="BtnSaveRegistration_Click"></Button>
     </StackLayout>
 
 

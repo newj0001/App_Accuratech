@@ -14,6 +14,7 @@ namespace WPF.ViewModel
     {
         private readonly MenuItemEntity _parentMenuItem;
 
+
         public FieldConfigurationViewModel(MenuItemEntity menuItem)
         {
             _parentMenuItem = menuItem;
@@ -29,6 +30,14 @@ namespace WPF.ViewModel
             NewSubItemCreated?.Invoke(this, EventArgs.Empty);
         }
 
+        public async Task DeleteField()
+        {
+            var subItem = new SubItemEntity();
+            await Processor.DeleteSubItem(subItem.Id);
+            SubItemRemoved?.Invoke(this, EventArgs.Empty);
+        }
+
         public event EventHandler NewSubItemCreated;
+        public event EventHandler SubItemRemoved;
     }
 }

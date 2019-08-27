@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPF.View"
+      xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:viewModel="clr-namespace:WPF.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -11,27 +13,56 @@
       Title="MenuConfigurationView">
 
     <Grid Background="#FFFFFF">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="112"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Grid.ColumnSpan="4">
-            <StackPanel Orientation="Horizontal" Margin="25 0 0 0">
-                <TextBlock Text="Add new menu item" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
-                <TextBox x:Name="txtNewMenuItem" SelectionBrush="Black" Text="{Binding MenuItemTitle}" Width="200" Height="30" Margin="10 0 0 0"/>
-            </StackPanel>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
-                <Button x:Name="btnSave" Content="Save" Width="120" FontSize="14" FontWeight="Light" Foreground="#FFFFFF" Background="#FF265486" BorderBrush="{x:Null}" Click="BtnSave_OnClick"/>
-            </StackPanel>
+        <Grid Margin="0 0 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <dragablz:TabablzControl Margin="10" BorderBrush="Gainsboro" Grid.ColumnSpan="2">
+                <dragablz:TabablzControl.Resources>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Border Name="Border" BorderThickness="1, 1, 1, 0" Margin="2,0" CornerRadius="4, 4, 0, 0" BorderBrush="Gainsboro">
+                                        <ContentPresenter 
+                                            x:Name="ContentSite"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"
+                                            ContentSource="Header"
+                                            Margin="10,2"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="LightSkyBlue"/>
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="GhostWhite"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </dragablz:TabablzControl.Resources>
+                <dragablz:TabablzControl.InterTabController>
+                    <dragablz:InterTabController/>
+                </dragablz:TabablzControl.InterTabController>
+                <TabItem Header="General Menu Settings">
+                    <StackPanel Orientation="Horizontal" Margin="25 0 0 0" >
+                        <TextBlock Text="Add new menu item" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
+                        <TextBox x:Name="txtNewMenuItem" SelectionBrush="Black" Text="{Binding MenuItemTitle}" Width="200" Height="30" Margin="10 0 0 0"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="btnCancelMenuItem" Content="Cancel" FontSize="14" Foreground="White" Background="DarkSlateGray" FontWeight="Light" BorderBrush="{x:Null}" Click="BtnCancelMenuItem_OnClick"/>
+                            <Button x:Name="btnSaveMenuItem" Content="Save" FontSize="14" Foreground="White" Background="DarkSlateGray" FontWeight="Light" BorderBrush="{x:Null}" Click="BtnSaveMenuItem_OnClick"/>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+            </dragablz:TabablzControl>
         </Grid>
     </Grid>
 </Page>
+
+<!--<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
+    <Button x:Name="btnSave" Content="Save" Width="120" FontSize="14" FontWeight="Light" Foreground="#FFFFFF" Background="#FF265486" BorderBrush="{x:Null}" Click="BtnSave_OnClick"/>
+</StackPanel>-->
