@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.ViewModel;
 
 namespace WPF.View
 {
@@ -23,6 +24,11 @@ namespace WPF.View
         public GeneralFieldSettings()
         {
             InitializeComponent();
+        }
+        public FieldConfigurationViewModel FieldConfigurationViewModel => DataContext as FieldConfigurationViewModel;
+        private async void BtnSaveFieldItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            await FieldConfigurationViewModel.AddField();
         }
     }
 }

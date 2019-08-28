@@ -18,13 +18,6 @@ namespace WPF.ViewModel
             NewMenuItemCreated?.Invoke(this, EventArgs.Empty);
         }
 
-        public async Task DeleteMenuItem(MenuItemEntity menuItem)
-        {
-            await Processor.DeleteMenuItem(menuItem.Id);
-            MenuItemRemoved?.Invoke(this, EventArgs.Empty);
-        }
-
-        public event EventHandler MenuItemRemoved;
         public event EventHandler NewMenuItemCreated;
     }
 }

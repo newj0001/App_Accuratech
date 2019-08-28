@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPF.ViewModel;
 
 namespace WPF.View
 {
     /// <summary>
-    /// Interaction logic for FieldConfigurationView.xaml
+    /// Interaction logic for FieldBehaviour.xaml
     /// </summary>
-    public partial class FieldConfigurationView : Page
+    public partial class FieldBehaviour : UserControl
     {
-        public FieldConfigurationView()
+        public FieldBehaviour()
         {
             InitializeComponent();
         }

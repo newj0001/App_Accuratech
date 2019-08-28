@@ -22,9 +22,9 @@
 
         <StackPanel Margin="10" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
             <TextBlock Text="Title" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <TextBox x:Name="txtNewMenuItem"
+            <TextBox x:Name="txtNewSubItem"
                      BorderBrush="Black"
-                     Text="{Binding MenuItemTitle}"
+                     Text="{Binding SubItemTitle}"
                      Width="150"
                      Height="30"/>
         </StackPanel>
@@ -37,9 +37,10 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Margin="10" Orientation="Horizontal" Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="btnCancelMenuItem" Width="100" Content="Cancel" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}"/>
-            <Button x:Name="btnSaveMenuItem" Width="100" Content="Save" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}"/>
+            <Button x:Name="btnCancelFieldItem" Width="100" Content="Cancel" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}"/>
+            <Button x:Name="btnSaveFieldItem" Width="100" Content="Save" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}" Click="BtnSaveFieldItem_OnClick"/>
         </StackPanel>
+       
     </Grid>
 </UserControl>
 

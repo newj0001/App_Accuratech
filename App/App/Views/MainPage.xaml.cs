@@ -2,20 +2,18 @@
 using Common.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Xaml;
-using Xamarin.Forms;
 
-namespace App
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace App.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
-    { 
+    {
         public MainPage()
         {
             InitializeComponent();
@@ -26,7 +24,7 @@ namespace App
 
         MainWindowViewModel ItemMenuViewModel => BindingContext as MainWindowViewModel;
 
-        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        public async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as MenuItemEntity;
 

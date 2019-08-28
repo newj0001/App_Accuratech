@@ -47,7 +47,7 @@
             </Grid.RowDefinitions>
 
 
-                <materialDesign:PackIcon Kind="AddCircle" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="White" Width="25" Height="25"/>
+                <materialDesign:PackIcon Kind="AddCircle" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="White" Width="15" Height="15"/>
                 <Button x:Name="btnAddMenu"
                         Content="Add Menu"
                         Grid.Row="0" 
@@ -55,7 +55,7 @@
                         BorderBrush="{x:Null}" 
                         Foreground="White"
                         FontWeight="Light" Click="BtnAddMenu_Click"
-                        Padding="0 0 50 0">
+                        Padding="0 0 80 0">
                 </Button>
 
 
@@ -72,7 +72,7 @@
                                                 Foreground="White"
                                                 FontWeight="Light"
                                                 Click="BtnMenuItem_OnClick">
-                                            <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Light" Text="{Binding Header}"/>
+                                            <TextBlock Margin="5 0 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Light" Text="{Binding Header}"/>
                                         </Button>
 
                                         <Button
@@ -87,13 +87,14 @@
                                 </Expander.Header>
                                 <StackPanel>
                                     <Button
+                                            Margin="15 0 0 0"
                                             HorizontalAlignment="Left"
                                             FontWeight="Light" 
                                             Background="{x:Null}" 
                                             BorderBrush="{x:Null}"
                                             Click="AddNewField">
                                         <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="AddCircle" Height="20" Width="20" VerticalAlignment="Center" Foreground="White" Margin="10 0 0 0"/>
+                                            <materialDesign:PackIcon Kind="AddCircle" Height="15" Width="15" VerticalAlignment="Center" Foreground="White" Margin="10 0 0 0"/>
                                             <TextBlock Text="Add field" VerticalAlignment="Center" Margin="5 0 0 0"/>
                                         </StackPanel>
                                     </Button>
@@ -110,9 +111,11 @@
                                                         FontWeight="Light"
                                                         Background="{x:Null}"
                                                         BorderBrush="{x:Null}">
-                                                        <TextBlock Text="{Binding Path=Name}" Padding="20 5" Foreground="White" FontSize="14"/>
+                                                        <TextBlock Text="{Binding Path=Name}" Padding="35 5" Foreground="White" FontSize="14"/>
                                                     </Button>
                                                     <Button 
+                                                        Command="{Binding ElementName=Window, Path=DataContext.DeleteFieldItemCommand, Mode=OneWay}"
+                                                        CommandParameter="{Binding}"
                                                         Click="BtnDeleteSubItem_OnClick"
                                                         x:Name="BtnDeleteSubItem"
                                                         HorizontalAlignment="Right" 

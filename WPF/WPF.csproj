@@ -79,6 +79,9 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\MenuConfigurationViewModel.cs" />
     <Compile Include="ViewModel\FieldConfigurationViewModel.cs" />
+    <Compile Include="View\FieldBehaviour.xaml.cs">
+      <DependentUpon>FieldBehaviour.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GeneralFieldSettings.xaml.cs">
       <DependentUpon>GeneralFieldSettings.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\FieldBehaviour.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\GeneralFieldSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

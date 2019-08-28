@@ -62,9 +62,9 @@ namespace WPF
         private void BtnFieldItem_OnClick(object sender, RoutedEventArgs e)
         {
             var button = (Button) sender;
-            var menuItem = (MenuItemEntity) button.DataContext;
-            var fieldConfigurationViewModel = new FieldConfigurationViewModel(menuItem);
-            var fieldConfigurationView = new MenuConfigurationView {DataContext = fieldConfigurationViewModel};
+            var subItem = (SubItemEntity) button.DataContext;
+            var fieldConfigurationViewModel = new FieldConfigurationViewModel(subItem);
+            var fieldConfigurationView = new FieldConfigurationView {DataContext = fieldConfigurationViewModel};
             Main.Content = fieldConfigurationView;
         }
 

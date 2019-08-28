@@ -13,11 +13,16 @@ namespace WPF.ViewModel
     public class FieldConfigurationViewModel
     {
         private readonly MenuItemEntity _parentMenuItem;
-
+        private readonly SubItemEntity _parentSubItem;
 
         public FieldConfigurationViewModel(MenuItemEntity menuItem)
         {
             _parentMenuItem = menuItem;
+        }
+
+        public FieldConfigurationViewModel(SubItemEntity subItem)
+        {
+            _parentSubItem = subItem;
         }
 
         public string SubItemTitle { get; set; }

@@ -12,13 +12,15 @@ namespace Common
     public interface IProcessor
     {
         Task<HttpStatusCode> DeleteMenuItemAsync(int id);
+        Task<HttpStatusCode> DeleteFieldItemAsync(int id);
     }
 
     public class Processor : IProcessor
     {
-        public static string urlMenuItem = "http://172.30.1.103:44333/api/menuitem/";
-        public static string urlFieldItem = "http://172.30.1.103:44333/api/fielditem/";
-        public static string urlRegistration = "http://172.30.1.103:44333/api/registration";
+        public static string urlMenuItem = "http://172.30.1.105:44333/api/menuitem/";
+        public static string urlFieldItem = "http://172.30.1.105:44333/api/fielditem/";
+        public static string urlRegistration = "http://172.30.1.105:44333/api/registration/";
+        public static string urlRegistrationValues = "http://172.30.1.105:44333/api/registrationvalues";
         public static async Task<List<MenuItemEntity>> LoadMenus()
         {
 
@@ -98,10 +100,10 @@ namespace Common
             return response.StatusCode;
         }
 
-        public static async Task<Uri> CreateRegistrationValue(RegistrationValue registrationValue)
+        public static async Task<Uri> CreateRegistrationValue(ICollection<RegistrationValue> registrationValues)
         {
             HttpResponseMessage response =
-                await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistration, registrationValue);
+                await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistrationValues, registrationValues);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
@@ -109,6 +111,11 @@ namespace Common
         Task<HttpStatusCode> IProcessor.DeleteMenuItemAsync(int id)
         {
             return DeleteMenuItem(id);
+        }
+
+        public Task<HttpStatusCode> DeleteFieldItemAsync(int id)
+        {
+            return DeleteSubItem(id);
         }
     }
 }

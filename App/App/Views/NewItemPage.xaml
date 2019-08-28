@@ -2,15 +2,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewmodel="clr-namespace:Common.ViewModel;assembly=Common"
-             xmlns:app="clr-namespace:App;assembly=App"
              mc:Ignorable="d"
              x:Class="App.NewItemPage">
 
-
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"/>
-        <ToolbarItem Text="Save"/>
+        <ToolbarItem Text="Save" Clicked="SaveClicked"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout>
@@ -19,13 +16,15 @@
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
             IsPullToRefreshEnabled="True"
-            CachingStrategy="RecycleElement">
+            CachingStrategy="RecycleElement"
+            x:Name="SubItemsListView"
+            >
             <ListView.ItemsSource>
                 <Binding Path="MenuItemEntity.SubItems" />
             </ListView.ItemsSource>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <EntryCell Label="" Text="" />
+                    <EntryCell Label="{Binding Name}" Text="{Binding Value}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

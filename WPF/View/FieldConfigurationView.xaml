@@ -18,11 +18,11 @@
                 <dragablz:TabablzControl.InterTabController>
                     <dragablz:InterTabController/>
                 </dragablz:TabablzControl.InterTabController>
-                <TabItem Header="General Menu Settings">
-                    <TextBlock Text="Hello World!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TabItem Header="General Field Settings">
+                    <local:GeneralFieldSettings></local:GeneralFieldSettings>
                 </TabItem>
                 <TabItem Header="Field behaviour">
-                    <local:GeneralFieldSettings></local:GeneralFieldSettings>
+
                 </TabItem>
                 <TabItem Header="Field value rules">
                     <TextBlock Text="Hello World!2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -32,27 +32,5 @@
                 </TabItem>
             </dragablz:TabablzControl>
         </Grid>
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="112"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Grid.ColumnSpan="4">
-            <StackPanel Orientation="Horizontal" Margin="25 0 0 0">
-                <TextBlock Text="Add new sub item" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
-                <TextBox SelectionBrush="Black" Text="{Binding SubItemTitle}" Width="200" Margin="10 0 0 0" VerticalAlignment="Center"/>
-            </StackPanel>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button x:Name="btnSaveSubItem" Content="save" Width="120" FontSize="14" Foreground="#FFFFFF" Background="#FF265486" BorderBrush="{x:Null}" Click="BtnSaveSubItem_OnClick" FontWeight="Light"></Button>
-            </StackPanel>
-        </Grid>-->
     </Grid>
 </Page>
