@@ -10,6 +10,7 @@ using Windows.UI.Xaml.Controls;
 using App.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ListView = Xamarin.Forms.ListView;
 
 namespace App
 {
@@ -24,39 +25,30 @@ namespace App
             BindingContext = new MainWindowViewModel();
         }
 
-        public NewItemPage()
-        {
-            InitializeComponent();
-            ApiHelper.InitializeClient();
-            BindingContextChanged += (_, __) => MainWindowViewModel?.Reset();
-            BindingContext = new MainWindowViewModel();
-        }
-
         MainWindowViewModel MainWindowViewModel => BindingContext as MainWindowViewModel;
 
         private async void SaveClicked(object sender, EventArgs e)
         {
-            
+            //ICollection<string> fieldValues = new List<string>();
+            //var n = 0;
             ICollection<RegistrationValue> registrationValues = new List<RegistrationValue>();
-            ICollection<SubItemEntity> subItemEntities = new List<SubItemEntity>();
-
-            foreach (var subItemEntity in subItemEntities)
+            foreach (var item in ((ListView)SubItemsListView).ItemsSource)
             {
+                //var fieldValue = fieldValues.ToList()[n];
+
+                SubItemEntity subItemEntity = (SubItemEntity) item;
                 var registrationItem = new RegistrationValue
                 {
-                    
+
                     SubItemId = subItemEntity.Id,
-                    SubItemEntity = subItemEntity,
-                    Value = FieldValue,
-                    
+                    SubItemEntity = subItemEntity, 
+                    //Value = fieldValue
                 };
+
+                registrationValues.Add(registrationItem);
+                //n++;
             }
-
-            
-
             var newItemViewModel = new NewItemViewModel();
-
-            
             await newItemViewModel.Add(registrationValues);
         }
     }

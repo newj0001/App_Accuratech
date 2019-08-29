@@ -10,7 +10,7 @@
         <ToolbarItem Text="Save" Clicked="SaveClicked"/>
     </ContentPage.ToolbarItems>
 
-    <StackLayout>
+    <StackLayout Padding="10" Spacing="10">
         <ListView 
             SelectionMode="None"
             VerticalOptions="FillAndExpand"
@@ -24,7 +24,7 @@
             </ListView.ItemsSource>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <EntryCell Label="{Binding Name}" Text="{Binding Value}" />
+                    <EntryCell Label="{Binding Name}" Text="{Binding Value}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

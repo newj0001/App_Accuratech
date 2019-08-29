@@ -24,13 +24,21 @@ namespace REST
             }
         }
 
-        public HttpResponseMessage Post([FromBody] ICollection<RegistrationValue> registrationValue)
+        public HttpResponseMessage Post([FromBody] ICollection<RegistrationValue> registrationValues)
         {
+            if (registrationValues.Count < 1)
+            {
+                var message = Request.CreateResponse(HttpStatusCode.BadRequest, registrationValues);
+                message.Headers.Location = new Uri(Request.RequestUri.ToString());
+
+                return message;
+            }
             try
             {
                 using (var dbContext = new DatabaseContext())
                 {
-                    var menuItemId = registrationValue.ToList()[0].SubItemEntity?.MenuItemId;
+                    
+                    var menuItemId = registrationValues.ToList()[0].SubItemEntity?.MenuItemId;
                     var registration = new Registration()
                     {
                         MenuItemId = menuItemId == null ? 0 : menuItemId.Value,
@@ -40,14 +48,15 @@ namespace REST
                     dbContext.SaveChanges();
 
 
-                    foreach (var value in registrationValue)
+                    foreach (var value in registrationValues)
                     {
+                        value.SubItemEntity = null;
                         value.RegistrationId = registration.Id;
                         dbContext.RegistrationValues.AddOrUpdate(value);
                     }
                     dbContext.SaveChanges();
 
-                    var message = Request.CreateResponse(HttpStatusCode.Created, registrationValue);
+                    var message = Request.CreateResponse(HttpStatusCode.Created, registrationValues);
                     message.Headers.Location = new Uri(Request.RequestUri + registration.Id.ToString());
 
                     return message;

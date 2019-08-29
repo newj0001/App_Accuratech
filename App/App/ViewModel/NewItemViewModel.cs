@@ -11,14 +11,9 @@ namespace App.ViewModel
 {
     public class NewItemViewModel : INotifyPropertyChanged
     {
-        
-        public NewItemViewModel()
-        {
-          
-        }
+
         public async Task Add(ICollection<RegistrationValue> registrationValues)
         {
-          
             await Processor.CreateRegistrationValue(registrationValues);
             NewRegistrationValueCreated?.Invoke(this, EventArgs.Empty);
         }
