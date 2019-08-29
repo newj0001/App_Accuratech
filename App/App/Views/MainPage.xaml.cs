@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using RegistrationValue = Common.RegistrationValue;
 
 namespace App.Views
 {
@@ -18,16 +19,16 @@ namespace App.Views
         {
             InitializeComponent();
             ApiHelper.InitializeClient();
-            BindingContextChanged += async (_, __) => await ItemMenuViewModel?.Reset();
+            BindingContextChanged += async (_, __) => await MainWindowViewModel?.Reset();
             BindingContext = new MainWindowViewModel();
         }
 
-        MainWindowViewModel ItemMenuViewModel => BindingContext as MainWindowViewModel;
+        MainWindowViewModel MainWindowViewModel => BindingContext as MainWindowViewModel;
 
         public async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as MenuItemEntity;
-
+            
             await Navigation.PushAsync(new NewItemPage(selectedItem));
 
             ((ListView)sender).SelectedItem = null;

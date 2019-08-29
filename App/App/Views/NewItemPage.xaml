@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:Windows.UI.Xaml.Controls;assembly=Windows.Foundation.UniversalApiContract"
              mc:Ignorable="d"
              x:Class="App.NewItemPage">
 
@@ -24,7 +25,7 @@
             </ListView.ItemsSource>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <EntryCell Label="{Binding Name}" Text="{Binding Value}"/>
+                    <EntryCell Placeholder="Value" Label="{Binding Name}" Text="{Binding RegistrationValue.Value}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

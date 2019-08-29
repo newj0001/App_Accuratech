@@ -11,7 +11,16 @@ namespace App.ViewModel
 {
     public class NewItemViewModel : INotifyPropertyChanged
     {
-
+        private RegistrationValue _fieldValue;
+        public RegistrationValue FieldValue
+        {
+            get => _fieldValue;
+            set
+            {
+                _fieldValue = value;
+                NotifyPropertyChanged();
+            }
+        }
         public async Task Add(ICollection<RegistrationValue> registrationValues)
         {
             await Processor.CreateRegistrationValue(registrationValues);

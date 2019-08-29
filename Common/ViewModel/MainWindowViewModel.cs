@@ -21,7 +21,6 @@ namespace Common.ViewModel
         }
         public MenuItemDeleterCommand DeleteMenuItemCommand { get; }= new MenuItemDeleterCommand(new Processor());
         public FieldItemDeleterCommand DeleteFieldItemCommand { get; }= new FieldItemDeleterCommand(new Processor());
-
         public ICollection<MenuItemEntity> MenuItemsCollection
         {
             get => _menuItemsCollection;
