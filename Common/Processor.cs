@@ -100,10 +100,10 @@ namespace Common
             return response.StatusCode;
         }
 
-        public static async Task<Uri> CreateRegistrationValue(ICollection<RegistrationValue> registrationValues)
+        public static async Task<Uri> CreateRegistrationValue(ICollection<RegistrationValue> registrationValue)
         {
             HttpResponseMessage response =
-                await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistrationValues, registrationValues);
+                await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistrationValues, registrationValue);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }

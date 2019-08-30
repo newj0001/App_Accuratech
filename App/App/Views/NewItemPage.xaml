@@ -25,7 +25,7 @@
             </ListView.ItemsSource>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <EntryCell Placeholder="Value" Label="{Binding Name}" Text="{Binding RegistrationValue.Value}" />
+                    <EntryCell Placeholder="Value" Label="{Binding Name}" Text="{Binding FieldValue}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -14,7 +14,6 @@ namespace Common
         public int Id { get; set; }
 
         private string _name;
-        private RegistrationValue _registrationValue;
 
         public string Name
         {
@@ -32,5 +31,8 @@ namespace Common
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
+        public string FieldValue { get; set; }
     }
 }

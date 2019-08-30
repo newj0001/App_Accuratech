@@ -35,14 +35,6 @@ namespace WPF.ViewModel
             NewSubItemCreated?.Invoke(this, EventArgs.Empty);
         }
 
-        public async Task DeleteField()
-        {
-            var subItem = new SubItemEntity();
-            await Processor.DeleteSubItem(subItem.Id);
-            SubItemRemoved?.Invoke(this, EventArgs.Empty);
-        }
-
         public event EventHandler NewSubItemCreated;
-        public event EventHandler SubItemRemoved;
     }
 }
