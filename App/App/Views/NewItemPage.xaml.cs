@@ -30,32 +30,14 @@ namespace App
 
         private async void SaveClicked(object sender, EventArgs e)
         {
-            
-            //RegistrationValue registrationValue = new RegistrationValue();
             var subItems = ((ListView)SubItemsListView).ItemsSource;
-            //ICollection<string> fieldValues = new List<string>();
-            //var n = 0;
-            //ICollection<RegistrationValue> registrationValues = new List<RegistrationValue>();
+
             foreach (var item in subItems)
             {
                 SubItemEntity subItemEntity = (SubItemEntity)item;
                 var newItemViewModel = new NewItemViewModel(subItemEntity);
                 await newItemViewModel.AddRegistrationValue((item as SubItemEntity)?.FieldValue);
-                //var fieldValue = fieldValues.ToList()[n];
-
-                //var registrationItem = new RegistrationValue
-                //{
-
-                //    SubItemId = subItemEntity.Id,
-                //    SubItemEntity = subItemEntity, 
-                //    Value = registrationValue.Value
-                //};
-
-                //registrationValues.Add(registrationItem);
-                //n++;
-
             }
-
         }
     }
 }

@@ -77,6 +77,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModel\FieldBehaviourViewModel.cs" />
     <Compile Include="ViewModel\MenuConfigurationViewModel.cs" />
     <Compile Include="ViewModel\FieldConfigurationViewModel.cs" />
     <Compile Include="View\FieldBehaviour.xaml.cs">

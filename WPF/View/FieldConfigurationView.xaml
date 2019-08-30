@@ -22,7 +22,7 @@
                     <local:GeneralFieldSettings></local:GeneralFieldSettings>
                 </TabItem>
                 <TabItem Header="Field behaviour">
-
+                    <local:FieldBehaviour></local:FieldBehaviour>
                 </TabItem>
                 <TabItem Header="Field value rules">
                     <TextBlock Text="Hello World!2" HorizontalAlignment="Center" VerticalAlignment="Center"/>

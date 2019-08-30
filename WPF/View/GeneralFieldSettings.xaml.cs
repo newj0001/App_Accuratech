@@ -30,5 +30,6 @@ namespace WPF.View
         {
             await FieldConfigurationViewModel.AddField();
         }
+
     }
 }
