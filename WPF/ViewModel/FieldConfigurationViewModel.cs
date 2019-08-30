@@ -12,15 +12,15 @@ namespace WPF.ViewModel
 {
     public class FieldConfigurationViewModel
     {
-        private readonly MenuItemEntity _parentMenuItem;
-        private readonly SubItemEntity _parentSubItem;
+        private readonly MenuItemEntityModel _parentMenuItem;
+        private readonly SubItemEntityModel _parentSubItem;
 
-        public FieldConfigurationViewModel(MenuItemEntity menuItem)
+        public FieldConfigurationViewModel(MenuItemEntityModel menuItem)
         {
             _parentMenuItem = menuItem;
         }
 
-        public FieldConfigurationViewModel(SubItemEntity subItem)
+        public FieldConfigurationViewModel(SubItemEntityModel subItem)
         {
             _parentSubItem = subItem;
         }
@@ -30,7 +30,7 @@ namespace WPF.ViewModel
 
         public async Task AddField()
         {
-            var subItem = new SubItemEntity() { Name = SubItemTitle, MenuItemId = _parentMenuItem.Id};
+            var subItem = new SubItemEntityModel() { Name = SubItemTitle, MenuItemId = _parentMenuItem.Id};
             await Processor.CreateFieldItem(subItem);
             NewSubItemCreated?.Invoke(this, EventArgs.Empty);
         }

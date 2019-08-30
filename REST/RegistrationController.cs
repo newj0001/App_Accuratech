@@ -15,7 +15,7 @@ namespace REST
 {
     public class RegistrationController : ApiController
     {
-        public IEnumerable<Registration> Get()
+        public IEnumerable<RegistrationModel> Get()
         {
             using (var dbContext = new DatabaseContext())
             {
@@ -24,17 +24,17 @@ namespace REST
             }
         }
 
-        public HttpResponseMessage Post([FromBody] Registration registration)
+        public HttpResponseMessage Post([FromBody] RegistrationModel registrationModel)
         {
             try
             {
                 using (var dbContext = new DatabaseContext())
                 {
-                    dbContext.Registrations.Add(registration);
+                    dbContext.Registrations.Add(registrationModel);
                     dbContext.SaveChanges();
 
-                    var message = Request.CreateResponse(HttpStatusCode.Created, registration);
-                    message.Headers.Location = new Uri(Request.RequestUri + registration.Id.ToString());
+                    var message = Request.CreateResponse(HttpStatusCode.Created, registrationModel);
+                    message.Headers.Location = new Uri(Request.RequestUri + registrationModel.Id.ToString());
 
                     return message;
                 }

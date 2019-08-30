@@ -10,9 +10,9 @@ namespace Common.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private ICollection<MenuItemEntity> _menuItemsCollection;
-        private ICollection<SubItemEntity> _subItemsCollection;
-        private MenuItemEntity _menuItemEntity;
+        private ICollection<MenuItemEntityModel> _menuItemsCollection;
+        private ICollection<SubItemEntityModel> _subItemsCollection;
+        private MenuItemEntityModel _menuItemEntityModel;
 
         public MainWindowViewModel()
         {
@@ -21,7 +21,7 @@ namespace Common.ViewModel
         }
         public MenuItemDeleterCommand DeleteMenuItemCommand { get; }= new MenuItemDeleterCommand(new Processor());
         public FieldItemDeleterCommand DeleteFieldItemCommand { get; }= new FieldItemDeleterCommand(new Processor());
-        public ICollection<MenuItemEntity> MenuItemsCollection
+        public ICollection<MenuItemEntityModel> MenuItemsCollection
         {
             get => _menuItemsCollection;
             set
@@ -31,7 +31,7 @@ namespace Common.ViewModel
             }
         }
 
-        public ICollection<SubItemEntity> SubItemsCollection
+        public ICollection<SubItemEntityModel> SubItemsCollection
         {
             get => _subItemsCollection;
             set
@@ -41,12 +41,12 @@ namespace Common.ViewModel
             }
         }
 
-        public MenuItemEntity MenuItemEntity
+        public MenuItemEntityModel MenuItemEntityModel
         {
-            get => _menuItemEntity;
+            get => _menuItemEntityModel;
             set
             {
-                _menuItemEntity = value;
+                _menuItemEntityModel = value;
                 NotifyPropertyChanged();
             }
         }
@@ -57,9 +57,9 @@ namespace Common.ViewModel
             SubItemsCollection = await Processor.LoadSubItems();
         }
 
-        public void Reset(MenuItemEntity menuItemEntity)
+        public void Reset(MenuItemEntityModel menuItemEntityModel)
         {
-            MenuItemEntity = menuItemEntity;
+            MenuItemEntityModel = menuItemEntityModel;
         }
         
         public event PropertyChangedEventHandler PropertyChanged;

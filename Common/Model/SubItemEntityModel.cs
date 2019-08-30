@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class SubItemEntity : INotifyPropertyChanged
+    public class SubItemEntityModel : INotifyPropertyChanged
     {
         public int Id { get; set; }
 

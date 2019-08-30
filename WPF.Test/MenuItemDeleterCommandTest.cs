@@ -27,7 +27,7 @@ namespace WPF.Tests
         [InlineData(1)]
         public async Task TestMethod(int menuItemId)
         {
-            var menuItem = new MenuItemEntity{Id = menuItemId};
+            var menuItem = new MenuItemEntityModel{Id = menuItemId};
 
             await _target.ExecuteAsync(menuItem);
             
@@ -37,7 +37,7 @@ namespace WPF.Tests
         [Fact]
         public async Task Raises_MenuItemDeleted()
         {
-            var menuItem = new MenuItemEntity();
+            var menuItem = new MenuItemEntityModel();
             var listener = Substitute.For<EventHandler<ExecuteAsyncCompletedEventArgs>>();
             _target.MenuItemDeleted += listener;
 
@@ -50,7 +50,7 @@ namespace WPF.Tests
         [Fact]
         public async Task Awaits_MenuItemDeleted_Async_Event_Handlers()
         {
-            var menuItem = new MenuItemEntity();
+            var menuItem = new MenuItemEntityModel();
             var expected = new Exception();
 
             _target.MenuItemDeleted += (s, e) => { e.AsyncEventHandlers.Add(((Func<Task>) (async () =>

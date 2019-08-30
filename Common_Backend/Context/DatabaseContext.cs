@@ -19,21 +19,21 @@ namespace Common_Backend.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<MenuItemEntity>().HasKey(mie => mie.Id);
-            modelBuilder.Entity<SubItemEntity>().HasKey(sie => sie.Id);
-            modelBuilder.Entity<Registration>().HasKey(r => r.Id);
-            modelBuilder.Entity<RegistrationValue>().HasKey(rv => rv.Id);
+            modelBuilder.Entity<MenuItemEntityModel>().HasKey(mie => mie.Id);
+            modelBuilder.Entity<SubItemEntityModel>().HasKey(sie => sie.Id);
+            modelBuilder.Entity<RegistrationModel>().HasKey(r => r.Id);
+            modelBuilder.Entity<RegistrationValueModel>().HasKey(rv => rv.Id);
 
-            modelBuilder.Entity<MenuItemEntity>().HasMany(m => m.SubItems).WithRequired().HasForeignKey(s => s.MenuItemId).WillCascadeOnDelete(true);
-            modelBuilder.Entity<Registration>().HasMany(r => r.RegistrationValues).WithRequired().HasForeignKey(rv => rv.RegistrationId).WillCascadeOnDelete(true);
-            modelBuilder.Entity<MenuItemEntity>().HasMany(m => m.Registrations).WithRequired().HasForeignKey(r => r.MenuItemId).WillCascadeOnDelete(true);
-            modelBuilder.Entity<RegistrationValue>().HasRequired(rv => rv.SubItemEntity).WithMany().HasForeignKey(rv => rv.SubItemId).WillCascadeOnDelete(false);
+            modelBuilder.Entity<MenuItemEntityModel>().HasMany(m => m.SubItems).WithRequired().HasForeignKey(s => s.MenuItemId).WillCascadeOnDelete(true);
+            modelBuilder.Entity<RegistrationModel>().HasMany(r => r.RegistrationValues).WithRequired().HasForeignKey(rv => rv.RegistrationId).WillCascadeOnDelete(true);
+            modelBuilder.Entity<MenuItemEntityModel>().HasMany(m => m.Registrations).WithRequired().HasForeignKey(r => r.MenuItemId).WillCascadeOnDelete(true);
+            modelBuilder.Entity<RegistrationValueModel>().HasRequired(rv => rv.SubItemEntityModel).WithMany().HasForeignKey(rv => rv.SubItemId).WillCascadeOnDelete(false);
 
         }
 
-        public DbSet<MenuItemEntity> Menus { get; set; }
-        public DbSet<SubItemEntity> SubMenus { get; set; }
-        public DbSet<Registration> Registrations { get; set; }
-        public DbSet<RegistrationValue> RegistrationValues { get; set; }
+        public DbSet<MenuItemEntityModel> Menus { get; set; }
+        public DbSet<SubItemEntityModel> SubMenus { get; set; }
+        public DbSet<RegistrationModel> Registrations { get; set; }
+        public DbSet<RegistrationValueModel> RegistrationValues { get; set; }
     }
 }

@@ -17,11 +17,11 @@ namespace App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewItemPage : ContentPage
     {
-        public NewItemPage(MenuItemEntity menuItemEntity)
+        public NewItemPage(MenuItemEntityModel menuItemEntityModel)
         {
             InitializeComponent();
             ApiHelper.InitializeClient();
-            BindingContextChanged += (_, __) => MainWindowViewModel?.Reset(menuItemEntity);
+            BindingContextChanged += (_, __) => MainWindowViewModel?.Reset(menuItemEntityModel);
             BindingContext = new MainWindowViewModel();
 
        }
@@ -34,9 +34,9 @@ namespace App
 
             foreach (var item in subItems)
             {
-                SubItemEntity subItemEntity = (SubItemEntity)item;
-                var newItemViewModel = new NewItemViewModel(subItemEntity);
-                await newItemViewModel.AddRegistrationValue((item as SubItemEntity)?.FieldValue);
+                SubItemEntityModel subItemEntityModel = (SubItemEntityModel)item;
+                var newItemViewModel = new NewItemViewModel(subItemEntityModel);
+                await newItemViewModel.AddRegistrationValue((item as SubItemEntityModel)?.FieldValue);
             }
         }
     }

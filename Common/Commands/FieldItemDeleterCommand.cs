@@ -27,7 +27,7 @@ namespace Common.Commands
 
         public async Task ExecuteAsync(object parameter)
         {
-            await _processor.DeleteFieldItemAsync(((SubItemEntity)parameter).Id);
+            await _processor.DeleteFieldItemAsync(((SubItemEntityModel)parameter).Id);
             var executeAsyncCompletedEventArgs = new ExecuteAsyncCompletedEventArgs();
             FieldItemDeleted?.Invoke(this, executeAsyncCompletedEventArgs);
             await Task.WhenAll(executeAsyncCompletedEventArgs.AsyncEventHandlers);

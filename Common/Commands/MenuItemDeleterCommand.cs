@@ -28,7 +28,7 @@ namespace Common.Commands
 
         public async Task ExecuteAsync(object parameter)
         {
-            await _processor.DeleteMenuItemAsync(((MenuItemEntity)parameter).Id);
+            await _processor.DeleteMenuItemAsync(((MenuItemEntityModel)parameter).Id);
             var executeAsyncCompletedEventArgs = new ExecuteAsyncCompletedEventArgs();
             MenuItemDeleted?.Invoke(this, executeAsyncCompletedEventArgs);
             await Task.WhenAll(executeAsyncCompletedEventArgs.AsyncEventHandlers);

@@ -15,16 +15,16 @@ namespace REST
 {
     public class RegistrationValuesController : ApiController
     {
-        public IEnumerable<RegistrationValue> Get()
+        public IEnumerable<RegistrationValueModel> Get()
         {
             using (var dbContext = new DatabaseContext())
             {
-                var listEntities = dbContext.RegistrationValues.Include(x => x.SubItemEntity).ToList();
+                var listEntities = dbContext.RegistrationValues.Include(x => x.SubItemEntityModel).ToList();
                 return listEntities;
             }
         }
 
-        public HttpResponseMessage Post([FromBody] ICollection<RegistrationValue> registrationValues)
+        public HttpResponseMessage Post([FromBody] ICollection<RegistrationValueModel> registrationValues)
         {
             if (registrationValues.Count < 1)
             {
@@ -38,8 +38,8 @@ namespace REST
                 using (var dbContext = new DatabaseContext())
                 {
                     
-                    var menuItemId = registrationValues.ToList()[0].SubItemEntity?.MenuItemId;
-                    var registration = new Registration()
+                    var menuItemId = registrationValues.ToList()[0].SubItemEntityModel?.MenuItemId;
+                    var registration = new RegistrationModel()
                     {
                         MenuItemId = menuItemId == null ? 0 : menuItemId.Value,
                     };
@@ -50,7 +50,7 @@ namespace REST
 
                     foreach (var value in registrationValues)
                     {
-                        value.SubItemEntity = null;
+                        value.SubItemEntityModel = null;
                         value.RegistrationId = registration.Id;
                         dbContext.RegistrationValues.AddOrUpdate(value);
                     }

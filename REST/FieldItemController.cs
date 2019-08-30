@@ -17,7 +17,7 @@ namespace REST
     public class FieldItemController : ApiController
     {
         private readonly DatabaseContext _dbContext = new DatabaseContext();
-        public IEnumerable<SubItemEntity> Get(string name = "All")
+        public IEnumerable<SubItemEntityModel> Get(string name = "All")
         {
             return _dbContext.SubMenus.ToList().AsEnumerable();
         }
@@ -40,15 +40,15 @@ namespace REST
 
 
         [System.Web.Http.HttpPost]
-        public HttpResponseMessage Post([FromBody] SubItemEntity subItemEntity)
+        public HttpResponseMessage Post([FromBody] SubItemEntityModel subItemEntityModel)
         {
             try
             {
-                _dbContext.SubMenus.Add(subItemEntity);
+                _dbContext.SubMenus.Add(subItemEntityModel);
                 _dbContext.SaveChanges();
 
-                var message = Request.CreateResponse(HttpStatusCode.Created, subItemEntity);
-                message.Headers.Location = new Uri(Request.RequestUri + subItemEntity.Id.ToString());
+                var message = Request.CreateResponse(HttpStatusCode.Created, subItemEntityModel);
+                message.Headers.Location = new Uri(Request.RequestUri + subItemEntityModel.Id.ToString());
 
                 return message;
             }
@@ -59,7 +59,7 @@ namespace REST
         }
 
 
-        public HttpResponseMessage Put(int id, [FromBody] SubItemEntity _subItemEntity)
+        public HttpResponseMessage Put(int id, [FromBody] SubItemEntityModel subItemEntityModel)
         {
             var subItemDetail = (from a in _dbContext.SubMenus where a.Id == id select a).FirstOrDefault();
 
@@ -67,7 +67,7 @@ namespace REST
             if (subItemDetail != null)
             {
                 //set received _member object properties with subItemDetail  
-                subItemDetail.Name = _subItemEntity.Name;
+                subItemDetail.Name = subItemEntityModel.Name;
                 
                 //save set allocation.  
                 _dbContext.SaveChanges();

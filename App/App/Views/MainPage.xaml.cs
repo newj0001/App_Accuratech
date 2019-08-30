@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using RegistrationValue = Common.RegistrationValue;
 
 namespace App.Views
 {
@@ -27,7 +26,7 @@ namespace App.Views
 
         public async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var selectedItem = e.Item as MenuItemEntity;
+            var selectedItem = e.Item as MenuItemEntityModel;
             
             await Navigation.PushAsync(new NewItemPage(selectedItem));
 

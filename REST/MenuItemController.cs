@@ -15,7 +15,7 @@ namespace REST
 {
     public class MenuItemController : ApiController
     {
-        public IEnumerable<MenuItemEntity> GetAllMenus()
+        public IEnumerable<MenuItemEntityModel> GetAllMenus()
         {
             using (var dbContext = new DatabaseContext())
             {
@@ -25,7 +25,7 @@ namespace REST
         }
 
         [System.Web.Http.HttpPost]
-        public HttpResponseMessage CreateMenuItem([FromBody] MenuItemEntity menuItem)
+        public HttpResponseMessage CreateMenuItem([FromBody] MenuItemEntityModel menuItem)
         {
             try
             {

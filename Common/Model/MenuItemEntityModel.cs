@@ -12,7 +12,7 @@ using System.Windows.Controls;
 
 namespace Common
 {
-    public class MenuItemEntity : INotifyPropertyChanged
+    public class MenuItemEntityModel : INotifyPropertyChanged
     {
         private int _id;
 
@@ -37,10 +37,10 @@ namespace Common
             }
         }
 
-        private ICollection<SubItemEntity> _subItems;
+        private ICollection<SubItemEntityModel> _subItems;
 
 
-        public ICollection<SubItemEntity> SubItems
+        public ICollection<SubItemEntityModel> SubItems
         {
             get => _subItems;
             set
@@ -50,7 +50,7 @@ namespace Common
             }
         }
 
-        public ICollection<Registration> Registrations { get; set; }
+        public ICollection<RegistrationModel> Registrations { get; set; }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

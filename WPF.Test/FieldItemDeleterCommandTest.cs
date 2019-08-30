@@ -25,7 +25,7 @@ namespace WPF.Tests
         [InlineData(1)]
         public async Task TestMethod(int fieldItemId)
         {
-            var fieldItem = new SubItemEntity {Id = fieldItemId};
+            var fieldItem = new SubItemEntityModel {Id = fieldItemId};
 
             await _target.ExecuteAsync(fieldItem);
 
@@ -35,7 +35,7 @@ namespace WPF.Tests
         [Fact]
         public async Task Raises_FieldItemDeleted()
         {
-            var fieldItem = new SubItemEntity();
+            var fieldItem = new SubItemEntityModel();
             var listener = Substitute.For<EventHandler<ExecuteAsyncCompletedEventArgs>>();
             _target.FieldItemDeleted += listener;
 
@@ -47,7 +47,7 @@ namespace WPF.Tests
         [Fact]
         public async Task Awaits_FieldItemDeleted_Async_Event_Handlers()
         {
-            var fieldItem = new SubItemEntity();
+            var fieldItem = new SubItemEntityModel();
             var expected = new Exception();
 
             _target.FieldItemDeleted += (s, e) =>

@@ -71,25 +71,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiHelper.cs" />
+    <Compile Include="HelperClasses\ApiHelper.cs" />
     <Compile Include="Commands\MenuItemDeleterCommand.cs" />
     <Compile Include="Commands\FieldItemDeleterCommand.cs" />
-    <Compile Include="MenuItemEntity.cs" />
+    <Compile Include="Model\MenuItemEntityModel.cs" />
     <Compile Include="Processor.cs" />
-    <Compile Include="Registration.cs" />
-    <Compile Include="RegistrationValue.cs" />
+    <Compile Include="Model\RegistrationModel.cs" />
+    <Compile Include="Model\RegistrationValueModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubItemEntity.cs" />
-    <Compile Include="ViewModel\NewItemViewModel.cs" />
+    <Compile Include="Model\SubItemEntityModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

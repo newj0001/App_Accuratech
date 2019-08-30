@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class RegistrationValue : INotifyPropertyChanged
+    public class RegistrationValueModel : INotifyPropertyChanged
     {
         private string _value;
         public int Id { get; set; }
         public int SubItemId { get; set; }
-        public SubItemEntity SubItemEntity { get; set; }
+        public SubItemEntityModel SubItemEntityModel { get; set; }
 
         public string Value
         {

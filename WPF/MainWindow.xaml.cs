@@ -62,7 +62,7 @@ namespace WPF
         private void BtnFieldItem_OnClick(object sender, RoutedEventArgs e)
         {
             var button = (Button) sender;
-            var subItem = (SubItemEntity) button.DataContext;
+            var subItem = (SubItemEntityModel) button.DataContext;
             var fieldConfigurationViewModel = new FieldConfigurationViewModel(subItem);
             var fieldConfigurationView = new FieldConfigurationView {DataContext = fieldConfigurationViewModel};
             Main.Content = fieldConfigurationView;
@@ -71,7 +71,7 @@ namespace WPF
         private void AddNewField(object sender, RoutedEventArgs e)
         {
             var button = (Button) sender;
-            var menuItem = (MenuItemEntity) button.DataContext;
+            var menuItem = (MenuItemEntityModel) button.DataContext;
             var fieldConfigurationViewModel = new FieldConfigurationViewModel(menuItem);
             fieldConfigurationViewModel.NewSubItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
             var fieldConfigurationView = new FieldConfigurationView { DataContext = fieldConfigurationViewModel };
@@ -81,7 +81,7 @@ namespace WPF
         //private async void BtnDeleteMenuItem_Click(object sender, RoutedEventArgs e)
         //{
         //    var button = (Button)sender;
-        //    var menuItem = (MenuItemEntity)button.DataContext;
+        //    var menuItem = (MenuItemEntityModel)button.DataContext;
         //    var menuConfigurationViewModel = new MenuConfigurationViewModel();
 
 

@@ -10,20 +10,20 @@ namespace Common.ViewModel
 {
     public class NewItemViewModel : INotifyPropertyChanged
     {
-        private readonly SubItemEntity _parentSubItem;
-        private SubItemEntity _subItemEntity;
+        private readonly SubItemEntityModel _parentSubItem;
+        private SubItemEntityModel _subItemEntityModel;
 
-        public NewItemViewModel(SubItemEntity subItem)
+        public NewItemViewModel(SubItemEntityModel subItem)
         {
             _parentSubItem = subItem;
         }
 
-        public SubItemEntity SubItemEntity
+        public SubItemEntityModel SubItemEntityModel
         {
-            get => _subItemEntity;
+            get => _subItemEntityModel;
             set
             {
-                _subItemEntity = value;
+                _subItemEntityModel = value;
                 NotifyPropertyChanged();
             }
         }
@@ -31,11 +31,11 @@ namespace Common.ViewModel
         public string FieldValue { get; set; }
         public async Task AddRegistrationValue(string fieldValue)
         {
-            ICollection<RegistrationValue> registrationValues = new List<RegistrationValue>();
-            var regItem = new RegistrationValue()
+            ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
+            var regItem = new RegistrationValueModel()
             {
                 SubItemId = _parentSubItem.Id,
-                SubItemEntity = _parentSubItem,
+                SubItemEntityModel = _parentSubItem,
                 Value = fieldValue
             };
             registrationValues.Add(regItem);
@@ -43,9 +43,9 @@ namespace Common.ViewModel
             NewRegistrationValueCreated?.Invoke(this, EventArgs.Empty);
         }
 
-        public void Reset(SubItemEntity subItemEntity)
+        public void Reset(SubItemEntityModel subItemEntityModel)
         {
-            SubItemEntity = subItemEntity;
+            SubItemEntityModel = subItemEntityModel;
         }
 
         public event EventHandler NewRegistrationValueCreated;

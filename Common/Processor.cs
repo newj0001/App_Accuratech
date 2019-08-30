@@ -19,16 +19,16 @@ namespace Common
     {
         public static string urlMenuItem = "http://172.30.1.105:44333/api/menuitem/";
         public static string urlFieldItem = "http://172.30.1.105:44333/api/fielditem/";
-        public static string urlRegistration = "http://172.30.1.105:44333/api/registration/";
+        public static string urlRegistration = "http://172.30.1.105:44333/api/registrationModel/";
         public static string urlRegistrationValues = "http://172.30.1.105:44333/api/registrationvalues";
-        public static async Task<List<MenuItemEntity>> LoadMenus()
+        public static async Task<List<MenuItemEntityModel>> LoadMenus()
         {
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(urlMenuItem))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    return await response.Content.ReadAsAsync<List<MenuItemEntity>>();
+                    return await response.Content.ReadAsAsync<List<MenuItemEntityModel>>();
                 }
                 else
                 {
@@ -37,13 +37,13 @@ namespace Common
             }
         }
 
-        public static async Task<List<SubItemEntity>> LoadSubItems()
+        public static async Task<List<SubItemEntityModel>> LoadSubItems()
         {
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(urlMenuItem))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    return await response.Content.ReadAsAsync<List<SubItemEntity>>();
+                    return await response.Content.ReadAsAsync<List<SubItemEntityModel>>();
                 }
                 else
                 {
@@ -52,13 +52,13 @@ namespace Common
             }
         }
 
-        public static async Task<List<Registration>> LoadRegistrations()
+        public static async Task<List<RegistrationModel>> LoadRegistrations()
         {
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(urlRegistration))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    return await response.Content.ReadAsAsync<List<Registration>>();
+                    return await response.Content.ReadAsAsync<List<RegistrationModel>>();
                 }
                 else
                 {
@@ -67,23 +67,23 @@ namespace Common
             }
         }
 
-        public static async Task<Uri> CreateMenuItem(MenuItemEntity menuItem)
+        public static async Task<Uri> CreateMenuItem(MenuItemEntityModel menuItem)
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlMenuItem, menuItem);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
 
-        public static async Task<Uri> CreateFieldItem(SubItemEntity subItem)
+        public static async Task<Uri> CreateFieldItem(SubItemEntityModel subItem)
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlFieldItem, subItem);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
 
-        public static async Task<Uri> CreateRegistration(Registration registration)
+        public static async Task<Uri> CreateRegistration(RegistrationModel registrationModel)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistration, registration);
+            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistration, registrationModel);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
@@ -100,7 +100,7 @@ namespace Common
             return response.StatusCode;
         }
 
-        public static async Task<Uri> CreateRegistrationValue(ICollection<RegistrationValue> registrationValue)
+        public static async Task<Uri> CreateRegistrationValue(ICollection<RegistrationValueModel> registrationValue)
         {
             HttpResponseMessage response =
                 await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistrationValues, registrationValue);
