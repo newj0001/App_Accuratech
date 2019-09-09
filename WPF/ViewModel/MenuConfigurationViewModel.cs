@@ -11,6 +11,7 @@ namespace WPF.ViewModel
     {
         public string MenuItemTitle { get; set; }
 
+
         public async Task Add()
         {
             var menuItem = new MenuItemEntityModel {Header = MenuItemTitle};

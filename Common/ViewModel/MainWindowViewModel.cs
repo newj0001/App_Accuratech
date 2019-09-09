@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -51,6 +52,7 @@ namespace Common.ViewModel
             }
         }
 
+
         public async Task Reset()
         {
             MenuItemsCollection = await Processor.LoadMenus();
@@ -61,7 +63,7 @@ namespace Common.ViewModel
         {
             MenuItemEntityModel = menuItemEntityModel;
         }
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {

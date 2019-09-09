@@ -54,9 +54,12 @@ namespace WPF
         }
         private void BtnMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            var menuConfigurationViewModel = new MenuConfigurationViewModel();
-            var menuConfigurationView = new MenuConfigurationView{ DataContext = menuConfigurationViewModel};
-            Main.Content = menuConfigurationView;
+            var button = (Button) sender;
+            var menuItem = (MenuItemEntityModel) button.DataContext;
+            var editGeneralMenuSettingsViewModel = new EditGeneralMenuSettingsViewModel(menuItem);
+            editGeneralMenuSettingsViewModel.MenuItemUpdated += async (_, __) => await MainWindowViewModel?.Reset();
+            var editGeneralMenuSettingsView = new EditGeneralMenuSettingsView{ DataContext = editGeneralMenuSettingsViewModel };
+            Main.Content = editGeneralMenuSettingsView;
         }
 
         private void BtnFieldItem_OnClick(object sender, RoutedEventArgs e)
@@ -77,32 +80,5 @@ namespace WPF
             var fieldConfigurationView = new FieldConfigurationView { DataContext = fieldConfigurationViewModel };
             Main.Content = fieldConfigurationView;
         }
-
-        //private async void BtnDeleteMenuItem_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var button = (Button)sender;
-        //    var menuItem = (MenuItemEntityModel)button.DataContext;
-        //    var menuConfigurationViewModel = new MenuConfigurationViewModel();
-
-
-        //    var forLunch = new Task<Task>(async () => await MainWindowViewModel.Reset());
-
-        //    // TODO: Make sure MainWindowViewModel is fully awaited
-        //    menuConfigurationViewModel.MenuItemRemoved += (_,__) => forLunch.RunSynchronously();
-
-
-        //    await menuConfigurationViewModel.DeleteMenuItem(menuItem);
-        //    var lunchIsOver = await forLunch;
-        //    await lunchIsOver;
-        //}
-        private async void BtnDeleteSubItem_OnClick(object sender, RoutedEventArgs e)
-        {
-            var button = (Button) sender;
-//            await Processor.DeleteSubItem();
-//            await MainWindowViewModel.Reset();
-        }
-
-
-
     }
 }

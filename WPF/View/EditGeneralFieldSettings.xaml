@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="WPF.View.EditGeneralFieldSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid Background="GhostWhite">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Field Title" Grid.Column="0" Grid.Row="0"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Enable field" Grid.Column="0" Grid.Row="1"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Include field in output record" Grid.Column="0" Grid.Row="2"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Set field as numeric only" Grid.Column="0" Grid.Row="3"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Keep field value after each registration" Grid.Column="0" Grid.Row="4"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Default field value" Grid.Column="0" Grid.Row="5"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Field max. length" Grid.Column="0" Grid.Row="6"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Field min. length" Grid.Column="0" Grid.Row="7"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Field pattern" Grid.Column="0" Grid.Row="8"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Field pattern applies to scanned values only" Grid.Column="0" Grid.Row="9"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Disable keyboard input" Grid.Column="0" Grid.Row="10"/>
+        <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Allow field to be empty" Grid.Column="0" Grid.Row="11"/>
+
+        <TextBlock HorizontalAlignment="Right" Text="{Binding SubItemTitle}" Width="150" Height="30" Grid.Column="1" Grid.Row="0"/>
+        <ComboBox BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="1">
+            <ComboBoxItem IsSelected="True">Yes</ComboBoxItem>
+            <ComboBoxItem>No</ComboBoxItem>
+        </ComboBox>
+        <ComboBox BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="2" Height="30" ></ComboBox>
+        <ComboBox BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="3" Height="30" ></ComboBox>
+        <ComboBox BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="4" Height="30" ></ComboBox>
+        <TextBox HorizontalAlignment="Right" BorderBrush="Black" Text="" Width="150" Height="30" Grid.Column="1" Grid.Row="5"/>
+        <TextBox HorizontalAlignment="Right" BorderBrush="Black" Text="" Width="150" Height="30" Grid.Column="1" Grid.Row="6"/>
+        <TextBox HorizontalAlignment="Right" BorderBrush="Black" Text="" Width="150" Height="30" Grid.Column="1" Grid.Row="7"/>
+        <TextBox HorizontalAlignment="Right" BorderBrush="Black" Text="" Width="150" Height="30" Grid.Column="1" Grid.Row="8"/>
+        <ComboBox BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="9" Height="30" ></ComboBox>
+        <ComboBox BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="10" Height="30" ></ComboBox>
+        <ComboBox BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="11" Height="30" ></ComboBox>
+        <!--<StackPanel Margin="10" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
+            <TextBlock Text="Title" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBox x:Name="txtNewSubItem"
+                     BorderBrush="Black"
+                     Text="{Binding SubItemTitle}"
+                     Width="150"
+                     Height="30"/>
+        </StackPanel>
+        <StackPanel Margin="10" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
+            <TextBlock Text="Data type" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <ComboBox Width="100" HorizontalAlignment="Left"/>
+        </StackPanel>-->
+        <StackPanel Margin="10" Orientation="Horizontal" Grid.Column="3" Grid.Row="12" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="btnCancelFieldItem" Width="100" Content="Cancel" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}"/>
+            <Button x:Name="btnSaveFieldItem" Width="100" Content="Save" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>

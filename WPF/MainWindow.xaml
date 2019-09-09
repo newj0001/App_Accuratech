@@ -116,7 +116,6 @@
                                                     <Button 
                                                         Command="{Binding ElementName=Window, Path=DataContext.DeleteFieldItemCommand, Mode=OneWay}"
                                                         CommandParameter="{Binding}"
-                                                        Click="BtnDeleteSubItem_OnClick"
                                                         x:Name="BtnDeleteSubItem"
                                                         HorizontalAlignment="Right" 
                                                         VerticalAlignment="Center"

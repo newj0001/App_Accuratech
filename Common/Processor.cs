@@ -21,6 +21,9 @@ namespace Common
         public static string urlFieldItem = "http://172.30.1.105:44333/api/fielditem/";
         public static string urlRegistration = "http://172.30.1.105:44333/api/registrationModel/";
         public static string urlRegistrationValues = "http://172.30.1.105:44333/api/registrationvalues";
+
+
+
         public static async Task<List<MenuItemEntityModel>> LoadMenus()
         {
 
@@ -36,6 +39,8 @@ namespace Common
                 }
             }
         }
+
+
 
         public static async Task<List<SubItemEntityModel>> LoadSubItems()
         {
@@ -79,6 +84,27 @@ namespace Common
             HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlFieldItem, subItem);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
+        }
+
+        public static async Task<MenuItemEntityModel> UpdateMenuItemAsync(MenuItemEntityModel menuItem, int id)
+        {
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync(urlMenuItem + id, menuItem))
+            {
+                response.EnsureSuccessStatusCode();
+
+                menuItem = await response.Content.ReadAsAsync<MenuItemEntityModel>();
+                return menuItem;
+            }
+        }
+        public static async Task<SubItemEntityModel> UpdateFieldItemAsync(SubItemEntityModel subItem, int id)
+        {
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync(urlFieldItem + id, subItem))
+            {
+                response.EnsureSuccessStatusCode();
+
+                subItem = await response.Content.ReadAsAsync<SubItemEntityModel>();
+                return subItem;
+            }
         }
 
         public static async Task<Uri> CreateRegistration(RegistrationModel registrationModel)

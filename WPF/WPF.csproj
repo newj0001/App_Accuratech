@@ -78,9 +78,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModel\EditGeneralFieldSettingsViewModel.cs" />
+    <Compile Include="ViewModel\EditGeneralMenuSettingsViewModel.cs" />
     <Compile Include="ViewModel\FieldBehaviourViewModel.cs" />
     <Compile Include="ViewModel\MenuConfigurationViewModel.cs" />
     <Compile Include="ViewModel\FieldConfigurationViewModel.cs" />
+    <Compile Include="View\EditGeneralFieldSettings.xaml.cs">
+      <DependentUpon>EditGeneralFieldSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditGeneralMenuSettingsView.xaml.cs">
+      <DependentUpon>EditGeneralMenuSettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FieldBehaviour.xaml.cs">
       <DependentUpon>FieldBehaviour.xaml</DependentUpon>
     </Compile>
@@ -108,6 +116,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\EditGeneralFieldSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditGeneralMenuSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\FieldBehaviour.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
