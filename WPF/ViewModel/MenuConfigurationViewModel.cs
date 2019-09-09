@@ -9,13 +9,14 @@ namespace WPF.ViewModel
 {
     public class MenuConfigurationViewModel
     {
+        MenuItemDataStore menuItemDataStore = new MenuItemDataStore();
         public string MenuItemTitle { get; set; }
 
 
         public async Task Add()
         {
             var menuItem = new MenuItemEntityModel {Header = MenuItemTitle};
-            await Processor.CreateMenuItem(menuItem);
+            await menuItemDataStore.AddItemAsync(menuItem);
             NewMenuItemCreated?.Invoke(this, EventArgs.Empty);
         }
 

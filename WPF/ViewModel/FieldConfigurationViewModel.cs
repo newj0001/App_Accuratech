@@ -6,12 +6,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Common;
+using Common.Services;
 using Common.ViewModel;
 
 namespace WPF.ViewModel
 {
     public class FieldConfigurationViewModel
     {
+        FieldItemDataStore fieldItemDataStore = new FieldItemDataStore();
         private readonly MenuItemEntityModel _parentMenuItem;
         private readonly SubItemEntityModel _parentSubItem;
 
@@ -31,7 +33,7 @@ namespace WPF.ViewModel
         public async Task AddField()
         {
             var subItem = new SubItemEntityModel() { Name = SubItemTitle, MenuItemId = _parentMenuItem.Id};
-            await Processor.CreateFieldItem(subItem);
+            await fieldItemDataStore.AddItemAsync(subItem);
             NewSubItemCreated?.Invoke(this, EventArgs.Empty);
         }
 

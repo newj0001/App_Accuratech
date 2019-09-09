@@ -5,12 +5,17 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Common.Commands;
+using Common.Services;
 using Xamarin.Forms;
 
 namespace Common.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        MenuItemDataStore menuItemDataStore = new MenuItemDataStore();
+        FieldItemDataStore fieldItemDataStore = new FieldItemDataStore();
+
+
         private ICollection<MenuItemEntityModel> _menuItemsCollection;
         private ICollection<SubItemEntityModel> _subItemsCollection;
         private MenuItemEntityModel _menuItemEntityModel;
@@ -20,8 +25,8 @@ namespace Common.ViewModel
             DeleteMenuItemCommand.MenuItemDeleted += (sender, args) => args.AsyncEventHandlers.Add(Reset());
             DeleteFieldItemCommand.FieldItemDeleted += (sender, args) => args.AsyncEventHandlers.Add(Reset());
         }
-        public MenuItemDeleterCommand DeleteMenuItemCommand { get; }= new MenuItemDeleterCommand(new Processor());
-        public FieldItemDeleterCommand DeleteFieldItemCommand { get; }= new FieldItemDeleterCommand(new Processor());
+        public MenuItemDeleterCommand DeleteMenuItemCommand { get; }= new MenuItemDeleterCommand(new MenuItemDataStore());
+        public FieldItemDeleterCommand DeleteFieldItemCommand { get; }= new FieldItemDeleterCommand(new FieldItemDataStore());
         public ICollection<MenuItemEntityModel> MenuItemsCollection
         {
             get => _menuItemsCollection;
@@ -55,8 +60,8 @@ namespace Common.ViewModel
 
         public async Task Reset()
         {
-            MenuItemsCollection = await Processor.LoadMenus();
-            SubItemsCollection = await Processor.LoadSubItems();
+            MenuItemsCollection = await menuItemDataStore.GetItemsAsync();
+            SubItemsCollection = await fieldItemDataStore.GetItemsAsync();
         }
 
         public void Reset(MenuItemEntityModel menuItemEntityModel)

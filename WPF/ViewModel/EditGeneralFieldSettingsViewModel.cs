@@ -6,12 +6,14 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Common;
+using Common.Services;
 using EO.Internal;
 
 namespace WPF.ViewModel
 {
     public class EditGeneralFieldSettingsViewModel : INotifyPropertyChanged
     {
+        FieldItemDataStore fieldItemDataStore = new FieldItemDataStore();
         private readonly SubItemEntityModel _parentSubItem;
 
         public string SubItemTitle { get; set; }
@@ -24,7 +26,7 @@ namespace WPF.ViewModel
         public async Task Update()
         {
             var subItem = new SubItemEntityModel {Name = SubItemTitle};
-            await Processor.UpdateFieldItemAsync(subItem, _parentSubItem.Id);
+            await fieldItemDataStore.AddItemAsync(subItem);
             SubItemUpdated?.Invoke(this, EventArgs.Empty);
         }
 

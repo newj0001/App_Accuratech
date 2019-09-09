@@ -12,6 +12,7 @@ namespace WPF.ViewModel
 {
     public class EditGeneralMenuSettingsViewModel : INotifyPropertyChanged
     {
+        MenuItemDataStore menuItemDataStore = new MenuItemDataStore();
         private readonly MenuItemEntityModel _parentMenuItem;
 
         public string MenuItemTitle { get; set; }
@@ -22,7 +23,7 @@ namespace WPF.ViewModel
         public async Task Update()
         {
             var menuItem = new MenuItemEntityModel {Header = MenuItemTitle, Id = _parentMenuItem.Id};
-            await Processor.UpdateMenuItemAsync(menuItem, _parentMenuItem.Id);
+            await menuItemDataStore.UpdateItemAsync(menuItem, _parentMenuItem.Id);
             MenuItemUpdated?.Invoke(this, EventArgs.Empty);
         }
 

@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Common.Services;
 
 namespace Common.Commands
 {
     public class MenuItemDeleterCommand : ICommand
     {
-        private readonly IProcessor _processor;
+        private readonly IDataStore<MenuItemEntityModel> _dataStore;
 
-        public MenuItemDeleterCommand(IProcessor processor)
+        public MenuItemDeleterCommand(IDataStore<MenuItemEntityModel> dataStore)
         {
-            _processor = processor;
+            _dataStore = dataStore;
         }
 
         public bool CanExecute(object parameter)
@@ -28,7 +29,7 @@ namespace Common.Commands
 
         public async Task ExecuteAsync(object parameter)
         {
-            await _processor.DeleteMenuItemAsync(((MenuItemEntityModel)parameter).Id);
+            await _dataStore.DeleteItemAsync(((MenuItemEntityModel)parameter).Id);
             var executeAsyncCompletedEventArgs = new ExecuteAsyncCompletedEventArgs();
             MenuItemDeleted?.Invoke(this, executeAsyncCompletedEventArgs);
             await Task.WhenAll(executeAsyncCompletedEventArgs.AsyncEventHandlers);
@@ -42,6 +43,4 @@ namespace Common.Commands
     {
         public ICollection<Task> AsyncEventHandlers { get; } = new List<Task>();
     }
-
-
 }
