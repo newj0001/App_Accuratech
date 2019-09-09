@@ -12,19 +12,19 @@ namespace WPF.ViewModel
 {
     public class EditGeneralFieldSettingsViewModel : INotifyPropertyChanged
     {
-        private readonly MenuItemEntityModel _parentMenuItem;
+        private readonly SubItemEntityModel _parentSubItem;
 
-        public string FieldItemTitle { get; set; }
+        public string SubItemTitle { get; set; }
 
-        public EditGeneralFieldSettingsViewModel(MenuItemEntityModel menuItem)
+        public EditGeneralFieldSettingsViewModel(SubItemEntityModel subItem)
         {
-            _parentMenuItem = menuItem;
+            _parentSubItem = subItem;
         }
 
         public async Task Update()
         {
-            var subItem = new SubItemEntityModel {Name = FieldItemTitle, MenuItemId = _parentMenuItem.Id};
-            await Processor.UpdateFieldItemAsync(subItem, _parentMenuItem.Id);
+            var subItem = new SubItemEntityModel {Name = SubItemTitle};
+            await Processor.UpdateFieldItemAsync(subItem, _parentSubItem.Id);
             SubItemUpdated?.Invoke(this, EventArgs.Empty);
         }
 

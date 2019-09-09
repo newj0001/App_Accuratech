@@ -87,24 +87,6 @@ namespace REST
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-        //public HttpResponseMessage Put(int id, [FromBody] MenuItemEntityModel menuItemEntityModel)
-        //{
-        //    var menuItemDetail = (from a in _dbContext.Menus where a.Id == id select a).FirstOrDefault();
-
-        //    if (menuItemDetail != null)
-        //    {
-        //        menuItemDetail.Header = menuItemEntityModel.Header;
-
-        //        _dbContext.SaveChanges();
-
-        //        return Request.CreateResponse(HttpStatusCode.OK, menuItemDetail);
-        //    }
-        //    else
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid Code or Member Not Found");
-        //    }
-        //}
-
       
         public HttpResponseMessage Delete(int id)
         {

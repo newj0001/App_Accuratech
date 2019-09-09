@@ -66,9 +66,10 @@ namespace WPF
         {
             var button = (Button) sender;
             var subItem = (SubItemEntityModel) button.DataContext;
-            var fieldConfigurationViewModel = new FieldConfigurationViewModel(subItem);
-            var fieldConfigurationView = new FieldConfigurationView {DataContext = fieldConfigurationViewModel};
-            Main.Content = fieldConfigurationView;
+            var editGeneralFieldSettingsViewModel = new EditGeneralFieldSettingsViewModel(subItem);
+            editGeneralFieldSettingsViewModel.SubItemUpdated += async (_, __) => await MainWindowViewModel?.Reset();
+            var editGeneralFieldSettingsView = new EditGeneralFieldSettingsView{DataContext = editGeneralFieldSettingsViewModel};
+            Main.Content = editGeneralFieldSettingsView;
         }
 
         private void AddNewField(object sender, RoutedEventArgs e)

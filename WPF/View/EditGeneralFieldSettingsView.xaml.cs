@@ -12,17 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.ViewModel;
 
 namespace WPF.View
 {
     /// <summary>
-    /// Interaction logic for EditGeneralFieldSettings.xaml
+    /// Interaction logic for EditGeneralFieldSettingsView.xaml
     /// </summary>
-    public partial class EditGeneralFieldSettings : UserControl
+    public partial class EditGeneralFieldSettingsView : UserControl
     {
-        public EditGeneralFieldSettings()
+        public EditGeneralFieldSettingsView()
         {
             InitializeComponent();
+        }
+
+        EditGeneralFieldSettingsViewModel EditGeneralFieldSettingsViewModel => DataContext as EditGeneralFieldSettingsViewModel;
+        private async void BtnUpdateFieldItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            await EditGeneralFieldSettingsViewModel.Update();
         }
     }
 }

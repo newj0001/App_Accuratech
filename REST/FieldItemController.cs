@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -58,28 +60,43 @@ namespace REST
             }
         }
 
-
-        public HttpResponseMessage Put(int id, [FromBody] SubItemEntityModel subItemEntityModel)
+        private bool SubItemExists(int id)
         {
-            var subItemDetail = (from a in _dbContext.SubMenus where a.Id == id select a).FirstOrDefault();
+            return _dbContext.SubMenus.Count(s => s.Id == id) > 0;
+        }
 
-            //checking fetched or not with the help of NULL or NOT.  
-            if (subItemDetail != null)
+        [System.Web.Http.HttpPut]
+        public IHttpActionResult Put(int id, SubItemEntityModel subItemEntityModel)
+        {
+            if (!ModelState.IsValid)
             {
-                //set received _member object properties with subItemDetail  
-                subItemDetail.Name = subItemEntityModel.Name;
-                
-                //save set allocation.  
+                return BadRequest(ModelState);
+            }
+
+            if (id != subItemEntityModel.Id)
+            {
+                return BadRequest();
+            }
+
+            _dbContext.Entry(subItemEntityModel).State = EntityState.Modified;
+
+            try
+            {
                 _dbContext.SaveChanges();
-
-                //return response status as successfully updated with member entity  
-                return Request.CreateResponse(HttpStatusCode.OK, subItemDetail);
             }
-            else
+            catch (DbUpdateConcurrencyException)
             {
-                //return response error as NOT FOUND  with message.  
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid Code or Member Not Found");
+                if (!SubItemExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         public HttpResponseMessage Delete(int id)
