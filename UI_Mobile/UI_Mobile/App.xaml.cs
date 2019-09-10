@@ -1,7 +1,7 @@
 ﻿using System;
+using Common;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using UI_Mobile.Services;
 using UI_Mobile.Views;
 
 namespace UI_Mobile
@@ -12,9 +12,7 @@ namespace UI_Mobile
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MenuItemsView());
         }
 
         protected override void OnStart()

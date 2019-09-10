@@ -10,18 +10,25 @@ namespace Common.Services
 {
     public class FieldItemDataStore : IDataStore<SubItemEntityModel>
     {
-        public static string urlMenuItem = "http://172.30.1.105:44333/api/menuitem/";
-        public static string urlFieldItem = "http://172.30.1.105:44333/api/fielditem/";
+        public static string urlMenuItem = "http://172.30.1.106:44333/api/menuitem/";
+        public static string urlFieldItem = "http://172.30.1.106:44333/api/fielditem/";
+
+        private readonly HttpClient _apiClient;
+
+        public FieldItemDataStore()
+        {
+            _apiClient = ApiHelper.GetApiClient();
+        }
         public async Task<Uri> AddItemAsync(SubItemEntityModel item)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlFieldItem, item);
+            HttpResponseMessage response = await _apiClient.PostAsJsonAsync(urlFieldItem, item);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
 
         public async Task<SubItemEntityModel> UpdateItemAsync(SubItemEntityModel item, int id)
         {
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync(urlFieldItem + id, item))
+            using (HttpResponseMessage response = await _apiClient.PutAsJsonAsync(urlFieldItem + id, item))
             {
                 response.EnsureSuccessStatusCode();
 
@@ -32,7 +39,7 @@ namespace Common.Services
 
         public async Task<HttpStatusCode> DeleteItemAsync(int id)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync(urlFieldItem + id);
+            HttpResponseMessage response = await _apiClient.DeleteAsync(urlFieldItem + id);
             return response.StatusCode;
         }
 
@@ -43,7 +50,7 @@ namespace Common.Services
 
         public async Task<ICollection<SubItemEntityModel>> GetItemsAsync()
         {
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(urlMenuItem))
+            using (HttpResponseMessage response = await _apiClient.GetAsync(urlMenuItem))
             {
                 if (response.IsSuccessStatusCode)
                 {

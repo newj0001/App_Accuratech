@@ -10,11 +10,17 @@ namespace Common.Services
 {
     public class RegistrationDataStore : IDataStore<RegistrationModel>
     {
-        public static string urlRegistration = "http://172.30.1.105:44333/api/registrationModel/";
+        public static string urlRegistration = "http://172.30.1.106:44333/api/registrationModel/";
 
+        private readonly HttpClient _apiClient;
+
+        public RegistrationDataStore()
+        {
+            _apiClient = ApiHelper.GetApiClient();
+        }
         public async Task<Uri> AddItemAsync(RegistrationModel item)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlRegistration, item);
+            HttpResponseMessage response = await _apiClient.PostAsJsonAsync(urlRegistration, item);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
@@ -36,7 +42,7 @@ namespace Common.Services
 
         public async Task<ICollection<RegistrationModel>> GetItemsAsync()
         {
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(urlRegistration))
+            using (HttpResponseMessage response = await _apiClient.GetAsync(urlRegistration))
             {
                 if (response.IsSuccessStatusCode)
                 {

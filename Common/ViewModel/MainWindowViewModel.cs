@@ -15,10 +15,10 @@ namespace Common.ViewModel
         MenuItemDataStore menuItemDataStore = new MenuItemDataStore();
         FieldItemDataStore fieldItemDataStore = new FieldItemDataStore();
 
-
         private ICollection<MenuItemEntityModel> _menuItemsCollection;
         private ICollection<SubItemEntityModel> _subItemsCollection;
         private MenuItemEntityModel _menuItemEntityModel;
+        private SubItemEntityModel _subItemEntityModel;
 
         public MainWindowViewModel()
         {
@@ -57,17 +57,31 @@ namespace Common.ViewModel
             }
         }
 
-
+        public SubItemEntityModel SubItemEntityModel
+        {
+            get => _subItemEntityModel;
+            set
+            {
+                _subItemEntityModel = value;
+                NotifyPropertyChanged();
+            }
+        }
+        
         public async Task Reset()
         {
             MenuItemsCollection = await menuItemDataStore.GetItemsAsync();
             SubItemsCollection = await fieldItemDataStore.GetItemsAsync();
         }
 
-        public void Reset(MenuItemEntityModel menuItemEntityModel)
-        {
-            MenuItemEntityModel = menuItemEntityModel;
-        }
+        //public void Reset(SubItemEntityModel subItemEntityModel)
+        //{
+        //    SubItemEntityModel = subItemEntityModel;
+        //}
+
+        //public void Reset(MenuItemEntityModel menuItemEntityModel)
+        //{
+        //    MenuItemEntityModel = menuItemEntityModel;
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")

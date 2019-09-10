@@ -12,9 +12,15 @@ namespace Common
 {
     public class MenuItemDataStore : IDataStore<MenuItemEntityModel>
     {
-        public static string urlMenuItem = "http://172.30.1.105:44333/api/menuitem/";
-        public static string urlFieldItem = "http://172.30.1.105:44333/api/fielditem/";
+        public static string urlMenuItem = "http://172.30.1.106:44333/api/menuitem/";
+        public static string urlFieldItem = "http://172.30.1.106:44333/api/fielditem/";
 
+        private readonly HttpClient _apiClient;
+
+        public MenuItemDataStore()
+        {
+            _apiClient = ApiHelper.GetApiClient();
+        }
 
         public Task<MenuItemEntityModel> GetItemAsync(int id)
         {
@@ -23,7 +29,7 @@ namespace Common
 
         public async Task<ICollection<MenuItemEntityModel>> GetItemsAsync()
         {
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(urlMenuItem))
+            using (HttpResponseMessage response = await _apiClient.GetAsync(urlMenuItem))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -38,14 +44,14 @@ namespace Common
 
         public async Task<Uri> AddItemAsync(MenuItemEntityModel item)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync(urlMenuItem, item);
+            HttpResponseMessage response = await _apiClient.PostAsJsonAsync(urlMenuItem, item);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
 
         public async Task<MenuItemEntityModel> UpdateItemAsync(MenuItemEntityModel item, int id)
         {
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync(urlMenuItem + id, item))
+            using (HttpResponseMessage response = await _apiClient.PutAsJsonAsync(urlMenuItem + id, item))
             {
                 response.EnsureSuccessStatusCode();
 
@@ -56,7 +62,7 @@ namespace Common
 
         public async Task<HttpStatusCode> DeleteItemAsync(int id)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync(urlMenuItem + id);
+            HttpResponseMessage response = await _apiClient.DeleteAsync(urlMenuItem + id);
             return response.StatusCode;
         }
     }

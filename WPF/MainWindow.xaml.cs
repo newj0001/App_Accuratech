@@ -27,8 +27,7 @@ namespace WPF
     {
         public MainWindow()
         {
-             InitializeComponent();
-            ApiHelper.InitializeClient();
+            InitializeComponent();
             DataContextChanged += Reset;
             DataContext = new MainWindowViewModel();
         }
