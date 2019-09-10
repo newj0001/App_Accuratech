@@ -12,8 +12,8 @@ namespace Common.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private readonly MenuItemDataStore _menuItemDataStore = new MenuItemDataStore();
-        private readonly FieldItemDataStore _fieldItemDataStore = new FieldItemDataStore();
+        MenuItemDataStore menuItemDataStore = new MenuItemDataStore();
+        FieldItemDataStore fieldItemDataStore = new FieldItemDataStore();
 
 
         private ICollection<MenuItemEntityModel> _menuItemsCollection;
@@ -60,8 +60,8 @@ namespace Common.ViewModel
 
         public async Task Reset()
         {
-            MenuItemsCollection = await _menuItemDataStore.GetItemsAsync();
-            SubItemsCollection = await _fieldItemDataStore.GetItemsAsync();
+            MenuItemsCollection = await menuItemDataStore.GetItemsAsync();
+            SubItemsCollection = await fieldItemDataStore.GetItemsAsync();
         }
 
         public void Reset(MenuItemEntityModel menuItemEntityModel)
