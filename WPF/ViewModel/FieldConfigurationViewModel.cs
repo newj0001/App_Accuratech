@@ -28,11 +28,16 @@ namespace WPF.ViewModel
         }
 
         public string SubItemTitle { get; set; }
-
+        public bool IsFieldEnabled { get; set; }
 
         public async Task AddField()
         {
-            var subItem = new SubItemEntityModel() { Name = SubItemTitle, MenuItemId = _parentMenuItem.Id};
+            var subItem = new SubItemEntityModel()
+            {
+                Name = SubItemTitle,
+                MenuItemId = _parentMenuItem.Id,
+                FieldEnabled = IsFieldEnabled
+            };
             await fieldItemDataStore.AddItemAsync(subItem);
             NewSubItemCreated?.Invoke(this, EventArgs.Empty);
         }

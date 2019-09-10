@@ -26,13 +26,13 @@ namespace Common
         }
 
         public int? MenuItemId { get; set; }
+        public string FieldValue { get; set; }
+        public bool FieldEnabled { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
-        public string FieldValue { get; set; }
     }
 }

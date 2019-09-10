@@ -20,7 +20,7 @@ namespace Common_Backend.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<MenuItemEntityModel>().HasKey(mie => mie.Id);
-            modelBuilder.Entity<SubItemEntityModel>().HasKey(sie => sie.Id).Ignore(m => m.FieldValue);
+            modelBuilder.Entity<SubItemEntityModel>().HasKey(sie => sie.Id);
             modelBuilder.Entity<RegistrationModel>().HasKey(r => r.Id);
             modelBuilder.Entity<RegistrationValueModel>().HasKey(rv => rv.Id);
 

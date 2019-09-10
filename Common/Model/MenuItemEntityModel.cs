@@ -39,7 +39,6 @@ namespace Common
 
         private ICollection<SubItemEntityModel> _subItems;
 
-
         public ICollection<SubItemEntityModel> SubItems
         {
             get => _subItems;
@@ -51,7 +50,6 @@ namespace Common
         }
 
         public ICollection<RegistrationModel> Registrations { get; set; }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
