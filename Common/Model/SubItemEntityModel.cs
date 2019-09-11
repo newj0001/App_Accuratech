@@ -33,7 +33,7 @@ namespace Common
         public int FieldMaxLength { get; set; }
         public string KeyboardInput { get; set; }
         public string EmptyField { get; set; }
-
+        public string KeepFieldValue { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

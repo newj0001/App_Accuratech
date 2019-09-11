@@ -51,6 +51,8 @@ namespace Common
 
         public ICollection<RegistrationModel> Registrations { get; set; }
 
+        public string IsMenuEnabled { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {

@@ -31,6 +31,12 @@ namespace WPF.ViewModel
         Yes,
         No
     }
+
+    public enum KeepFieldValue
+    {
+        Yes,
+        No
+    }
     public class GeneralFieldSettingsViewModel
     {
        private readonly FieldItemDataStore  _fieldItemDataStore = new FieldItemDataStore();
@@ -43,6 +49,7 @@ namespace WPF.ViewModel
        public NumericField SelectedElementInNumericField { get; set; }
        public KeyboardInput SelectedElementInKeyboardInput { get; set; }
        public EmptyField SelectedElementInEmptyField { get; set; }
+       public KeepFieldValue SelectedElementInKeepFieldValue { get; set; }
 
        public GeneralFieldSettingsViewModel(MenuItemEntityModel menuItem)
        {
@@ -61,6 +68,7 @@ namespace WPF.ViewModel
                FieldMaxLength = FieldMaxLength,
                KeyboardInput = SelectedElementInKeyboardInput.ToString(),
                EmptyField = SelectedElementInEmptyField.ToString(),
+               KeepFieldValue = SelectedElementInKeepFieldValue.ToString(),
                MenuItemId = _parentMenuItem.Id,
            };
            await _fieldItemDataStore.AddItemAsync(subItem);

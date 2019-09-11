@@ -36,6 +36,12 @@
                 <x:Type TypeName="viewModel:EmptyField"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <ObjectDataProvider x:Key="KeepFieldValue" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="viewModel:KeepFieldValue"></x:Type>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </UserControl.Resources>
 
     <Grid Background="GhostWhite">
@@ -74,7 +80,7 @@
         
         <!--Keep field value after each registration-->
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Keep field value after each registration" Grid.Column="0" Grid.Row="3"/>
-        <ComboBox BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="3" Height="30" />
+        <ComboBox ItemsSource="{Binding Source={StaticResource KeepFieldValue}}" SelectedItem="{Binding SelectedElementInKeepFieldValue}" BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="3" Height="30" />
 
         <!--Field max. length-->
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Field max. length" Grid.Column="0" Grid.Row="4"/>

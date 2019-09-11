@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
         
         <Grid Height="60" VerticalAlignment="Top" Background="#3666" Grid.Column="0" Grid.ColumnSpan="2">
-            <!--<TextBlock Text="Configuration" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>-->
+            
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Newjan" VerticalAlignment="Center" FontSize="18"/>
                 <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges">
@@ -68,7 +68,7 @@
                                                 Foreground="White"
                                                 FontWeight="Light"
                                                 Click="BtnMenuItem_OnClick">
-                                            <TextBlock Margin="5 0 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Light" Text="{Binding Header}"/>
+                                            <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Light" Text="{Binding Header}"/>
                                         </Button>
 
                                         <Button
@@ -83,7 +83,7 @@
                                 </Expander.Header>
                                 <StackPanel>
                                     <Button
-                                            Margin="15 0 0 0"
+                                            Margin="20 0 0 0"
                                             HorizontalAlignment="Left"
                                             FontWeight="Light" 
                                             Background="{x:Null}" 

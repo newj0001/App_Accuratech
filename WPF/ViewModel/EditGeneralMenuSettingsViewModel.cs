@@ -16,13 +16,19 @@ namespace WPF.ViewModel
         private readonly MenuItemEntityModel _parentMenuItem;
 
         public string MenuItemTitle { get; set; }
+        public IsMenuEnabled SelectedElementInIsMenuEnabled { get; set; }
         public EditGeneralMenuSettingsViewModel(MenuItemEntityModel menuItem)
         {
             _parentMenuItem = menuItem;
         }
         public async Task Update()
         {
-            var menuItem = new MenuItemEntityModel {Header = MenuItemTitle, Id = _parentMenuItem.Id};
+            var menuItem = new MenuItemEntityModel
+            {
+                Header = MenuItemTitle,
+                IsMenuEnabled = SelectedElementInIsMenuEnabled.ToString(),
+                Id = _parentMenuItem.Id
+            };
             await menuItemDataStore.UpdateItemAsync(menuItem, _parentMenuItem.Id);
             MenuItemUpdated?.Invoke(this, EventArgs.Empty);
         }

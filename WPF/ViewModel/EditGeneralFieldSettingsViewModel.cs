@@ -24,6 +24,7 @@ namespace WPF.ViewModel
         public NumericField SelectedElementInNumericField { get; set; }
         public KeyboardInput SelectedElementInKeyboardInput { get; set; }
         public EmptyField SelectedElementInEmptyField { get; set; }
+        public KeepFieldValue SelectedElementInKeepFieldValue { get; set; }
 
         public EditGeneralFieldSettingsViewModel(SubItemEntityModel subItem)
         {
@@ -42,6 +43,7 @@ namespace WPF.ViewModel
                 FieldMaxLength = FieldMaxLength,
                 KeyboardInput = SelectedElementInKeyboardInput.ToString(),
                 EmptyField = SelectedElementInEmptyField.ToString(),
+                KeepFieldValue = SelectedElementInKeepFieldValue.ToString(),
                 Id = _parentSubItem.Id,
                 MenuItemId = _parentSubItem.MenuItemId
             };
