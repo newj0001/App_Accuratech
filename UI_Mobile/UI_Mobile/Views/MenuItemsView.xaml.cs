@@ -18,7 +18,6 @@ namespace UI_Mobile.Views
         {
             InitializeComponent();
             var menuItemsViewModel = new MenuItemsViewModel();
-            MenuItemEntityModel menuItemEntityModel = new MenuItemEntityModel();
             menuItemsViewModel.Reset();
             BindingContext = menuItemsViewModel;
         }

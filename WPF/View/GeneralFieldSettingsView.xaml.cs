@@ -12,18 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Common;
+using Common.ViewModel;
 using WPF.ViewModel;
 
 namespace WPF.View
 {
     /// <summary>
-    /// Interaction logic for FieldConfigurationView.xaml
+    /// Interaction logic for GeneralFieldSettingsView.xaml
     /// </summary>
-    public partial class FieldConfigurationView : Page
+    public partial class GeneralFieldSettingsView : UserControl
     {
-        public FieldConfigurationView()
+        public GeneralFieldSettingsView()
         {
             InitializeComponent();
+    
         }
+        public GeneralFieldSettingsViewModel GeneralFieldSettingsViewModel => DataContext as GeneralFieldSettingsViewModel;
+        private async void BtnSaveFieldItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            await GeneralFieldSettingsViewModel.AddFieldItem();
+        }
+
     }
 }

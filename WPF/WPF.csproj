@@ -80,29 +80,19 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\EditGeneralFieldSettingsViewModel.cs" />
     <Compile Include="ViewModel\EditGeneralMenuSettingsViewModel.cs" />
-    <Compile Include="ViewModel\FieldBehaviourViewModel.cs" />
-    <Compile Include="ViewModel\MenuConfigurationViewModel.cs" />
-    <Compile Include="ViewModel\FieldConfigurationViewModel.cs" />
+    <Compile Include="ViewModel\GeneralFieldSettingsViewModel.cs" />
+    <Compile Include="ViewModel\GeneralMenuSettingsViewModel.cs" />
     <Compile Include="View\EditGeneralFieldSettingsView.xaml.cs">
       <DependentUpon>EditGeneralFieldSettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EditGeneralMenuSettingsView.xaml.cs">
       <DependentUpon>EditGeneralMenuSettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\FieldBehaviour.xaml.cs">
-      <DependentUpon>FieldBehaviour.xaml</DependentUpon>
+    <Compile Include="View\GeneralFieldSettingsView.xaml.cs">
+      <DependentUpon>GeneralFieldSettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GeneralFieldSettings.xaml.cs">
-      <DependentUpon>GeneralFieldSettings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\GeneralMenuSettings.xaml.cs">
-      <DependentUpon>GeneralMenuSettings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MenuConfigurationView.xaml.cs">
-      <DependentUpon>MenuConfigurationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\FieldConfigurationView.xaml.cs">
-      <DependentUpon>FieldConfigurationView.xaml</DependentUpon>
+    <Compile Include="View\GeneralMenuSettingsView.xaml.cs">
+      <DependentUpon>GeneralMenuSettingsView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -124,23 +114,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\FieldBehaviour.xaml">
+    <Page Include="View\GeneralFieldSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\GeneralFieldSettings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\GeneralMenuSettings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MenuConfigurationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\FieldConfigurationView.xaml">
+    <Page Include="View\GeneralMenuSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

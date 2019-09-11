@@ -1,13 +1,16 @@
-﻿<UserControl x:Class="WPF.View.EditGeneralFieldSettingsView"
+﻿<UserControl x:Class="WPF.View.GeneralFieldSettingsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF.View"
-             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:local1="clr-namespace:WPF"
              xmlns:viewModel="clr-namespace:WPF.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance viewModel:GeneralFieldSettingsViewModel}">
+    
     <UserControl.Resources>
         <ObjectDataProvider x:Key="FieldEnabled" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
@@ -24,7 +27,7 @@
         <ObjectDataProvider x:Key="KeyboardInput" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="viewModel:KeyboardInput"/>
+               <x:Type TypeName="viewModel:KeyboardInput"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider x:Key="EmptyField" MethodName="GetValues"
@@ -68,7 +71,7 @@
         <!--Set field as numeric only-->
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Set field as numeric only" Grid.Column="0" Grid.Row="2"/>
         <ComboBox ItemsSource="{Binding Source={StaticResource NumericField}}" SelectedItem="{Binding SelectedElementInNumericField}" BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="2" Height="30" />
-
+        
         <!--Keep field value after each registration-->
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Keep field value after each registration" Grid.Column="0" Grid.Row="3"/>
         <ComboBox BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="3" Height="30" />
@@ -80,7 +83,7 @@
         <!--Field min. length-->
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Field min. length" Grid.Column="0" Grid.Row="5"/>
         <TextBox HorizontalAlignment="Right" BorderBrush="Black" Text="{Binding FieldMaxLength}" Width="150" Height="30" Grid.Column="1" Grid.Row="5"/>
-
+        
         <!--Disable keyboard input-->
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Disable keyboard input" Grid.Column="0" Grid.Row="6"/>
         <ComboBox ItemsSource="{Binding Source={StaticResource KeyboardInput}}" SelectedItem="{Binding SelectedElementInKeyboardInput}" BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="6" Height="30" />
@@ -89,11 +92,11 @@
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Allow field to be empty" Grid.Column="0" Grid.Row="7"/>
         <ComboBox ItemsSource="{Binding Source={StaticResource EmptyField}}" SelectedItem="{Binding SelectedElementInEmptyField}" BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="7" Height="30" />
 
-
+        <!--Save and Cancel buttons-->
         <StackPanel Margin="10" Orientation="Horizontal" Grid.Column="3" Grid.Row="12" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="btnCancelFieldItem" Width="100" Content="Cancel" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}"/>
-            <Button x:Name="btnUpdateFieldItem" Width="100" Content="Save" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}" Click="BtnUpdateFieldItem_OnClick" />
+            <Button x:Name="btnSaveFieldItem" Width="100" Content="Save" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}" Click="BtnSaveFieldItem_OnClick"/>
         </StackPanel>
-
+       
     </Grid>
 </UserControl>

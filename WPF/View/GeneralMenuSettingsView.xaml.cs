@@ -17,20 +17,20 @@ using WPF.ViewModel;
 namespace WPF.View
 {
     /// <summary>
-    /// Interaction logic for GeneralMenuSettings.xaml
+    /// Interaction logic for GeneralMenuSettingsView.xaml
     /// </summary>
-    public partial class GeneralMenuSettings : UserControl
+    public partial class GeneralMenuSettingsView : UserControl
     {
-        public GeneralMenuSettings()
+        public GeneralMenuSettingsView()
         {
             InitializeComponent();
         }
 
-        public MenuConfigurationViewModel MenuViewModel => DataContext as MenuConfigurationViewModel;
+        public GeneralMenuSettingsViewModel GeneralMenuSettingsViewModel => DataContext as GeneralMenuSettingsViewModel;
 
         private async void BtnSaveMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            await MenuViewModel.Add();
+            await GeneralMenuSettingsViewModel.AddMenuItem();
         }
 
         private void BtnCancelMenuItem_OnClick(object sender, RoutedEventArgs e)

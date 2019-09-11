@@ -27,7 +27,13 @@ namespace Common
 
         public int? MenuItemId { get; set; }
         public string FieldValue { get; set; }
-        public bool FieldEnabled { get; set; }
+        public string FieldEnabled { get; set; }
+        public string NumericField { get; set; }
+        public int FieldMinLength { get; set; }
+        public int FieldMaxLength { get; set; }
+        public string KeyboardInput { get; set; }
+        public string EmptyField { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

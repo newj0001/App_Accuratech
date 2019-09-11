@@ -46,39 +46,70 @@ namespace WPF
 
         private void BtnAddMenu_Click(object sender, RoutedEventArgs e)
         {
-            var menuConfigurationViewModel = new MenuConfigurationViewModel();
-            menuConfigurationViewModel.NewMenuItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
-            var addNewMenuView = new MenuConfigurationView { DataContext = menuConfigurationViewModel };
-            Main.Content = addNewMenuView;
+            SetMenuConfigurationView(sender, e);
         }
+
         private void BtnMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            var button = (Button) sender;
-            var menuItem = (MenuItemEntityModel) button.DataContext;
-            var editGeneralMenuSettingsViewModel = new EditGeneralMenuSettingsViewModel(menuItem);
-            editGeneralMenuSettingsViewModel.MenuItemUpdated += async (_, __) => await MainWindowViewModel?.Reset();
-            var editGeneralMenuSettingsView = new EditGeneralMenuSettingsView{ DataContext = editGeneralMenuSettingsViewModel };
-            Main.Content = editGeneralMenuSettingsView;
+            SetGeneralMenuSettingsView(sender, e);
         }
 
         private void BtnFieldItem_OnClick(object sender, RoutedEventArgs e)
         {
-            var button = (Button) sender;
-            var subItem = (SubItemEntityModel) button.DataContext;
-            var editGeneralFieldSettingsViewModel = new EditGeneralFieldSettingsViewModel(subItem);
-            editGeneralFieldSettingsViewModel.SubItemUpdated += async (_, __) => await MainWindowViewModel?.Reset();
-            var editGeneralFieldSettingsView = new EditGeneralFieldSettingsView{DataContext = editGeneralFieldSettingsViewModel};
-            Main.Content = editGeneralFieldSettingsView;
+            SetEditGeneralFieldSettingsView(sender, e);
         }
 
         private void AddNewField(object sender, RoutedEventArgs e)
         {
+            SetFieldConfigurationView(sender, e);
+        }
+
+        public void SetMenuConfigurationView(object sender, RoutedEventArgs e)
+        {
+            var generalMenuSettingsViewModel = new GeneralMenuSettingsViewModel();
+            generalMenuSettingsViewModel.NewMenuItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
+            var generalMenuSettingsView = new GeneralMenuSettingsView() { DataContext = generalMenuSettingsViewModel };
+            Main.Content = generalMenuSettingsView;
+        }
+        public void SetGeneralMenuSettingsView(object sender, RoutedEventArgs e)
+        {
+            var editGeneralMenuSettingsViewModel = new EditGeneralMenuSettingsViewModel(GetMenuItemButton(sender, e));
+            editGeneralMenuSettingsViewModel.MenuItemUpdated += async (_, __) => await MainWindowViewModel?.Reset();
+            var editGeneralMenuSettingsView = new EditGeneralMenuSettingsView { DataContext = editGeneralMenuSettingsViewModel };
+            Main.Content = editGeneralMenuSettingsView;
+        }
+        public void SetEditGeneralFieldSettingsView(object sender, RoutedEventArgs e)
+        {
+            var editGeneralFieldSettingsViewModel = new EditGeneralFieldSettingsViewModel(GetFieldItemButton(sender, e));
+            editGeneralFieldSettingsViewModel.SubItemUpdated += async (_, __) => await MainWindowViewModel?.Reset();
+            var editGeneralFieldSettingsView = new EditGeneralFieldSettingsView { DataContext = editGeneralFieldSettingsViewModel };
+            Main.Content = editGeneralFieldSettingsView;
+        }
+        public void SetFieldConfigurationView(object sender, RoutedEventArgs e)
+        {
+            var generalFieldSettingsViewModel = new GeneralFieldSettingsViewModel(GetMenuItemButton(sender, e));
+            generalFieldSettingsViewModel.NewSubItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
+            var generalFieldSettingsView = new GeneralFieldSettingsView { DataContext = generalFieldSettingsViewModel };
+            Main.Content = generalFieldSettingsView;
+        }
+
+        public MenuItemEntityModel GetMenuItemButton(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            var menuItem = (MenuItemEntityModel)button.DataContext;
+            return menuItem;
+        }
+
+        public SubItemEntityModel GetFieldItemButton(object sender, RoutedEventArgs e)
+        {
             var button = (Button) sender;
-            var menuItem = (MenuItemEntityModel) button.DataContext;
-            var fieldConfigurationViewModel = new FieldConfigurationViewModel(menuItem);
-            fieldConfigurationViewModel.NewSubItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
-            var fieldConfigurationView = new FieldConfigurationView { DataContext = fieldConfigurationViewModel };
-            Main.Content = fieldConfigurationView;
+            var fieldItem = (SubItemEntityModel) button.DataContext;
+            return fieldItem;
+        }
+
+        private void ShutdownApplication_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
