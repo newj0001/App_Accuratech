@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Common;
 using Common.Services;
+using Common.ViewModel;
 using UI_Mobile.Annotations;
 using Xamarin.Forms;
 
@@ -20,8 +21,8 @@ namespace UI_Mobile.ViewModels
         private MenuItemEntityModel _menuItemEntityModel;
         private ICollection<MenuItemEntityModel> _menuItemsCollection;
         private ICollection<SubItemEntityModel> _subItemsCollection;
-        MenuItemDataStore menuItemDataStore = new MenuItemDataStore();
-        FieldItemDataStore fieldItemDataStore = new FieldItemDataStore();
+        private readonly MenuItemDataStore _menuItemDataStore = new MenuItemDataStore();
+        private readonly FieldItemDataStore _fieldItemDataStore = new FieldItemDataStore();
 
 
         public ObservableCollection<MenuItemEntityModel> Items
@@ -76,8 +77,8 @@ namespace UI_Mobile.ViewModels
         }
         public async Task Reset()
         {
-            MenuItemsCollection = await menuItemDataStore.GetItemsAsync();
-            SubItemsCollection = await fieldItemDataStore.GetItemsAsync();
+            MenuItemsCollection = await _menuItemDataStore.GetItemsAsync();
+            SubItemsCollection = await _fieldItemDataStore.GetItemsAsync();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

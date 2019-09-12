@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Common;
 using Common.Services;
+using Common.ViewModel;
+using Xamarin.Forms;
 
 namespace UI_Mobile.ViewModels
 {
@@ -48,8 +50,56 @@ namespace UI_Mobile.ViewModels
             _datastore = new RegistrationValueDataStore();
         }
 
-        public async Task AddRegistrationValue(string fieldValue)
+        private static bool ValidateNumericField(SubItemEntityModel subItemEntity)
         {
+            switch (subItemEntity.NumericField.ToUpper())
+            {
+                case "YES":
+                    var res = int.TryParse(subItemEntity.FieldValue, out var _);
+                    return res;
+
+                default:
+                    return true;
+            }
+        }
+
+        //private static bool ValidateLength(SubItemEntityModel subItemEntity)
+        //{
+        //    var min = int.MinValue;
+        //    var max = int.MaxValue;
+
+        //    if (min == subItemEntity.FieldMinLength)
+        //    {
+        //        switch (subItemEntity.FieldMinLength.ToString())
+        //        {
+        //            case "YES":
+                    
+        //                return res;
+        //            default:
+        //                return true;
+
+        //        }
+        //    }
+        //}
+
+        public async Task AddRegistrationValue(SubItemEntityModel subItemEntity)
+        {
+            if (subItemEntity == null) return;
+
+            //if (!ValidateLength(subItemEntity))
+            //{
+            //    // feedback
+            //    return;
+            //}
+
+            if (!ValidateNumericField(subItemEntity))
+            {
+                //feedback til bruger
+                return;
+            }
+
+            var fieldValue = subItemEntity.FieldValue;
+
             ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
             var subItem = new RegistrationValueModel()
             {
@@ -66,7 +116,6 @@ namespace UI_Mobile.ViewModels
         {
             MenuItemEntityModel = menuItemEntityModel;
         }
-
         public async void Reset()
         {
             SubItemsCollection = await fieldItemDataStore.GetItemsAsync();

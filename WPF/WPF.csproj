@@ -78,10 +78,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="ViewModel\EditGeneralFieldSettingsViewModel.cs" />
-    <Compile Include="ViewModel\EditGeneralMenuSettingsViewModel.cs" />
-    <Compile Include="ViewModel\GeneralFieldSettingsViewModel.cs" />
-    <Compile Include="ViewModel\GeneralMenuSettingsViewModel.cs" />
     <Compile Include="View\EditGeneralFieldSettingsView.xaml.cs">
       <DependentUpon>EditGeneralFieldSettingsView.xaml</DependentUpon>
     </Compile>
@@ -156,5 +152,6 @@
       <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

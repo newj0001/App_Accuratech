@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
-using Common;
-using EO.Wpf;
 
-namespace WPF.ViewModel
+namespace Common.ViewModel
 {
     public class EditGeneralMenuSettingsViewModel : INotifyPropertyChanged
     {
@@ -16,7 +11,7 @@ namespace WPF.ViewModel
         private readonly MenuItemEntityModel _parentMenuItem;
 
         public string MenuItemTitle { get; set; }
-        public IsMenuEnabled SelectedElementInIsMenuEnabled { get; set; }
+        public bool SelectedElementInIsMenuEnabled { get; set; }
         public EditGeneralMenuSettingsViewModel(MenuItemEntityModel menuItem)
         {
             _parentMenuItem = menuItem;

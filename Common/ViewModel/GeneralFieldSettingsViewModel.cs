@@ -6,37 +6,36 @@ using System.Threading.Tasks;
 using Common;
 using Common.Services;
 
-namespace WPF.ViewModel
+namespace Common.ViewModel
 {
+    #region Enums
     public enum FieldEnabled
     {
         Yes,
         No
     }
-
     public enum NumericField
     {
         Yes,
         No
     }
-
     public enum KeyboardInput
     {
         Enabled,
         Disabled
     }
-
     public enum EmptyField
     {
         Yes,
         No
     }
-
     public enum KeepFieldValue
     {
         Yes,
         No
     }
+    #endregion Enums
+
     public class GeneralFieldSettingsViewModel
     {
        private readonly FieldItemDataStore  _fieldItemDataStore = new FieldItemDataStore();

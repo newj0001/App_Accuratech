@@ -82,6 +82,10 @@
     <Compile Include="Services\IDataStore.cs" />
     <Compile Include="Services\RegistrationDataStore.cs" />
     <Compile Include="Services\RegistrationValueDataStore.cs" />
+    <Compile Include="ViewModel\EditGeneralFieldSettingsViewModel.cs" />
+    <Compile Include="ViewModel\EditGeneralMenuSettingsViewModel.cs" />
+    <Compile Include="ViewModel\GeneralFieldSettingsViewModel.cs" />
+    <Compile Include="ViewModel\GeneralMenuSettingsViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\SubItemEntityModel.cs" />

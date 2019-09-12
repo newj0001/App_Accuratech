@@ -51,6 +51,24 @@ namespace Common
 
         public ICollection<RegistrationModel> Registrations { get; set; }
 
+        public bool IsMenuEnabledAsBool
+        {
+            get
+            {
+                switch (IsMenuEnabled)
+                {
+                    case "Disabled":
+                        return false;
+                        
+                    case "Enabled":
+                        return true;
+                        
+                    default: return false;
+                }
+            }
+            private set { }
+        }
+
         public string IsMenuEnabled { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

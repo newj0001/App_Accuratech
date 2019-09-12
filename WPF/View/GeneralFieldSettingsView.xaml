@@ -6,40 +6,41 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF.View"
              xmlns:local1="clr-namespace:WPF"
-             xmlns:viewModel="clr-namespace:WPF.ViewModel"
+
+             xmlns:viewModel1="clr-namespace:Common.ViewModel;assembly=Common"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             d:DataContext="{d:DesignInstance viewModel:GeneralFieldSettingsViewModel}">
+             d:DataContext="{d:DesignInstance viewModel1:GeneralFieldSettingsViewModel}">
     
     <UserControl.Resources>
         <ObjectDataProvider x:Key="FieldEnabled" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="viewModel:FieldEnabled"/>
+                <x:Type TypeName="viewModel1:FieldEnabled"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider x:Key="NumericField" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="viewModel:NumericField"/>
+                <x:Type TypeName="viewModel1:NumericField"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider x:Key="KeyboardInput" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-               <x:Type TypeName="viewModel:KeyboardInput"/>
+               <x:Type TypeName="viewModel1:KeyboardInput"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider x:Key="EmptyField" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="viewModel:EmptyField"></x:Type>
+                <x:Type TypeName="viewModel1:EmptyField"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider x:Key="KeepFieldValue" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="viewModel:KeepFieldValue"></x:Type>
+                <x:Type TypeName="viewModel1:KeepFieldValue"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </UserControl.Resources>

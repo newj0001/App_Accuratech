@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Common;
 
-namespace WPF.ViewModel
+namespace Common.ViewModel
 {
     public enum IsMenuEnabled
     {
@@ -14,6 +10,7 @@ namespace WPF.ViewModel
     }
     public class GeneralMenuSettingsViewModel
     {
+
         private readonly MenuItemDataStore _menuItemDataStore = new MenuItemDataStore();
 
         public string MenuItemTitle { get; set; }

@@ -6,15 +6,19 @@
              mc:Ignorable="d"
              Title="App"
              x:Class="UI_Mobile.Views.MenuItemsView">
+    
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding MenuItemsCollection}"
+            <ListView x:Name="MenuListView"
+                      ItemsSource="{Binding MenuItemsCollection}"
+                      SelectionMode="None"
                       VerticalOptions="FillAndExpand"
                       IsPullToRefreshEnabled="True"
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True"
                       SeparatorVisibility="None"
-                      ItemTapped="OnItemSelected">
+                      ItemTapped="OnItemSelected"
+                      >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -33,6 +37,7 @@
                                        FontSize="22"
                                        LineBreakMode="NoWrap"
                                        Text="{Binding Header}"
+                                       IsEnabled="{Binding IsMenuEnabledAsBool }"
                                        Style="{DynamicResource ListItemTextStyle}"
                                        VerticalOptions="End"/>
                             </Grid>

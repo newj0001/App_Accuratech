@@ -29,8 +29,10 @@ namespace UI_Mobile.Views
             {
                 SubItemEntityModel subItemEntity = (SubItemEntityModel)item;
                 var fieldItemViewModel = new FieldItemsViewModel(subItemEntity);
-                await fieldItemViewModel.AddRegistrationValue((item as SubItemEntityModel)?.FieldValue);
+                await fieldItemViewModel.AddRegistrationValue(subItemEntity);
             }
         }
+
+        
     }
 }

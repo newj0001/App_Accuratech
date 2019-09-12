@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Common;
@@ -21,12 +22,22 @@ namespace UI_Mobile.Views
             menuItemsViewModel.Reset();
             BindingContext = menuItemsViewModel;
         }
-        
+
         private async void OnItemSelected(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as MenuItemEntityModel;
+            if (!selectedItem.IsMenuEnabledAsBool)
+            {
+                return;
+            }
+            
             await Navigation.PushAsync(new FieldItemsView(selectedItem));
             ((ListView) sender).SelectedItem = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            
         }
     }
 }

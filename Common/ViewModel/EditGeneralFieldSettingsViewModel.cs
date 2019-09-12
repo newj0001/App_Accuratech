@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
-using Common;
 using Common.Services;
-using EO.Internal;
-using EO.Wpf;
 
-namespace WPF.ViewModel
+namespace Common.ViewModel
 {
     public class EditGeneralFieldSettingsViewModel : INotifyPropertyChanged
     {

@@ -30,12 +30,13 @@
                                    <ColumnDefinition Width="Auto"/>
                                    <ColumnDefinition Width="*"/>
                                </Grid.ColumnDefinitions>
-                               <Entry Grid.Column="1"
+                               <Entry x:Name="Entry" Grid.Column="1"
                                        VerticalOptions="Center" 
                                        Placeholder="{Binding Name}" 
                                        Text="{Binding FieldValue}" 
                                        FontSize="22" 
                                        IsSpellCheckEnabled="True"
+
                                        />
                             </Grid>
                        </ViewCell>

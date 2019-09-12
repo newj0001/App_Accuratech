@@ -19,7 +19,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Common.ViewModel;
 using WPF.View;
-using WPF.ViewModel;
 
 namespace WPF
 {

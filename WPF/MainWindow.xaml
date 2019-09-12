@@ -10,8 +10,9 @@
         mc:Ignorable="d" Height="600" Width="1080"
         x:Name="Window"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" 
-        d:DataContext="{d:DesignInstance viewModel:MainWindowViewModel}" WindowStyle="None">
+        WindowState="Maximized"
+        WindowStyle="None"
+        d:DataContext="{d:DesignInstance viewModel:MainWindowViewModel}" >
     
     <Grid Background="GhostWhite">
         <Grid.ColumnDefinitions>
