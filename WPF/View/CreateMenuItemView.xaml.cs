@@ -10,32 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Common.ViewModel;
+using WPF.ViewModels;
 
 namespace WPF.View
 {
     /// <summary>
-    /// Interaction logic for GeneralMenuSettingsView.xaml
+    /// Interaction logic for CreateMenuItemView.xaml
     /// </summary>
-    public partial class GeneralMenuSettingsView : UserControl
+    public partial class CreateMenuItemView : Window
     {
-        public GeneralMenuSettingsView()
+        public CreateMenuItemView()
         {
             InitializeComponent();
         }
 
-        public GeneralMenuSettingsViewModel GeneralMenuSettingsViewModel => DataContext as GeneralMenuSettingsViewModel;
+        public CreateMenuItemViewModel CreateMenuItemViewModel => DataContext as CreateMenuItemViewModel;
 
         private async void BtnSaveMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            await GeneralMenuSettingsViewModel.AddMenuItem();
+            await CreateMenuItemViewModel.AddMenuItem();
         }
 
         private void BtnCancelMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Close();
         }
     }
 }

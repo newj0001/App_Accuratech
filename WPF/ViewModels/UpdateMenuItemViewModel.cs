@@ -1,13 +1,16 @@
-﻿using Common.Services;
+﻿using Common;
+using Common.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.ViewModel
+namespace WPF.ViewModels
 {
-    public class EditGeneralMenuSettingsViewModel : INotifyPropertyChanged
+    public class UpdateMenuItemViewModel : INotifyPropertyChanged
     {
 
         MenuItemDataStore _menuItemDataStore = new MenuItemDataStore();
@@ -20,7 +23,7 @@ namespace Common.ViewModel
 
         public string MenuItemTitle { get; set; }
         public bool SelectedElementInIsMenuEnabled { get; set; }
-        public EditGeneralMenuSettingsViewModel(MenuItemEntityModel menuItem)
+        public UpdateMenuItemViewModel(MenuItemEntityModel menuItem)
         {
             _parentMenuItem = menuItem;
         }

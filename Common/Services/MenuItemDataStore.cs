@@ -12,8 +12,8 @@ namespace Common
 {
     public class MenuItemDataStore : IDataStore<MenuItemEntityModel>
     {
-        public static string urlMenuItem = "http://172.30.1.106:44333/api/menuitem/";
-        public static string urlFieldItem = "http://172.30.1.106:44333/api/fielditem/";
+        public static string urlMenuItem = "http://172.30.1.122:44333/api/menuitem/";
+        public static string urlFieldItem = "http://172.30.1.122:44333/api/fielditem/";
 
         private readonly HttpClient _apiClient;
 

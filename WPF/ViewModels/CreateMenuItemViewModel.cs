@@ -1,21 +1,22 @@
-﻿using System;
+﻿using Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.ViewModel
+namespace WPF.ViewModels
 {
     public enum IsMenuEnabled
     {
         Enabled,
         Disabled
     }
-    public class GeneralMenuSettingsViewModel
+    public class CreateMenuItemViewModel
     {
-
         private readonly MenuItemDataStore _menuItemDataStore = new MenuItemDataStore();
-
         public string MenuItemTitle { get; set; }
         public IsMenuEnabled SelectedElementInIsMenuEnabled { get; set; }
-
         public async Task AddMenuItem()
         {
             var menuItem = new MenuItemEntityModel

@@ -31,7 +31,8 @@ namespace WPF.View
 
         private async void BtnUpdateMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            await EditGeneralMenuSettingsViewModel.Update();
+
+            //await EditGeneralMenuSettingsViewModel.Update();
         }
     }
 }

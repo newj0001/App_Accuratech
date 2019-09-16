@@ -73,7 +73,7 @@ namespace UI_Mobile.ViewModels
         //        switch (subItemEntity.FieldMinLength.ToString())
         //        {
         //            case "YES":
-                    
+
         //                return res;
         //            default:
         //                return true;
@@ -98,7 +98,9 @@ namespace UI_Mobile.ViewModels
                 return;
             }
 
+
             var fieldValue = subItemEntity.FieldValue;
+            fieldValue = string.Empty;
 
             ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
             var subItem = new RegistrationValueModel()

@@ -17,7 +17,8 @@
                      HasUnevenRows="True"
                      IsPullToRefreshEnabled="True"
                      CachingStrategy="RecycleElement"
-                     x:Name="SubItemsListView">
+                     x:Name="SubItemsListView"
+                     SelectedItem="OnItemSelected">
                 <ListView.ItemTemplate>
                    <DataTemplate>
                        <ViewCell>
@@ -30,13 +31,15 @@
                                    <ColumnDefinition Width="Auto"/>
                                    <ColumnDefinition Width="*"/>
                                </Grid.ColumnDefinitions>
-                               <Entry x:Name="Entry" Grid.Column="1"
+                                <Label Text="{Binding Name}"/>
+                                <Entry 
+        
+                                       Grid.Column="1"
                                        VerticalOptions="Center" 
-                                       Placeholder="{Binding Name}" 
-                                       Text="{Binding FieldValue}" 
+                                       Placeholder="{Binding FieldValue}"
+                                       Text="{Binding FieldValue}"
                                        FontSize="22" 
                                        IsSpellCheckEnabled="True"
-
                                        />
                             </Grid>
                        </ViewCell>

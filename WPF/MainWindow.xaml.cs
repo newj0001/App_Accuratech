@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Common.ViewModel;
 using WPF.View;
+using WPF.ViewModels;
 
 namespace WPF
 {
@@ -45,7 +46,7 @@ namespace WPF
 
         private void BtnAddMenu_Click(object sender, RoutedEventArgs e)
         {
-            SetMenuConfigurationView(sender, e);
+            OpenCreateMenuItemView(sender, e);
         }
 
         private void BtnMenuItem_OnClick(object sender, RoutedEventArgs e)
@@ -63,13 +64,14 @@ namespace WPF
             SetFieldConfigurationView(sender, e);
         }
 
-        public void SetMenuConfigurationView(object sender, RoutedEventArgs e)
+        public void OpenCreateMenuItemView(object sender, RoutedEventArgs e)
         {
-            var generalMenuSettingsViewModel = new GeneralMenuSettingsViewModel();
-            generalMenuSettingsViewModel.NewMenuItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
-            var generalMenuSettingsView = new GeneralMenuSettingsView() { DataContext = generalMenuSettingsViewModel };
-            Main.Content = generalMenuSettingsView;
+            var createMenuItemViewModel = new CreateMenuItemViewModel();
+            createMenuItemViewModel.NewMenuItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
+            var createMenuItemView = new CreateMenuItemView() { DataContext = createMenuItemViewModel };
+            createMenuItemView.Show();
         }
+
         public void SetGeneralMenuSettingsView(object sender, RoutedEventArgs e)
         {
             var editGeneralMenuSettingsViewModel = new EditGeneralMenuSettingsViewModel(GetMenuItemButton(sender, e));

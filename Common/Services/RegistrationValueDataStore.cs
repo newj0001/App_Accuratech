@@ -10,7 +10,7 @@ namespace Common.Services
 {
     public class RegistrationValueDataStore : IDataStore<RegistrationValueModel>
     {
-        public static string urlRegistrationValues = "http://172.30.1.106:44333/api/registrationvalues";
+        public static string urlRegistrationValues = "http://172.30.1.122:44333/api/registrationvalues";
 
         private readonly HttpClient _apiClient;
         public RegistrationValueDataStore()

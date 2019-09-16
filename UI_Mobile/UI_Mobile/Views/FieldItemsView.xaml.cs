@@ -21,7 +21,7 @@ namespace UI_Mobile.Views
             fieldItemsViewModel.Reset(menuItemEntityModel);
             BindingContext = fieldItemsViewModel;
         }
-
+        FieldItemsViewModel FieldItemsViewModel => BindingContext as FieldItemsViewModel;
         private async void SaveClicked(object sender, EventArgs e)
         {
             var subItems = ((ListView)SubItemsListView).ItemsSource;
@@ -32,7 +32,5 @@ namespace UI_Mobile.Views
                 await fieldItemViewModel.AddRegistrationValue(subItemEntity);
             }
         }
-
-        
     }
 }

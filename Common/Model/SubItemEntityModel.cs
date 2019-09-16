@@ -26,7 +26,7 @@ namespace Common
         }
 
         public int? MenuItemId { get; set; }
-        public string FieldValue { get; set; }
+        public string FieldValue { get; set; } = string.Empty;
         public string FieldEnabled { get; set; }
         public string NumericField { get; set; }
         public int FieldMinLength { get; set; }
