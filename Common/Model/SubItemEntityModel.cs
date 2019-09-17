@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,6 +12,10 @@ namespace Common
 {
     public class SubItemEntityModel : INotifyPropertyChanged
     {
+        public SubItemEntityModel()
+        {
+            FieldValue = string.Empty;
+        }
         public int Id { get; set; }
 
         private string _name;
@@ -26,7 +31,22 @@ namespace Common
         }
 
         public int? MenuItemId { get; set; }
-        public string FieldValue { get; set; } = string.Empty;
+        private string _fieldValue = string.Empty;
+
+        [Required(ErrorMessage = "Field value cannot be empty")]
+        public string FieldValue
+        {
+            get => _fieldValue;
+            set
+            {
+                if (_fieldValue == value)
+                    return;
+
+                _fieldValue = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public string FieldEnabled { get; set; }
         public string NumericField { get; set; }
         public int FieldMinLength { get; set; }

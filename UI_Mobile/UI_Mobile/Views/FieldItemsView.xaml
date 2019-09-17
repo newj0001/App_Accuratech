@@ -31,16 +31,16 @@
                                    <ColumnDefinition Width="Auto"/>
                                    <ColumnDefinition Width="*"/>
                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Name}"/>
+
                                 <Entry 
-        
                                        Grid.Column="1"
-                                       VerticalOptions="Center" 
-                                       Placeholder="{Binding FieldValue}"
+                                       VerticalOptions="Center"
+                                                                           
                                        Text="{Binding FieldValue}"
                                        FontSize="22" 
                                        IsSpellCheckEnabled="True"
                                        />
+                                <Label Text="{Binding DisplayFeedback}"/>
                             </Grid>
                        </ViewCell>
                    </DataTemplate>

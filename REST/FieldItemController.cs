@@ -39,8 +39,6 @@ namespace REST
             }
         }
 
-
-
         [System.Web.Http.HttpPost]
         public HttpResponseMessage Post([FromBody] SubItemEntityModel subItemEntityModel)
         {

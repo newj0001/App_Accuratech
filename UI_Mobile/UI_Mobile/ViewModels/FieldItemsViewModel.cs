@@ -19,6 +19,7 @@ namespace UI_Mobile.ViewModels
         private ICollection<SubItemEntityModel> _subItemsCollection;
         FieldItemDataStore fieldItemDataStore = new FieldItemDataStore();
 
+
         public ICollection<SubItemEntityModel> SubItemsCollection
         {
             get => _subItemsCollection;
@@ -63,34 +64,34 @@ namespace UI_Mobile.ViewModels
             }
         }
 
-        //private static bool ValidateLength(SubItemEntityModel subItemEntity)
-        //{
-        //    var min = int.MinValue;
-        //    var max = int.MaxValue;
+        private static bool ValidateLength(SubItemEntityModel subItemEntity)
+        {
+            int minlen = subItemEntity.FieldMinLength;
+            int maxlen = subItemEntity.FieldMaxLength;
 
-        //    if (min == subItemEntity.FieldMinLength)
-        //    {
-        //        switch (subItemEntity.FieldMinLength.ToString())
-        //        {
-        //            case "YES":
+            var minValid = subItemEntity.FieldMinLength <= minlen;
+            var maxValid = true;
 
-        //                return res;
-        //            default:
-        //                return true;
+            if (maxlen > 0)
+            {
+                maxValid = subItemEntity.FieldMaxLength >= maxlen;
+            }
 
-        //        }
-        //    }
-        //}
+            return minValid && maxValid;
+        }
+
+
 
         public async Task AddRegistrationValue(SubItemEntityModel subItemEntity)
         {
+
             if (subItemEntity == null) return;
 
-            //if (!ValidateLength(subItemEntity))
-            //{
-            //    // feedback
-            //    return;
-            //}
+            if (!ValidateLength(subItemEntity))
+            {
+                // feedback
+                return;
+            }
 
             if (!ValidateNumericField(subItemEntity))
             {
@@ -98,16 +99,14 @@ namespace UI_Mobile.ViewModels
                 return;
             }
 
-
             var fieldValue = subItemEntity.FieldValue;
-            fieldValue = string.Empty;
 
             ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
             var subItem = new RegistrationValueModel()
             {
                 SubItemId = _parentSubItem.Id,
                 SubItemEntityModel = _parentSubItem,
-                Value = fieldValue
+                Value = _parentSubItem.FieldValue
             }; 
             registrationValues.Add(subItem);
             await _datastore.AddItemAsync(registrationValues);
