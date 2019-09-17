@@ -31,7 +31,7 @@ namespace Common.ViewModel
             {
                 Name = SubItemTitle,
                 FieldValue = SubItemTitle,
-                FieldEnabled = SelectedElementInFieldEnabled.ToString(),
+                IsFieldEnabled = SelectedElementInFieldEnabled.ToString(),
                 NumericField = SelectedElementInNumericField.ToString(),
                 FieldMinLength = FieldMinLength,
                 FieldMaxLength = FieldMaxLength,

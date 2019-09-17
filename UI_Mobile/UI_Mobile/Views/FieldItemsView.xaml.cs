@@ -21,7 +21,15 @@ namespace UI_Mobile.Views
             fieldItemsViewModel.Reset(menuItemEntityModel);
             BindingContext = fieldItemsViewModel;
         }
-        FieldItemsViewModel FieldItemsViewModel => BindingContext as FieldItemsViewModel;
+       
+        private async void OnItemSelected(object sender, ItemTappedEventArgs e)
+        {
+            var selectedItem = e.Item as SubItemEntityModel;
+            if (!selectedItem.IsFieldEnabledAsBool)
+            {
+                return;
+            }
+        }
         private async void SaveClicked(object sender, EventArgs e)
         {
             var subItems = ((ListView)SubItemsListView).ItemsSource;
@@ -29,6 +37,7 @@ namespace UI_Mobile.Views
             {
                 SubItemEntityModel subItemEntity = (SubItemEntityModel)item;
                 var fieldItemViewModel = new FieldItemsViewModel(subItemEntity);
+
                 await fieldItemViewModel.AddRegistrationValue(subItemEntity);
             }
         }

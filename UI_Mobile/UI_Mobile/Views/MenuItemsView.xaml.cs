@@ -34,10 +34,5 @@ namespace UI_Mobile.Views
             await Navigation.PushAsync(new FieldItemsView(selectedItem));
             ((ListView) sender).SelectedItem = null;
         }
-
-        protected override void OnAppearing()
-        {
-            
-        }
     }
 }

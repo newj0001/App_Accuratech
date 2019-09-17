@@ -12,10 +12,6 @@ namespace Common
 {
     public class SubItemEntityModel : INotifyPropertyChanged
     {
-        public SubItemEntityModel()
-        {
-            FieldValue = string.Empty;
-        }
         public int Id { get; set; }
 
         private string _name;
@@ -30,24 +26,27 @@ namespace Common
             }
         }
 
-        public int? MenuItemId { get; set; }
-        private string _fieldValue = string.Empty;
-
-        [Required(ErrorMessage = "Field value cannot be empty")]
-        public string FieldValue
+        public bool IsFieldEnabledAsBool
         {
-            get => _fieldValue;
-            set
+            get
             {
-                if (_fieldValue == value)
-                    return;
+                switch (IsFieldEnabled)
+                {
+                    case "Disabled":
+                        return false;
 
-                _fieldValue = value;
-                NotifyPropertyChanged();
+                    case "Enabled":
+                        return true;
+
+                    default: return false;
+                }
             }
+            private set { }
         }
 
-        public string FieldEnabled { get; set; }
+        public int? MenuItemId { get; set; }
+        public string FieldValue { get; set; }
+        public string IsFieldEnabled { get; set; }
         public string NumericField { get; set; }
         public int FieldMinLength { get; set; }
         public int FieldMaxLength { get; set; }

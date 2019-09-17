@@ -80,11 +80,8 @@ namespace UI_Mobile.ViewModels
             return minValid && maxValid;
         }
 
-
-
         public async Task AddRegistrationValue(SubItemEntityModel subItemEntity)
         {
-
             if (subItemEntity == null) return;
 
             if (!ValidateLength(subItemEntity))
