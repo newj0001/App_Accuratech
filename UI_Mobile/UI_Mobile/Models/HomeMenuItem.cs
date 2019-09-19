@@ -7,7 +7,7 @@ namespace UI_Mobile.Models
     public enum MenuItemType
     {
         Browse,
-        About
+        Exit
     }
     public class HomeMenuItem
     {

@@ -14,7 +14,7 @@ using UI_Mobile.ViewModels;
 
 namespace UI_Mobile.Views
 {
-    public partial class BarcodeReaderView : ContentPage
+    public partial class BarcodeReaderPage : ContentPage
     {
         private readonly RegistrationValueDataStore _registrationValueDataStore;
         private readonly SubItemEntityModel _parentSubItem;
@@ -29,7 +29,7 @@ namespace UI_Mobile.Views
         private bool mSoftContinuousScanStarted = false;
         private bool mSoftOneShotScanStarted = false;
         private string deviceModel = null;
-        public BarcodeReaderView(SubItemEntityModel paramSubItem)
+        public BarcodeReaderPage(SubItemEntityModel paramSubItem)
         {
             InitializeComponent();
             PopulateReaderPicker();

@@ -12,7 +12,7 @@ namespace UI_Mobile
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new MenuItemsView());
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

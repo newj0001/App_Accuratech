@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common;
-using Common.ViewModel;
 using UI_Mobile.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,19 +11,21 @@ using Xamarin.Forms.Xaml;
 namespace UI_Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FieldItemsView : ContentPage
+    public partial class MainPageDetail : ContentPage
     {
-        public FieldItemsView(MenuItemEntityModel menuItemEntityModel)
+        public MainPageDetail(MenuItemEntityModel menuItemEntityModel)
         {
             InitializeComponent();
+            ClearText(menuItemEntityModel);
             var fieldItemsViewModel = new FieldItemsViewModel();
             fieldItemsViewModel.Reset(menuItemEntityModel);
             BindingContext = fieldItemsViewModel;
         }
-       
+
         private async void OnItemSelected(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as SubItemEntityModel;
+
             if (!selectedItem.IsFieldEnabledAsBool)
             {
                 return;
@@ -48,9 +49,17 @@ namespace UI_Mobile.Views
             foreach (var item in subItems)
             {
                 SubItemEntityModel subItemEntity = (SubItemEntityModel)item;
-                await Navigation.PushAsync(new BarcodeReaderView(subItemEntity));
+                await Navigation.PushAsync(new BarcodeReaderPage(subItemEntity));
             }
-            
+
+        }
+
+        public void ClearText(MenuItemEntityModel menuItemEntityModel)
+        {
+            foreach (var item in menuItemEntityModel.SubItems)
+            {
+                item.FieldValue = "";
+            }
         }
     }
 }

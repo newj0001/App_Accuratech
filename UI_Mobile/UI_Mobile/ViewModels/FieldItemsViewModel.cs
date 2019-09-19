@@ -13,6 +13,7 @@ namespace UI_Mobile.ViewModels
 {
     public class FieldItemsViewModel : INotifyPropertyChanged
     {
+        public SubItemEntityModel Item { get; set; }
         private readonly RegistrationValueDataStore _datastore;
         private SubItemEntityModel _parentSubItem;
         private MenuItemEntityModel _menuItemEntityModel;
@@ -48,6 +49,7 @@ namespace UI_Mobile.ViewModels
 
         public FieldItemsViewModel()
         {
+            
             _datastore = new RegistrationValueDataStore();
         }
 
@@ -96,14 +98,15 @@ namespace UI_Mobile.ViewModels
                 return;
             }
 
-            var fieldValue = subItemEntity.FieldValue;
+            var fieldValue = _parentSubItem.FieldValue;
+
 
             ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
             var subItem = new RegistrationValueModel()
             {
                 SubItemId = _parentSubItem.Id,
                 SubItemEntityModel = _parentSubItem,
-                Value = _parentSubItem.FieldValue
+                Value = fieldValue
             }; 
             registrationValues.Add(subItem);
             await _datastore.AddItemAsync(registrationValues);

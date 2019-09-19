@@ -4,16 +4,17 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:UI_Mobile.Behaviors"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-             x:Class="UI_Mobile.Views.FieldItemsView">
+             x:Class="UI_Mobile.Views.MainPageDetail"
+             Title="Fields">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"/>
         <ToolbarItem Text="Save" Clicked="SaveClicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <ListView ItemsSource="{Binding Path=MenuItemEntityModel.SubItems}"
+        <ScrollView>
+            <StackLayout Spacing="0" Padding="10" BackgroundColor="GhostWhite">
+                <ListView ItemsSource="{Binding Path=MenuItemEntityModel.SubItems}"
                      SelectionMode="None"
                      VerticalOptions="FillAndExpand"
                      HasUnevenRows="True"
@@ -21,49 +22,38 @@
                      CachingStrategy="RecycleElement"
                      x:Name="SubItemsListView"
                      SelectedItem="OnItemSelected">
-                <ListView.ItemTemplate>
-                   <DataTemplate>
-                       <ViewCell>
-                           <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
-                               <Grid.RowDefinitions>
-                                   <RowDefinition Height="Auto"/>
-                                   <RowDefinition Height="*"/>
-                               </Grid.RowDefinitions>
-                               <Grid.ColumnDefinitions>
-                                   <ColumnDefinition Width="Auto"/>
-                                   <ColumnDefinition Width="*"/>
-
-                                </Grid.ColumnDefinitions>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Name}" IsEnabled="{Binding IsFieldEnabledAsBool}"/>
+                                    <Label FontSize="14" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100" Text="{Binding Name}" IsEnabled="{Binding IsFieldEnabledAsBool}"/>
                                     <Entry 
-                                       Grid.Column="1"
+                                       HorizontalOptions="FillAndExpand"
+                                       TextColor="Black" 
+                                       BackgroundColor="GhostWhite"
                                        Placeholder="Enter value"                                     
                                        Text="{Binding FieldValue}"
                                        FontSize="16" 
-                                       WidthRequest="225"
                                        IsSpellCheckEnabled="True">
                                         <Entry.Behaviors>
                                             <local:NumberValidationBehavior/>
                                         </Entry.Behaviors>
                                     </Entry>
-                                    <StackLayout Margin="0, 0, 0, 0">
+                                    <StackLayout HorizontalOptions="Start">
                                         <Button 
-                                        Grid.Column="1"
                                         Text="SCAN" 
                                         x:Name="BarcodeReaderButton" 
                                         HorizontalOptions="End" 
                                         VerticalOptions="End"
-
                                         Padding="20"
                                         Clicked="BarcodeReaderButton_Clicked"/>
                                     </StackLayout>
                                 </StackLayout>
-                            </Grid>
-                       </ViewCell>
-                   </DataTemplate>
-               </ListView.ItemTemplate>
-           </ListView>
-        </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

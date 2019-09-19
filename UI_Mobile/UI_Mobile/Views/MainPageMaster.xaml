@@ -4,9 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="App"
-             x:Class="UI_Mobile.Views.MenuItemsView">
-    
+             x:Class="UI_Mobile.Views.MainPageMaster"
+             Title="Browse">
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="MenuListView"

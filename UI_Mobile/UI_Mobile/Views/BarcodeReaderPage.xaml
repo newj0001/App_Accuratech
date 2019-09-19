@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="UI_Mobile.Views.BarcodeReaderView">
+             x:Class="UI_Mobile.Views.BarcodeReaderPage"
+             Title="Barcode Reader">
 
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"
@@ -20,9 +21,6 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-
-            <!--display title-->
-            <Label Grid.Row="0" Text="Barcode Reader" FontSize="22" TextColor="Black" HorizontalTextAlignment="Center" VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
 
             <Grid Grid.Row="1">
                 <Grid Margin="0,0,0,10">

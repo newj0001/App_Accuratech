@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Common;
-using Common.ViewModel;
 using UI_Mobile.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,11 +14,14 @@ using Xamarin.Forms.Xaml;
 namespace UI_Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuItemsView : ContentPage
+    public partial class MainPageMaster : ContentPage
     {
-        public MenuItemsView()
+        public ListView ListView;
+
+        public MainPageMaster()
         {
             InitializeComponent();
+
             var menuItemsViewModel = new MenuItemsViewModel();
             menuItemsViewModel.Reset();
             BindingContext = menuItemsViewModel;
@@ -30,9 +34,9 @@ namespace UI_Mobile.Views
             {
                 return;
             }
-            
-            await Navigation.PushAsync(new FieldItemsView(selectedItem));
-            ((ListView) sender).SelectedItem = null;
+
+            await Navigation.PushAsync(new MainPageDetail(selectedItem));
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }
