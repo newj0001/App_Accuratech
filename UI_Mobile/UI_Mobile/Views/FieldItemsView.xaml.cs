@@ -44,7 +44,13 @@ namespace UI_Mobile.Views
 
         private async void BarcodeReaderButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BarcodeReaderView());
+            var subItems = ((ListView)SubItemsListView).ItemsSource;
+            foreach (var item in subItems)
+            {
+                SubItemEntityModel subItemEntity = (SubItemEntityModel)item;
+                await Navigation.PushAsync(new BarcodeReaderView(subItemEntity));
+            }
+            
         }
     }
 }

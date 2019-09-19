@@ -9,12 +9,17 @@ using Xamarin.Essentials;
 using System.Threading;
 using Honeywell.AIDC.CrossPlatform;
 using Common;
-
+using Common.Services;
+using UI_Mobile.ViewModels;
 
 namespace UI_Mobile.Views
 {
     public partial class BarcodeReaderView : ContentPage
     {
+        private readonly RegistrationValueDataStore _registrationValueDataStore;
+        private readonly SubItemEntityModel _parentSubItem;
+
+
         private const string DEFAULT_READER_KEY = "default";
         private Dictionary<string, BarcodeReader> mBarcodeReaders;
         private bool mContinuousScan = false, mOpenReader = false;
@@ -24,7 +29,7 @@ namespace UI_Mobile.Views
         private bool mSoftContinuousScanStarted = false;
         private bool mSoftOneShotScanStarted = false;
         private string deviceModel = null;
-        public BarcodeReaderView()
+        public BarcodeReaderView(SubItemEntityModel paramSubItem)
         {
             InitializeComponent();
             PopulateReaderPicker();
@@ -37,6 +42,8 @@ namespace UI_Mobile.Views
                 mContinuousSwitch.IsEnabled = false;
                 mContinuousSwitch.IsToggled = false;
             }
+            _parentSubItem = paramSubItem;
+            _registrationValueDataStore = new RegistrationValueDataStore();
         }
 
         #region Manage UI Controls
@@ -68,11 +75,26 @@ namespace UI_Mobile.Views
             mReaderPicker.SelectedIndex = 0;
         }
 
-        private void UpdateBarcodeInfo(string data, string symbology, DateTime timestamp)
+        
+        private async void UpdateBarcodeInfo(string data, string symbology, DateTime timestamp)
         {
             mScanDataEditor.Text = data;
             mSymbologyLabel.Text = "Symbology: " + symbology;
             mTimestampLabel.Text = "Timestamp: " + timestamp.ToString();
+
+            var fieldValue = mScanDataEditor.Text;
+            _parentSubItem.FieldValue = fieldValue;
+
+            ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
+            var subItem = new RegistrationValueModel()
+            {
+                SubItemId = _parentSubItem.Id,
+                SubItemEntityModel = _parentSubItem,
+                Value = _parentSubItem.FieldValue
+            };
+            registrationValues.Add(subItem);
+            await _registrationValueDataStore.AddItemAsync(registrationValues);
+            NewRegistrationValueCreated?.Invoke(this, EventArgs.Empty);
         }
 
         private string GetSelectedReaderName()
@@ -417,13 +439,7 @@ namespace UI_Mobile.Views
                 }
             } //endif (mReaderOpened)
         }
-
+        public event EventHandler NewRegistrationValueCreated;
         #endregion // UI Event Handlers
-
-        public async Task AddBarcodeValue(SubItemEntityModel subItemEntity)
-        {
-            ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
-
-        }
     }
 }
