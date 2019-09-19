@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:UI_Mobile.Behaviors"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              x:Class="UI_Mobile.Views.FieldItemsView">
     <ContentPage.ToolbarItems>
@@ -31,20 +32,32 @@
                                <Grid.ColumnDefinitions>
                                    <ColumnDefinition Width="Auto"/>
                                    <ColumnDefinition Width="*"/>
-                               </Grid.ColumnDefinitions>
+
+                                </Grid.ColumnDefinitions>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Name}" IsEnabled="{Binding IsFieldEnabledAsBool}"/>
                                     <Entry 
                                        Grid.Column="1"
                                        Placeholder="Enter value"                                     
                                        Text="{Binding FieldValue}"
-                                       FontSize="22" 
-                                       IsEnabled="{Binding IsFieldEnabledAsBool}"
+                                       FontSize="16" 
+                                       WidthRequest="225"
                                        IsSpellCheckEnabled="True">
                                         <Entry.Behaviors>
                                             <local:NumberValidationBehavior/>
                                         </Entry.Behaviors>
                                     </Entry>
+                                    <StackLayout Margin="0, 0, 0, 0">
+                                        <Button 
+                                        Grid.Column="1"
+                                        Text="SCAN" 
+                                        x:Name="BarcodeReaderButton" 
+                                        HorizontalOptions="End" 
+                                        VerticalOptions="End"
+
+                                        Padding="20"
+                                        Clicked="BarcodeReaderButton_Clicked"/>
+                                    </StackLayout>
                                 </StackLayout>
                             </Grid>
                        </ViewCell>

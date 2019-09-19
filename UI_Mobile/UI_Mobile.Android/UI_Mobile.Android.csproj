@@ -48,6 +48,12 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataCollectionLib">
+      <HintPath>..\..\Honeywell-Xamarin-Scanning-SDK-v1.34.00.0005\libs\lib\MonoAndroid41\DataCollectionLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Honeywell.AIDC.CrossPlatform.BarcodeReader">
+      <HintPath>..\..\Honeywell-Xamarin-Scanning-SDK-v1.34.00.0005\libs\lib\MonoAndroid41\Honeywell.AIDC.CrossPlatform.BarcodeReader.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,9 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.2</Version>
+      <Version>12.0.3-beta1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.2.0.778463" />
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.778476-pre1" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.1" />
@@ -106,10 +112,6 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Honeywell.AIDC.CrossPlatform.BarcodeReader.dll\Honeywell.AIDC.CrossPlatform.BarcodeReader.dll.csproj">
-      <Project>{cdea7665-1bd1-4f79-8129-dae92da43ee2}</Project>
-      <Name>Honeywell.AIDC.CrossPlatform.BarcodeReader.dll</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UI_Mobile\UI_Mobile.csproj">
       <Project>{C132F4DB-B901-4E89-B7DB-06451232EBEF}</Project>
       <Name>UI_Mobile</Name>

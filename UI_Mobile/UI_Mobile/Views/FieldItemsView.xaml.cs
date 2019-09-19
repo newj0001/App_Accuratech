@@ -41,5 +41,10 @@ namespace UI_Mobile.Views
                 await fieldItemViewModel.AddRegistrationValue(subItemEntity);
             }
         }
+
+        private async void BarcodeReaderButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new BarcodeReaderView());
+        }
     }
 }
