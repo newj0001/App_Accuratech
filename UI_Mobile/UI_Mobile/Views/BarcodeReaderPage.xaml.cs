@@ -439,6 +439,7 @@ namespace UI_Mobile.Views
                 }
             } //endif (mReaderOpened)
         }
+
         public event EventHandler NewRegistrationValueCreated;
         #endregion // UI Event Handlers
     }
