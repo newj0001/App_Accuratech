@@ -13,7 +13,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="0" Padding="10" BackgroundColor="GhostWhite">
-
+           
             <ListView ItemsSource="{Binding Path=MenuItemEntityModel.SubItems}"
                             SelectionMode="None"
                             VerticalOptions="FillAndExpand"
@@ -39,7 +39,7 @@
                                         <local:NumberValidationBehavior/>
                                     </Entry.Behaviors>
                                 </Entry>
-                                <StackLayout HorizontalOptions="Start">
+                                <!--<StackLayout HorizontalOptions="Start">
                                     <Button 
                                     Text="SCAN" 
                                     x:Name="BarcodeReaderButton" 
@@ -47,12 +47,14 @@
                                     VerticalOptions="End"
                                     Padding="20"
                                     Clicked="BarcodeReaderButton_Clicked"/>
-                                </StackLayout>
+                                </StackLayout>-->
+
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Grid.Row="4" x:Name="mScanButton" Text="Scan" HorizontalOptions="Center" VerticalOptions="End" Clicked="OnScanButtonClicked"/>
         </StackLayout>
         <!--<ScrollView>
                 <StackLayout Spacing="0" Padding="10" BackgroundColor="GhostWhite">

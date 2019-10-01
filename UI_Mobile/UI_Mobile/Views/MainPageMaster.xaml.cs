@@ -30,6 +30,7 @@ namespace UI_Mobile.Views
         private async void OnItemSelected(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as MenuItemEntityModel;
+
             if (!selectedItem.IsMenuEnabledAsBool)
             {
                 return;
