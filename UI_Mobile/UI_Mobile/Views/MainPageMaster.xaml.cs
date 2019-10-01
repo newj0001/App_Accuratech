@@ -16,8 +16,6 @@ namespace UI_Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPageMaster : ContentPage
     {
-        public ListView ListView;
-
         public MainPageMaster()
         {
             InitializeComponent();

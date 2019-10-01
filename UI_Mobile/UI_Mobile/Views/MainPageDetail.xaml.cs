@@ -18,13 +18,16 @@ namespace UI_Mobile.Views
     public partial class MainPageDetail : ContentPage
     {
         private readonly RegistrationValueDataStore _registrationValueDataStore;
-        private SubItemEntityModel _parentSubItem;
         private MenuItemEntityModel _parentMenuItem;
+        private SubItemEntityModel _parentSubItem;
+
+
+
+
         private SynchronizationContext mUIContext = SynchronizationContext.Current;
         private const string DEFAULT_READER_KEY = "default";
         private Dictionary<string, BarcodeReader> mBarcodeReaders;
         private BarcodeReader mSelectedReader = null;
-        private bool mContinuousScan = false, mOpenReader = false;
         private bool mSoftContinuousScanStarted = false;
         private bool mSoftOneShotScanStarted = false;
         private string _scannerName;
@@ -37,6 +40,8 @@ namespace UI_Mobile.Views
             fieldItemsViewModel.Reset(menuItemEntityModel);
             BindingContext = fieldItemsViewModel;
             mBarcodeReaders = new Dictionary<string, BarcodeReader>();
+            _parentMenuItem = menuItemEntityModel;
+            _parentSubItem = new SubItemEntityModel();
 
             _registrationValueDataStore = new RegistrationValueDataStore();
         }
@@ -56,10 +61,9 @@ namespace UI_Mobile.Views
 
         private void MBarcodeReader_BarcodeDataReady(object sender, BarcodeDataArgs e)
         {
-            SubItemEntityModel s = new SubItemEntityModel();
             mUIContext.Post(_ =>
             {
-                UpdateBarcodeInfo(e.Data, s);
+                UpdateBarcodeInfo(e.Data, _parentMenuItem);
             }, null);
         }
         public async Task ToogleBarcodeReader(bool enable)
@@ -281,35 +285,37 @@ namespace UI_Mobile.Views
         }
 
         #endregion
-
+        
         #region UI
-        private async void UpdateBarcodeInfo(string data, SubItemEntityModel paramSubItem)
+        private async void UpdateBarcodeInfo(string data, MenuItemEntityModel menuItemEntityModel)
         {
-            _parentSubItem = paramSubItem;
             var fieldValue = data;
             _parentSubItem.FieldValue = fieldValue;
 
             ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
-            var subItem = new RegistrationValueModel()
+            foreach (var item in menuItemEntityModel.SubItems)
             {
-                SubItemId = _parentSubItem.Id,
-                SubItemEntityModel = _parentSubItem,
-                Value = _parentSubItem.FieldValue
-            };
-            
-            await _registrationValueDataStore.AddItemAsync(registrationValues);
-            NewRegistrationValueCreated?.Invoke(this, EventArgs.Empty);
+                item.FieldValue = _parentSubItem.FieldValue;
+                var subItem = new RegistrationValueModel()
+                {
+                    SubItemId = item.Id,
+                    SubItemEntityModel = item,
+                    Value = item.FieldValue,
+                };
+                registrationValues.Add(subItem);
+                await _registrationValueDataStore.AddItemAsync(registrationValues);
+                NewRegistrationValueCreated?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void OnItemSelected(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as SubItemEntityModel;
 
-            if (selectedItem == selectedItem)
+            if (true)
             {
 
             }
-
             //if (!selectedItem.IsFieldEnabledAsBool)
             //{
             //    return;

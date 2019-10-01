@@ -17,6 +17,7 @@ namespace UI_Mobile.ViewModels
         private readonly RegistrationValueDataStore _datastore;
         private SubItemEntityModel _parentSubItem;
         private MenuItemEntityModel _menuItemEntityModel;
+        private SubItemEntityModel _subItemEntityModel;
         private ICollection<SubItemEntityModel> _subItemsCollection;
         FieldItemDataStore fieldItemDataStore = new FieldItemDataStore();
 
@@ -37,6 +38,16 @@ namespace UI_Mobile.ViewModels
             set
             {
                 _menuItemEntityModel = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public SubItemEntityModel SubItemEntityModel
+        {
+            get => _subItemEntityModel;
+            set
+            {
+                _subItemEntityModel = value;
                 NotifyPropertyChanged();
             }
         }
@@ -116,6 +127,11 @@ namespace UI_Mobile.ViewModels
         public void Reset(MenuItemEntityModel menuItemEntityModel)
         {
             MenuItemEntityModel = menuItemEntityModel;
+        }
+
+        public void Reset(SubItemEntityModel subItemEntityModel)
+        {
+            SubItemEntityModel = subItemEntityModel;
         }
         public async void Reset()
         {
