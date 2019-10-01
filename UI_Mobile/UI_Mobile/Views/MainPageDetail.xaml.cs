@@ -296,16 +296,25 @@ namespace UI_Mobile.Views
             foreach (var item in menuItemEntityModel.SubItems)
             {
                 item.FieldValue = _parentSubItem.FieldValue;
-                var subItem = new RegistrationValueModel()
+                if (item.FieldValue.Contains("2430000"))
                 {
-                    SubItemId = item.Id,
-                    SubItemEntityModel = item,
-                    Value = item.FieldValue,
-                };
-                registrationValues.Add(subItem);
-                await _registrationValueDataStore.AddItemAsync(registrationValues);
-                NewRegistrationValueCreated?.Invoke(this, EventArgs.Empty);
+                    var subItem = new RegistrationValueModel()
+                    {
+                        SubItemId = item.Id,
+                        SubItemEntityModel = item,
+                        Value = item.FieldValue,
+                    };
+                    registrationValues.Add(subItem);
+                    await _registrationValueDataStore.AddItemAsync(registrationValues);
+                    NewRegistrationValueCreated?.Invoke(this, EventArgs.Empty);
+                    await DisplayAlert("", "Barcode added to database!", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("", "Cant add barcode. Try again", "OK");
+                }
             }
+
         }
 
         private void OnItemSelected(object sender, ItemTappedEventArgs e)
