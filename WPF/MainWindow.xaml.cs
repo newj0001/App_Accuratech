@@ -59,7 +59,7 @@ namespace WPF
             SetEditGeneralFieldSettingsView(sender, e);
         }
 
-        private void AddNewField(object sender, RoutedEventArgs e)
+        private void BtnAddField_Click(object sender, RoutedEventArgs e)
         {
             SetFieldConfigurationView(sender, e);
         }
@@ -88,10 +88,10 @@ namespace WPF
         }
         public void SetFieldConfigurationView(object sender, RoutedEventArgs e)
         {
-            var generalFieldSettingsViewModel = new GeneralFieldSettingsViewModel(GetMenuItemButton(sender, e));
-            generalFieldSettingsViewModel.NewSubItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
-            var generalFieldSettingsView = new GeneralFieldSettingsView { DataContext = generalFieldSettingsViewModel };
-            Main.Content = generalFieldSettingsView;
+            var createFieldItemViewModel = new CreateFieldItemViewModel(GetMenuItemButton(sender, e));
+            createFieldItemViewModel.NewSubItemCreated += async (_, __) => await MainWindowViewModel?.Reset();
+            var createFieldItemView = new CreateFieldItemView { DataContext = createFieldItemViewModel };
+            createFieldItemView.Show();
         }
 
         public MenuItemEntityModel GetMenuItemButton(object sender, RoutedEventArgs e)

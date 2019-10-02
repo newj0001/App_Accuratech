@@ -6,11 +6,39 @@ using Common.Services;
 
 namespace Common.ViewModel
 {
-    public class EditGeneralFieldSettingsViewModel : INotifyPropertyChanged
+    public class EditGeneralFieldSettingsViewModel
     {
+        #region Enums
+        public enum FieldEnabled
+        {
+            Yes,
+            No
+        }
+        public enum NumericField
+        {
+            Yes,
+            No
+        }
+        public enum KeyboardInput
+        {
+            Enabled,
+            Disabled
+        }
+        public enum EmptyField
+        {
+            Yes,
+            No
+        }
+        public enum KeepFieldValue
+        {
+            Yes,
+            No
+        }
+        #endregion Enums
+
         private readonly FieldItemDataStore _fieldItemDataStore = new FieldItemDataStore();
         private readonly SubItemEntityModel _parentSubItem;
-      
+
         public string SubItemTitle { get; set; }
         public int FieldMinLength { get; set; }
         public int FieldMaxLength { get; set; }

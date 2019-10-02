@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF.ViewModels;
 
 namespace WPF.View
 {
@@ -22,6 +23,17 @@ namespace WPF.View
         public UpdateMenuItemView()
         {
             InitializeComponent();
+        }
+        public CreateFieldItemViewModel CreateMenuItemViewModel => DataContext as CreateFieldItemViewModel;
+
+        private void btnSaveMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCancelMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

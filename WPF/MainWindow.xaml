@@ -78,28 +78,39 @@
                                               Background="#003152" 
                                               Foreground="White">
                                         <Expander.Header>
-                                            <DockPanel
-                                                FlowDirection="RightToLeft"
-                                                LastChildFill="False" 
-                                                HorizontalAlignment="Stretch">
-                                                <Button x:Name="BtnDeleteMenuItem" Background="{x:Null}" BorderBrush="{x:Null}" CommandParameter="{Binding}" Command="{Binding ElementName=Window, Path=DataContext.DeleteMenuItemCommand, Mode=OneWay}" DockPanel.Dock="Right">
+                                            <DockPanel  HorizontalAlignment="Stretch" LastChildFill="False">
+                                                <Button x:Name="btnMenuItem" Background="{x:Null}" DockPanel.Dock="Right"  BorderBrush="{x:Null}" Foreground="White" FontWeight="Light" Click="BtnMenuItem_OnClick" Content="{Binding Header}" FontSize="22" Height="40"/>
+                                                <Button x:Name="BtnDeleteMenuItem" Background="{x:Null}" BorderBrush="{x:Null}" CommandParameter="{Binding}" Command="{Binding ElementName=Window, Path=DataContext.DeleteMenuItemCommand, Mode=OneWay}">
                                                     <materialDesign:PackIcon Foreground="White" Kind="Delete" Height="20" Width="20"/>
                                                 </Button>
-                                                <Button x:Name="btnMenuItem" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontWeight="Light" Click="BtnMenuItem_OnClick" Content="{Binding Header}" FontSize="22" Height="40"/>
                                             </DockPanel>
                                         </Expander.Header>
                                         <DockPanel>
                                             <StackPanel>
+                                                <Button Grid.Column="0" x:Name="btnAddField" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnAddField_Click">
+                                                    <DockPanel >
+                                                        <TextBlock FontSize="14" VerticalAlignment="Center" Margin="100 0 0 0" Foreground="#FFFFFF" FontWeight="Light">
+                                                                             Add field
+                                                        </TextBlock>
+                                                        <materialDesign:PackIcon FontWeight="Bold" Kind="Add" Width="20" Height="20" Foreground="#24EA3F" Margin="10 0 0 0"/>
+                                                    </DockPanel>
+                                                </Button>
                                                 <ListView x:Name="ListViewMenu"  ItemsSource="{Binding SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#004575" HorizontalAlignment="Stretch">
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
-                                                            <DockPanel LastChildFill="False" VerticalAlignment="Center">
-
-                                                                <Button Click="BtnFieldItem_OnClick" FontWeight="Light" Background="{x:Null}" BorderBrush="{x:Null}" Content="{Binding Name}" Margin="0 0 0 0" FontSize="22"/>
+                                                            <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal" HorizontalAlignment="Left">
+                                                                <BulletDecorator>
+                                                                    <BulletDecorator.Bullet>
+                                                                        <Ellipse Height="10" Width="10" Fill="green"/>
+                                                                    </BulletDecorator.Bullet>
+                                                                    <Button HorizontalAlignment="Left" Click="BtnFieldItem_OnClick" FontWeight="Light" Content="{Binding Name}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0 0 125 0" >
+                                                                    </Button>
+                                                                </BulletDecorator>
+                                                               
                                                                 <Button DockPanel.Dock="Right" Command="{Binding ElementName=Window, Path=DataContext.DeleteFieldItemCommand, Mode=OneWay}" CommandParameter="{Binding}" x:Name="BtnDeleteSubItem" BorderBrush="{x:Null}" Background="{x:Null}">
                                                                     <materialDesign:PackIcon Kind="Delete" Foreground="White" Height="20" Width="20"/>
                                                                 </Button>
-                                                            </DockPanel>
+                                                            </StackPanel>
                                                         </DataTemplate>
                                                     </ListView.ItemTemplate>
                                                 </ListView>

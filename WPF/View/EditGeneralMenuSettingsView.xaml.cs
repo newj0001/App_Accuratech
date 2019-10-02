@@ -31,8 +31,15 @@ namespace WPF.View
 
         private async void BtnUpdateMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-
+            UpdateMenuItemView updateMenuItemView = new UpdateMenuItemView();
+            updateMenuItemView.Show();
             //await EditGeneralMenuSettingsViewModel.Update();
+        }
+
+        private void BtnAddFieldItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            CreateFieldItemView createFieldItemView = new CreateFieldItemView();
+            createFieldItemView.Show();
         }
     }
 }

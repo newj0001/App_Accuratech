@@ -291,12 +291,14 @@ namespace UI_Mobile.Views
         {
             var fieldValue = data;
             _parentSubItem.FieldValue = fieldValue;
-
+            var startWith = "0";
+            _parentSubItem.StartWith = startWith; 
             ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
             foreach (var item in menuItemEntityModel.SubItems)
             {
                 item.FieldValue = _parentSubItem.FieldValue;
-                if (item.FieldValue.Contains("2430000"))
+                item.StartWith = _parentSubItem.StartWith;
+                if (item.FieldValue.StartsWith(item.StartWith))
                 {
                     var subItem = new RegistrationValueModel()
                     {
@@ -321,14 +323,15 @@ namespace UI_Mobile.Views
         {
             var selectedItem = e.Item as SubItemEntityModel;
 
-            if (true)
+            if (selectedItem.FieldValue.StartsWith(selectedItem.StartWith))
             {
-
+                return;
             }
-            //if (!selectedItem.IsFieldEnabledAsBool)
-            //{
-            //    return;
-            //}
+
+            if (!selectedItem.IsFieldEnabledAsBool)
+            {
+                return;
+            }
         }
 
         private async void SaveClicked(object sender, EventArgs e)

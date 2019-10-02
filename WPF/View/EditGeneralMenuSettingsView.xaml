@@ -12,9 +12,15 @@
              d:DataContext="{d:DesignInstance viewModel:EditGeneralMenuSettingsViewModel}">
 
     <Grid Background="GhostWhite">
-        <Button HorizontalAlignment="Right" Click="BtnUpdateMenuItem_OnClick" Margin="0 50 50 0" VerticalAlignment="Top">
-            <materialDesign:PackIcon Kind="Edit"/>
-        </Button>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button HorizontalAlignment="Right" Click="BtnAddFieldItem_OnClick " Margin="0 50 0 0" VerticalAlignment="Top">
+                <materialDesign:PackIcon Kind="Edit"/>
+            </Button>
+            <Button HorizontalAlignment="Right" Click="BtnUpdateMenuItem_OnClick" Margin="0 50 50 0" VerticalAlignment="Top">
+                <materialDesign:PackIcon Kind="Settings"/>
+            </Button>
+        </StackPanel>
+
         <Grid x:Name="print">
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"/>

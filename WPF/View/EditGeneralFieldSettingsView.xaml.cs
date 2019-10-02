@@ -25,11 +25,11 @@ namespace WPF.View
         {
             InitializeComponent();
         }
+        //EditGeneralFieldSettingsViewModel EditGeneralFieldSettingsViewModel => DataContext as EditGeneralFieldSettingsViewModel;
 
-        EditGeneralFieldSettingsViewModel EditGeneralFieldSettingsViewModel => DataContext as EditGeneralFieldSettingsViewModel;
-        private async void BtnUpdateFieldItem_OnClick(object sender, RoutedEventArgs e)
+        private async void BtnSetScanOptions_Click(object sender, RoutedEventArgs e)
         {
-            await EditGeneralFieldSettingsViewModel.Update();
+
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -53,7 +51,30 @@ namespace Common
         public string KeyboardInput { get; set; }
         public string EmptyField { get; set; }
         public string KeepFieldValue { get; set; }
+        public string IsScanEnabled { get; set; }
+        public bool ScanEnabled
+        {
+            get
+            {
+                switch (IsScanEnabled)
+                {
+                    case "Disabled":
+                        return false;
 
+                    case "Enabled":
+                        return true;
+
+                    default: return false;
+                }
+            }
+            private set { }
+        }
+
+        public string Type { get; set; }
+        public string Length { get; set; }
+        public string StartWith { get; set; }
+        public int Offset { get; set; }
+        public int ValueLength { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {

@@ -7,40 +7,40 @@
              xmlns:local="clr-namespace:WPF.View"
              xmlns:local1="clr-namespace:WPF"
 
-             xmlns:viewModel1="clr-namespace:Common.ViewModel;assembly=Common"
+             xmlns:viewModel="clr-namespace:Common.ViewModel;assembly=Common"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             d:DataContext="{d:DesignInstance viewModel1:GeneralFieldSettingsViewModel}">
+            >
     
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <ObjectDataProvider x:Key="FieldEnabled" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="viewModel1:FieldEnabled"/>
+                <x:Type TypeName="viewModel:FieldEnabled"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider x:Key="NumericField" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="viewModel1:NumericField"/>
+                <x:Type TypeName="viewModel:NumericField"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider x:Key="KeyboardInput" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-               <x:Type TypeName="viewModel1:KeyboardInput"/>
+               <x:Type TypeName="viewModel:KeyboardInput"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider x:Key="EmptyField" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="viewModel1:EmptyField"></x:Type>
+                <x:Type TypeName="viewModel:EmptyField"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider x:Key="KeepFieldValue" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="viewModel1:KeepFieldValue"></x:Type>
+                <x:Type TypeName="viewModel:KeepFieldValue"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </UserControl.Resources>
@@ -67,43 +67,43 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <!--Title-->
+        --><!--Title--><!--
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Title" Grid.Column="0" Grid.Row="0"/>
         <TextBox HorizontalAlignment="Right" BorderBrush="Black" Text="{Binding SubItemTitle}" Width="150" Height="30" Grid.Column="1" Grid.Row="0"/>
 
-        <!--Enable field-->
+        --><!--Enable field--><!--
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Enable field" Grid.Column="0" Grid.Row="1"/>
         <ComboBox ItemsSource="{Binding Source={StaticResource FieldEnabled}}" SelectedItem="{Binding SelectedElementInFieldEnabled}"  BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="1"/>
 
-        <!--Set field as numeric only-->
+        --><!--Set field as numeric only--><!--
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Set field as numeric only" Grid.Column="0" Grid.Row="2"/>
         <ComboBox ItemsSource="{Binding Source={StaticResource NumericField}}" SelectedItem="{Binding SelectedElementInNumericField}" BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="2" Height="30" />
         
-        <!--Keep field value after each registration-->
+        --><!--Keep field value after each registration--><!--
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Keep field value after each registration" Grid.Column="0" Grid.Row="3"/>
         <ComboBox ItemsSource="{Binding Source={StaticResource KeepFieldValue}}" SelectedItem="{Binding SelectedElementInKeepFieldValue}" BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="3" Height="30" />
 
-        <!--Field max. length-->
+        --><!--Field max. length--><!--
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Field max. length" Grid.Column="0" Grid.Row="4"/>
         <TextBox HorizontalAlignment="Right" BorderBrush="Black" Text="{Binding FieldMinLength}" Width="150" Height="30" Grid.Column="1" Grid.Row="4"/>
 
-        <!--Field min. length-->
+        --><!--Field min. length--><!--
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Field min. length" Grid.Column="0" Grid.Row="5"/>
         <TextBox HorizontalAlignment="Right" BorderBrush="Black" Text="{Binding FieldMaxLength}" Width="150" Height="30" Grid.Column="1" Grid.Row="5"/>
         
-        <!--Disable keyboard input-->
+        --><!--Disable keyboard input--><!--
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Disable keyboard input" Grid.Column="0" Grid.Row="6"/>
         <ComboBox ItemsSource="{Binding Source={StaticResource KeyboardInput}}" SelectedItem="{Binding SelectedElementInKeyboardInput}" BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="6" Height="30" />
 
-        <!--Allow field to be empty-->
+        --><!--Allow field to be empty--><!--
         <TextBlock FontWeight="Light" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="16" Margin="50 0 0 0" Text="Allow field to be empty" Grid.Column="0" Grid.Row="7"/>
         <ComboBox ItemsSource="{Binding Source={StaticResource EmptyField}}" SelectedItem="{Binding SelectedElementInEmptyField}" BorderBrush="Black" HorizontalAlignment="Right" Width="150" Grid.Column="1" Grid.Row="7" Height="30" />
 
-        <!--Save and Cancel buttons-->
+        --><!--Save and Cancel buttons--><!--
         <StackPanel Margin="10" Orientation="Horizontal" Grid.Column="3" Grid.Row="12" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="btnCancelFieldItem" Width="100" Content="Cancel" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}"/>
             <Button x:Name="btnSaveFieldItem" Width="100" Content="Save" FontSize="14" Foreground="White" Background="Gray" FontWeight="Light" BorderBrush="{x:Null}" Click="BtnSaveFieldItem_OnClick"/>
         </StackPanel>
        
-    </Grid>
+    </Grid>-->
 </UserControl>

@@ -28,10 +28,12 @@ namespace WPF.View
             InitializeComponent();
     
         }
-        public GeneralFieldSettingsViewModel GeneralFieldSettingsViewModel => DataContext as GeneralFieldSettingsViewModel;
+
+        //GeneralFieldSettingsViewModel GeneralFieldSettingsViewModel => DataContext as GeneralFieldSettingsViewModel;
+
         private async void BtnSaveFieldItem_OnClick(object sender, RoutedEventArgs e)
         {
-            await GeneralFieldSettingsViewModel.AddFieldItem();
+            //await GeneralFieldSettingsViewModel.AddFieldItem();
         }
 
     }
