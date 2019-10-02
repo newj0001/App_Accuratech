@@ -35,7 +35,7 @@ namespace UI_Mobile.Views
         public MainPageDetail(MenuItemEntityModel menuItemEntityModel)
         {
             InitializeComponent();
-            ClearText(menuItemEntityModel);
+            //ClearText(menuItemEntityModel);
             var fieldItemsViewModel = new FieldItemsViewModel();
             fieldItemsViewModel.Reset(menuItemEntityModel);
             BindingContext = fieldItemsViewModel;
@@ -291,13 +291,29 @@ namespace UI_Mobile.Views
         {
             var fieldValue = data;
             _parentSubItem.FieldValue = fieldValue;
-            var startWith = "0";
-            _parentSubItem.StartWith = startWith; 
+
+
             ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
+
+            var menuItem = menuItemEntityModel.SubItems.OrderByDescending(x => x.Id).First();
+            var startsWith = menuItem.StartWith;
+
+            if (fieldValue.StartsWith(startsWith))
+            {
+              
+                await DisplayAlert("", $"Starts with {startsWith}", "OK");
+                UpdateText(menuItemEntityModel, _parentSubItem.FieldValue);  
+            }
+            else
+            {
+                await DisplayAlert("", $"doesnt Starts with  {startsWith}", "OK");
+            }
+
+            /*
             foreach (var item in menuItemEntityModel.SubItems)
             {
                 item.FieldValue = _parentSubItem.FieldValue;
-                item.StartWith = _parentSubItem.StartWith;
+                //   item.StartWith = _parentSubItem.StartWith;
                 if (item.FieldValue.StartsWith(item.StartWith))
                 {
                     var subItem = new RegistrationValueModel()
@@ -316,6 +332,7 @@ namespace UI_Mobile.Views
                     await DisplayAlert("", "Cant add barcode. Try again", "OK");
                 }
             }
+            */
 
         }
 
@@ -351,6 +368,14 @@ namespace UI_Mobile.Views
             foreach (var item in menuItemEntityModel.SubItems)
             {
                 item.FieldValue = "";
+            }
+        }
+
+        public void UpdateText(MenuItemEntityModel menuItemEntityModel, string text)
+        {
+            foreach (var item in menuItemEntityModel.SubItems)
+            {
+                item.FieldValue = text;
             }
         }
 
