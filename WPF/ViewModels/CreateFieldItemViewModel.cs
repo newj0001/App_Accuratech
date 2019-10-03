@@ -58,7 +58,7 @@ namespace WPF.ViewModels
         public string SubItemTitle { get; set; }
         public int FieldMinLength { get; set; }
         public int FieldMaxLength { get; set; }
-        public string Length { get; set; }
+        public int Length { get; set; }
         public string StartWith { get; set; }
         public int Offset { get; set; }
         public int ValueLength { get; set; }

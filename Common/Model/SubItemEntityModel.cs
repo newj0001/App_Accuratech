@@ -43,7 +43,16 @@ namespace Common
         }
 
         public int? MenuItemId { get; set; }
-        public string FieldValue { get; set; }
+        //public string FieldValue { get; set; }
+
+        private string _fieldValue;
+
+        public string FieldValue
+        {
+            get { return _fieldValue; }
+            set { _fieldValue = value; NotifyPropertyChanged(); }
+        }
+
         public string IsFieldEnabled { get; set; }
         public string NumericField { get; set; }
         public int FieldMinLength { get; set; }
@@ -71,10 +80,11 @@ namespace Common
         }
 
         public string Type { get; set; }
-        public string Length { get; set; }
+        public int Length { get; set; }
         public string StartWith { get; set; }
         public int Offset { get; set; }
         public int ValueLength { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {

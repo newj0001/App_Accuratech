@@ -34,11 +34,11 @@
                                     Placeholder="Enter value"                                     
                                     Text="{Binding FieldValue}"
                                     FontSize="16" 
-                                    IsSpellCheckEnabled="True"
+                                    IsSpellCheckEnabled="False"
                                     >
-                                    <Entry.Behaviors>
+                                    <!--<Entry.Behaviors>
                                         <local:NumberValidationBehavior/>
-                                    </Entry.Behaviors>
+                                    </Entry.Behaviors>-->
                                 </Entry>
                                 <!--<StackLayout HorizontalOptions="Start">
                                     <Button 

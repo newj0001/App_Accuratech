@@ -19,10 +19,6 @@ namespace UI_Mobile.Views
     {
         private readonly RegistrationValueDataStore _registrationValueDataStore;
         private MenuItemEntityModel _parentMenuItem;
-        private SubItemEntityModel _parentSubItem;
-
-
-
 
         private SynchronizationContext mUIContext = SynchronizationContext.Current;
         private const string DEFAULT_READER_KEY = "default";
@@ -35,14 +31,12 @@ namespace UI_Mobile.Views
         public MainPageDetail(MenuItemEntityModel menuItemEntityModel)
         {
             InitializeComponent();
-            //ClearText(menuItemEntityModel);
+
             var fieldItemsViewModel = new FieldItemsViewModel();
             fieldItemsViewModel.Reset(menuItemEntityModel);
             BindingContext = fieldItemsViewModel;
             mBarcodeReaders = new Dictionary<string, BarcodeReader>();
             _parentMenuItem = menuItemEntityModel;
-            _parentSubItem = new SubItemEntityModel();
-
             _registrationValueDataStore = new RegistrationValueDataStore();
         }
 
@@ -52,6 +46,8 @@ namespace UI_Mobile.Views
             PopulateReaderPicker();
             await OpenBarcodeReader();
             await ToogleBarcodeReader(true);
+
+            ClearText(_parentMenuItem);
         }
 
         protected override async void OnDisappearing()
@@ -66,6 +62,7 @@ namespace UI_Mobile.Views
                 UpdateBarcodeInfo(e.Data, _parentMenuItem);
             }, null);
         }
+
         public async Task ToogleBarcodeReader(bool enable)
         {
             if (mSelectedReader != null && mSelectedReader.IsReaderOpened)
@@ -287,63 +284,32 @@ namespace UI_Mobile.Views
         #endregion
         
         #region UI
+
+
         private async void UpdateBarcodeInfo(string data, MenuItemEntityModel menuItemEntityModel)
         {
-            var fieldValue = data;
-            _parentSubItem.FieldValue = fieldValue;
+            var scanData = data;
 
-
-            ICollection<RegistrationValueModel> registrationValues = new List<RegistrationValueModel>();
-
-            var menuItem = menuItemEntityModel.SubItems.OrderByDescending(x => x.Id).First();
-            var startsWith = menuItem.StartWith;
-
-            if (fieldValue.StartsWith(startsWith))
-            {
-              
-                await DisplayAlert("", $"Starts with {startsWith}", "OK");
-                UpdateText(menuItemEntityModel, _parentSubItem.FieldValue);  
-            }
-            else
-            {
-                await DisplayAlert("", $"doesnt Starts with  {startsWith}", "OK");
-            }
-
-            /*
             foreach (var item in menuItemEntityModel.SubItems)
             {
-                item.FieldValue = _parentSubItem.FieldValue;
-                //   item.StartWith = _parentSubItem.StartWith;
-                if (item.FieldValue.StartsWith(item.StartWith))
+                if (item.ScanEnabled)
                 {
-                    var subItem = new RegistrationValueModel()
+                    if (scanData.Length == item.Length && scanData.StartsWith(item.StartWith))
                     {
-                        SubItemId = item.Id,
-                        SubItemEntityModel = item,
-                        Value = item.FieldValue,
-                    };
-                    registrationValues.Add(subItem);
-                    await _registrationValueDataStore.AddItemAsync(registrationValues);
-                    NewRegistrationValueCreated?.Invoke(this, EventArgs.Empty);
-                    await DisplayAlert("", "Barcode added to database!", "OK");
-                }
-                else
-                {
-                    await DisplayAlert("", "Cant add barcode. Try again", "OK");
+                        var resultData = scanData.Substring(item.Offset, item.ValueLength);
+                       
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            item.FieldValue = resultData;
+                        });
+                    }
                 }
             }
-            */
-
         }
 
         private void OnItemSelected(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as SubItemEntityModel;
-
-            if (selectedItem.FieldValue.StartsWith(selectedItem.StartWith))
-            {
-                return;
-            }
 
             if (!selectedItem.IsFieldEnabledAsBool)
             {
@@ -367,7 +333,7 @@ namespace UI_Mobile.Views
         {
             foreach (var item in menuItemEntityModel.SubItems)
             {
-                item.FieldValue = "";
+                item.FieldValue = "Abc";
             }
         }
 
