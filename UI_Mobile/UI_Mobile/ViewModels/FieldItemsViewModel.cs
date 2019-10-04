@@ -117,7 +117,8 @@ namespace UI_Mobile.ViewModels
             {
                 SubItemId = _parentSubItem.Id,
                 SubItemEntityModel = _parentSubItem,
-                Value = fieldValue
+                Value = fieldValue,
+                SubItemName = _parentSubItem.Name
             }; 
             registrationValues.Add(subItem);
             await _datastore.AddItemAsync(registrationValues);
@@ -129,14 +130,14 @@ namespace UI_Mobile.ViewModels
             MenuItemEntityModel = menuItemEntityModel;
         }
 
-        public void Reset(SubItemEntityModel subItemEntityModel)
-        {
-            SubItemEntityModel = subItemEntityModel;
-        }
-        public async void Reset()
-        {
-            SubItemsCollection = await fieldItemDataStore.GetItemsAsync();
-        }
+        //public void Reset(SubItemEntityModel subItemEntityModel)
+        //{
+        //    SubItemEntityModel = subItemEntityModel;
+        //}
+        //public async void Reset()
+        //{
+        //    SubItemsCollection = await fieldItemDataStore.GetItemsAsync();
+        //}
 
         public event EventHandler NewRegistrationValueCreated;
 

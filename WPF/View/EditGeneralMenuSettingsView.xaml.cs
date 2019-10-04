@@ -22,9 +22,16 @@ namespace WPF.View
     /// </summary>
     public partial class EditGeneralMenuSettingsView : UserControl
     {
-        public EditGeneralMenuSettingsView()
+        public EditGeneralMenuSettingsView(MenuItemEntityModel menuItemEntityModel)
         {
             InitializeComponent();
+            DataContextChanged += Reset;
+            DataContext = new EditGeneralMenuSettingsViewModel(menuItemEntityModel);
+        }
+
+        private async void Reset(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (EditGeneralMenuSettingsViewModel != null) await EditGeneralMenuSettingsViewModel?.Reset();
         }
 
         EditGeneralMenuSettingsViewModel EditGeneralMenuSettingsViewModel => DataContext as EditGeneralMenuSettingsViewModel;

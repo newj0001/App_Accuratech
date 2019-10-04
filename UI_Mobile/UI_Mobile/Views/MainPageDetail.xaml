@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:UI_Mobile.Behaviors"
              mc:Ignorable="d"
              x:Class="UI_Mobile.Views.MainPageDetail"
-             Title="Fields">
+             Title="Field">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel"/>
+        <ToolbarItem Text="Clear" Clicked="ClearClicked"/>
         <ToolbarItem Text="Save" Clicked="SaveClicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

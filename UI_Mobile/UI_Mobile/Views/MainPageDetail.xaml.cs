@@ -3,6 +3,7 @@ using Common.Services;
 using Honeywell.AIDC.CrossPlatform;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -286,7 +287,7 @@ namespace UI_Mobile.Views
         #region UI
 
 
-        private async void UpdateBarcodeInfo(string data, MenuItemEntityModel menuItemEntityModel)
+        private void UpdateBarcodeInfo(string data, MenuItemEntityModel menuItemEntityModel)
         {
             var scanData = data;
 
@@ -324,16 +325,26 @@ namespace UI_Mobile.Views
             {
                 SubItemEntityModel subItemEntity = (SubItemEntityModel)item;
                 var fieldItemViewModel = new FieldItemsViewModel(subItemEntity);
+                bool answer = await DisplayAlert("", $"Would you like to save registration for {subItemEntity.Name}?", "Save", "Cancel");
 
-                await fieldItemViewModel.AddRegistrationValue(subItemEntity);
+                if (answer)
+                    await fieldItemViewModel.AddRegistrationValue(subItemEntity);
+                else
+                    return;
             }
+
+        }
+
+        private void ClearClicked(object sender, EventArgs e)
+        {
+            ClearText(_parentMenuItem);
         }
 
         public void ClearText(MenuItemEntityModel menuItemEntityModel)
         {
             foreach (var item in menuItemEntityModel.SubItems)
             {
-                item.FieldValue = "Abc";
+                item.FieldValue = "";
             }
         }
 
@@ -344,8 +355,6 @@ namespace UI_Mobile.Views
                 item.FieldValue = text;
             }
         }
-
-        public event EventHandler NewRegistrationValueCreated;
     }
     #endregion
 

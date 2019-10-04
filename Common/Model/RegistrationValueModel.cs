@@ -13,6 +13,7 @@ namespace Common
         private string _value;
         public int Id { get; set; }
         public int SubItemId { get; set; }
+        public string SubItemName { get; set; }
         public SubItemEntityModel SubItemEntityModel { get; set; }
 
         public string Value

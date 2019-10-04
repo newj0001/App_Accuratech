@@ -9,26 +9,25 @@ namespace Common.ViewModel
 {
     public class EditGeneralMenuSettingsViewModel : INotifyPropertyChanged
     {
-
         MenuItemDataStore _menuItemDataStore = new MenuItemDataStore();
         FieldItemDataStore _fieldItemDataStore = new FieldItemDataStore();
-
+        private readonly MenuItemEntityModel _parentMenuItem;
         private ICollection<MenuItemEntityModel> _menuItemsCollection;
         private ICollection<SubItemEntityModel> _subItemsCollection;
 
-        private readonly MenuItemEntityModel _parentMenuItem;
-
-        public string MenuItemTitle { get; set; }
-        public bool SelectedElementInIsMenuEnabled { get; set; }
         public EditGeneralMenuSettingsViewModel(MenuItemEntityModel menuItem)
         {
             _parentMenuItem = menuItem;
         }
+
+
+        public bool SelectedElementInIsMenuEnabled { get; set; }
+
         public async Task Update()
         {
             var menuItem = new MenuItemEntityModel
             {
-                Header = MenuItemTitle,
+                Header = _parentMenuItem.Header,
                 IsMenuEnabled = SelectedElementInIsMenuEnabled.ToString(),
                 Id = _parentMenuItem.Id
             };

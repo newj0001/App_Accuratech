@@ -29,7 +29,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Horizontal" Margin="30" Grid.Row="0">
-                <TextBlock Text="EDIT MENUITEM" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#FFFBE188"/>
+                <TextBlock Text="{Binding Header}" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#FFFBE188"/>
             </StackPanel>
             <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="20">
                 <Grid HorizontalAlignment="Stretch">

@@ -76,7 +76,7 @@ namespace WPF
         {
             var editGeneralMenuSettingsViewModel = new EditGeneralMenuSettingsViewModel(GetMenuItemButton(sender, e));
             editGeneralMenuSettingsViewModel.MenuItemUpdated += async (_, __) => await MainWindowViewModel?.Reset();
-            var editGeneralMenuSettingsView = new EditGeneralMenuSettingsView { DataContext = editGeneralMenuSettingsViewModel };
+            var editGeneralMenuSettingsView = new EditGeneralMenuSettingsView(GetMenuItemButton(sender, e)) { DataContext = editGeneralMenuSettingsViewModel };
             Main.Content = editGeneralMenuSettingsView;
         }
         public void SetEditGeneralFieldSettingsView(object sender, RoutedEventArgs e)
